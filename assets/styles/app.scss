@@ -1,16 +1,14 @@
-@import 'variables.scss';
+@import "variables.scss";
 @import "custom.scss";
 @import "~bootstrap/scss/bootstrap.scss";
-@import 'header.scss';
-@import 'home.scss';
+@import "header.scss";
+@import "home.scss";
 
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    font-family: 'Roboto', sans-serif;
+body {
+  font-family: "Roboto", sans-serif;
 }
-
-
