@@ -21,10 +21,10 @@ class WeddingController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/dairy", name="dairy")
+     * @Route("/{id}/diary", name="diary")
      */
-    public function dairy(int $id): Response
+    public function diary(int $id): Response
     {
-        return $this->render('wedding/dairy.html.twig');
+        return $this->render('wedding/diary.html.twig');
     }
 }
