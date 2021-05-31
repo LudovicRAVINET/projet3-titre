@@ -11,53 +11,54 @@ use Doctrine\ORM\Mapping as ORM;
 class Birthday extends Event
 {
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $bFirstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $bLastname;
+    private string $birthdayFirstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $birthdayLastname;
 
     /**
      * @ORM\Column(type="date")
      */
-    private \DateTimeInterface $bBirthDate;
+    private \DateTimeInterface $birthdayDate;
 
-    public function getBFirstname(): ?string
+    public function getBirthdayFirstname(): ?string
     {
-        return $this->bFirstname;
+        return $this->birthdayFirstname;
     }
 
-    public function setBFirstname(string $bFirstname): self
+    public function setBirthdayFirstname(string $birthdayFirstname): self
     {
-        $this->bFirstname = $bFirstname;
+        $this->birthdayFirstname = $birthdayFirstname;
 
         return $this;
     }
 
-    public function getBLastname(): ?string
+    public function getBirthdayLastname(): ?string
     {
-        return $this->bLastname;
+        return $this->birthdayLastname;
     }
 
-    public function setBLastname(string $bLastname): self
+    public function setBirthdayLastname(string $birthdayLastname): self
     {
-        $this->bLastname = $bLastname;
+        $this->birthdayLastname = $birthdayLastname;
 
         return $this;
     }
 
-    public function getBBirthDate(): ?\DateTimeInterface
+    public function getBirthdayDate(): ?\DateTimeInterface
     {
-        return $this->bBirthDate;
+        return $this->birthdayDate;
     }
 
-    public function setBBirthDate(\DateTimeInterface $bBirthDate): self
+    public function setBirthdayDate(\DateTimeInterface $birthdayDate): self
     {
-        $this->bBirthDate = $bBirthDate;
+        $this->birthdayDate = $birthdayDate;
 
         return $this;
     }

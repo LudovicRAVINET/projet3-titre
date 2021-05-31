@@ -11,104 +11,106 @@ use Doctrine\ORM\Mapping as ORM;
 class Mourning extends Event
 {
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $mFirstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $mLastname;
+    private string $deadFirstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $deadLastname;
 
     /**
      * @ORM\Column(type="date")
      */
-    private \DateTimeInterface $mDeathDate;
+    private \DateTimeInterface $deadBirthDay;
 
     /**
      * @ORM\Column(type="date")
      */
-    private \DateTimeInterface $mBirthDate;
+    private \DateTimeInterface $deadDeathDay;
 
     /**
      * @ORM\Column(type="text")
      */
-    private string $mBiography;
+    private string $deadBiography;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private ?string $mRelationship;
+    private string $relationship;
 
-    public function getMFirstname(): ?string
+
+    public function getDeadFirstname(): ?string
     {
-        return $this->mFirstname;
+        return $this->deadFirstname;
     }
 
-    public function setMFirstname(string $mFirstname): self
+    public function setDeadFirstname(string $deadFirstname): self
     {
-        $this->mFirstname = $mFirstname;
+        $this->deadFirstname = $deadFirstname;
 
         return $this;
     }
 
-    public function getMLastname(): ?string
+    public function getDeadLastname(): ?string
     {
-        return $this->mLastname;
+        return $this->deadLastname;
     }
 
-    public function setMLastname(string $mLastname): self
+    public function setDeadLastname(string $deadLastname): self
     {
-        $this->mLastname = $mLastname;
+        $this->deadLastname = $deadLastname;
 
         return $this;
     }
 
-    public function getMDeathDate(): ?\DateTimeInterface
+    public function getDeadBirthDay(): ?\DateTimeInterface
     {
-        return $this->mDeathDate;
+        return $this->deadBirthDay;
     }
 
-    public function setMDeathDate(\DateTimeInterface $mDeathDate): self
+    public function setDeadBirthDay(\DateTimeInterface $deadBirthDay): self
     {
-        $this->mDeathDate = $mDeathDate;
+        $this->deadBirthDay = $deadBirthDay;
 
         return $this;
     }
 
-    public function getMBirthDate(): ?\DateTimeInterface
+    public function getDeadDeathDay(): ?\DateTimeInterface
     {
-        return $this->mBirthDate;
+        return $this->deadDeathDay;
     }
 
-    public function setMBirthDate(\DateTimeInterface $mBirthDate): self
+    public function setDeadDeathDay(\DateTimeInterface $deadDeathDay): self
     {
-        $this->mBirthDate = $mBirthDate;
+        $this->deadDeathDay = $deadDeathDay;
 
         return $this;
     }
 
-    public function getMBiography(): ?string
+    public function getDeadBiography(): ?string
     {
-        return $this->mBiography;
+        return $this->deadBiography;
     }
 
-    public function setMBiography(string $mBiography): self
+    public function setDeadBiography(string $deadBiography): self
     {
-        $this->mBiography = $mBiography;
+        $this->deadBiography = $deadBiography;
 
         return $this;
     }
 
-    public function getMRelationship(): ?string
+    public function getRelationship(): ?string
     {
-        return $this->mRelationship;
+        return $this->relationship;
     }
 
-    public function setMRelationship(?string $mRelationship): self
+    public function setRelationship(string $relationship): self
     {
-        $this->mRelationship = $mRelationship;
+        $this->relationship = $relationship;
 
         return $this;
     }

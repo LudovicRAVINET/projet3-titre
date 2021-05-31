@@ -10,70 +10,71 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Wedding extends Event
 {
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $wSpouse1Firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $wSpouse1Lastname;
+    private string $husbandFirstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $wSpouse2Firstname;
+    private string $husbandLastname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $wSpouse2Lastname;
+    private string $wifeFirtname;
 
-    public function getWSpouse1Firstname(): ?string
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $wifeLastname;
+
+    public function getHusbandFirstname(): ?string
     {
-        return $this->wSpouse1Firstname;
+        return $this->husbandFirstname;
     }
 
-    public function setWSpouse1Firstname(string $wSpouse1Firstname): self
+    public function setHusbandFirstname(string $husbandFirstname): self
     {
-        $this->wSpouse1Firstname = $wSpouse1Firstname;
+        $this->husbandFirstname = $husbandFirstname;
 
         return $this;
     }
 
-    public function getWSpouse1Lastname(): ?string
+    public function getHusbandLastname(): ?string
     {
-        return $this->wSpouse1Lastname;
+        return $this->husbandLastname;
     }
 
-    public function setWSpouse1Lastname(string $wSpouse1Lastname): self
+    public function setHusbandLastname(string $husbandLastname): self
     {
-        $this->wSpouse1Lastname = $wSpouse1Lastname;
+        $this->husbandLastname = $husbandLastname;
 
         return $this;
     }
 
-    public function getWSpouse2Firstname(): ?string
+    public function getWifeFirtname(): ?string
     {
-        return $this->wSpouse2Firstname;
+        return $this->wifeFirtname;
     }
 
-    public function setWSpouse2Firstname(string $wSpouse2Firstname): self
+    public function setWifeFirtname(string $wifeFirtname): self
     {
-        $this->wSpouse2Firstname = $wSpouse2Firstname;
+        $this->wifeFirtname = $wifeFirtname;
 
         return $this;
     }
 
-    public function getWSpouse2Lastname(): ?string
+    public function getWifeLastname(): ?string
     {
-        return $this->wSpouse2Lastname;
+        return $this->wifeLastname;
     }
 
-    public function setWSpouse2Lastname(string $wSpouse2Lastname): self
+    public function setWifeLastname(string $wifeLastname): self
     {
-        $this->wSpouse2Lastname = $wSpouse2Lastname;
+        $this->wifeLastname = $wifeLastname;
 
         return $this;
     }
