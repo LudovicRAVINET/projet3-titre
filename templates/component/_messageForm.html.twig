@@ -2,7 +2,7 @@
 
     {{ form_start(form, {'attr': {'class': 'diary-form'}}) }}
         <div class="diary-form-head">
-            <div class="diary-title"><p>Créer un post</p></div>
+            <div class="diary-title">Créer un post</div>
             <div class="diary-author-name">
                 {{ form_label(form.messageAuthor, 'Votre nom') }}
                 {{ form_widget(form.messageAuthor) }}
@@ -18,15 +18,19 @@
             {{ form_errors(form.messageText) }}
         </div>
 
-        {{ form_label(form.mediaUrl) }}
-        {{ form_widget(form.mediaUrl) }}
-        <small>{{ form_help(form.mediaUrl) }}</small>
-        <div class="form-error">
-            {{ form_errors(form.mediaUrl) }}
+        <div class="diary-bottom">
+            <div class="diary-media">
+                {{ form_label(form.mediaUrl) }}
+                {{ form_widget(form.mediaUrl) }}
+                <small>{{ form_help(form.mediaUrl) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.mediaUrl) }}
+                </div>
+            </div>
+            <button id="diary-send-btn" type="submit">
+                <img src="{{ asset('build/images/send-button.svg') }}" alt=""/>
+            </button>
         </div>
-        <button id="diary-send-btn" type="submit">
-            <img src="{{ asset('build/images/send-button.svg') }}" alt=""/>
-        </button>
     {{ form_end(form) }}
 
 </div>

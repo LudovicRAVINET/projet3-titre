@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Message;
 use App\Form\MessageType;
 use App\Repository\EventRepository;
+use App\Service\FileUploader;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +35,8 @@ class WeddingController extends AbstractController
         int $id,
         EventRepository $eventRepository,
         EntityManagerInterface $entityManager,
-        Request $request
+        Request $request,
+        FileUploader $fileUploader
     ): Response {
         $message = new Message();
         $message->setMessageDateTime(new DateTime('now'));
@@ -43,6 +46,13 @@ class WeddingController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $mediaUrlFile */
+            $mediaUrlFile = $form->get('mediaUrl')->getData();
+            if (!empty($mediaUrlFile)) {
+                $mediaUrlFileName = $fileUploader->upload($mediaUrlFile);
+                $message->setMediaUrl($mediaUrlFileName);
+            }
+
             $entityManager->persist($message);
             $entityManager->flush();
 

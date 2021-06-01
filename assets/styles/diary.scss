@@ -10,6 +10,13 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    color: black;
+
+    label {
+        margin-top: 20px;
+        margin-left: 5px;
+        margin-bottom: 5px;
+    }
 }
 
 .diary-form-head {
@@ -17,15 +24,13 @@
     justify-content: space-between;
 
     .diary-title {
-        background-color: rgb(189, 77, 189);
+        background-color: rgb(248, 192, 120);
         color: white;
         border-radius: 15px;
         margin-bottom: 10px;
-    
-        p {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
     }
 
     .diary-author-name {
@@ -36,6 +41,7 @@
         label {
             padding-right: 10px;
             color: black;
+            margin-bottom: 20px;
         }
 
         input {
@@ -50,6 +56,17 @@
     border-radius: 30px;
     height: 100px;
     padding: 20px;
+}
+
+.diary-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.diary-media {
+    display: flex;
+    flex-direction: column;
 }
 
 #diary-send-btn {
