@@ -1,0 +1,75 @@
+.createDiary-invite{
+   text-align: center;
+}
+
+.createDiary-form {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    color: black;
+
+    label {
+        display: inline-block;
+        width: 200px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+.createDiary-right, .createDiary-left {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 40%;
+    background-color: white;
+    box-shadow: 5px 5px 10px grey, -2px -2px 10px grey;
+    display:flex;
+    flex-direction: column;
+}
+
+.createDiary-left input:not(#wedding_eventPicture) {
+    background-color: rgb(228, 226, 226);
+    border-radius: 5px;
+    width: 50%;
+    padding-left: 10px;
+}
+.createDiary-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .createDiary-eventDescription {
+        display: flex;
+        justify-content: space-around;
+        height: 70%;
+        align-items: center;
+
+        .createDiary-eventDescription-text{
+            width: 70%;
+
+            textarea {
+                width: 90%;
+                height: 180px;
+                margin-top: 20px;
+                padding: 10px;
+                background-color: rgb(228, 226, 226);
+                border-radius: 5px;
+            }
+        }
+        
+        input {
+            background-color: rgb(228, 226, 226);
+            border-radius: 5px;
+        }
+    }
+}
+
+.createDiary-submitButton{
+    display: flex;
+    justify-content: center;
+
+    #createDiary-save-button {
+        margin-right: 20px;
+    }
+}
