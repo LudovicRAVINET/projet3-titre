@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mariage - Création Journal{% endblock %}
+
+{% block body %}
+
+{{ form_start(form) }}
+    <div class="createDiary-eventDescription">
+        {{ form_label(form.eventDescription) }}{{ form_widget(form.eventDescription) }}
+    </div>
+
+    <!--A modifier pour créer zone chargement image-->
+    <div class="createDiary-eventPicture">
+        {{ form_label(form.eventPicture) }}{{ form_widget(form.eventPicture) }}
+    </div>
+
+    <div class="createDiary-husbandFirstname">
+        {{ form_label(form.husbandFirstname) }}{{ form_widget(form.husbandFirstname) }}
+    </div>
+
+    <div class="createDiary-husbandLastname">
+        {{ form_label(form.husbandLastname) }}{{ form_widget(form.husbandLastname) }}
+    </div>
+
+    <div class="createDiary-wifeFirstname">
+        {{ form_label(form.wifeFirstname) }}{{ form_widget(form.wifeFirstname) }}
+    </div>
+
+    <div class="createDiary-wifeLastname">
+        {{ form_label(form.wifeLastname) }}{{ form_widget(form.wifeLastname) }}
+    </div>
+
+    <div class="createDiary-submitButton">
+        <input type="submit">
+    </div>
+{{ form_end(form) }}
+
+{% endblock %}

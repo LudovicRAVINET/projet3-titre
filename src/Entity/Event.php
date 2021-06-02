@@ -72,6 +72,11 @@ abstract class Event
      */
     private Collection $messages;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private string $eventPicture;
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
@@ -216,6 +221,18 @@ abstract class Event
                 $message->setEventId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEventPicture(): ?string
+    {
+        return $this->eventPicture;
+    }
+
+    public function setEventPicture(string $eventPicture): self
+    {
+        $this->eventPicture = $eventPicture;
 
         return $this;
     }
