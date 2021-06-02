@@ -2,4 +2,67 @@
 
 {% block title %}Mariage - Accueil{% endblock %}
 
-{% block body %}{% endblock %}
+
+{% block body %}
+
+<header class="wedding-theme">
+			{% include 'component/_header.html.twig' %}
+</header>
+	<!--Carousel-->
+	<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active" data-bs-interval="10000">
+				<img src="{{ asset('build/images/carousel/step1.2cfb888d.png') }}" class="d-block w-100" alt="Step 1 ">
+			</div>
+			<div class="carousel-item" data-bs-interval="2000">
+				<img src="{{ asset('build/images/carousel/step2.756b0c85.png') }}" class="d-block w-100" alt="Step 2">
+			</div>
+			<div class="carousel-item">
+				<img src="{{ asset('build/images/carousel/step3.3b8a8354.png') }}" class="d-block w-100" alt="Step 3">
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+
+
+	<!--Middle Section-->
+	<div class="middle-section">
+		<div class="previous">
+			<a href="{{ path('home_index') }}">
+				<h2>Précédent</h2>
+			</a>
+		</div>
+		<div class="event-name">
+			<h2>Mariage</h2>
+		</div>
+	</div>
+
+	<!--Diary-->
+	<div class="display-events text-center ">
+		<div class="box-events wedding wed">
+			<img src="{{ asset('build/images/background-images/bg-wedding.2ad0d1a8.jpg') }}" alt="Wedding background image">
+			<a href="#">
+				<h2>Créer le journal</h2>
+			</a>
+		</div>
+		<div class="box-events mourning wed">
+			<img src="{{ asset('build/images/background-images/bg-mourning.277cb7d4.png') }}" alt="Mourning background image">
+			<a href="#">
+				<h2>Créer le programme</h2>
+			</a>
+		</div>
+		<div class="box-events birthday wed">
+			<img src="{{ asset('build/images/background-images/bg-birthday.cc144639.jpeg') }}" alt="Birthday background image">
+			<a href="#">
+				<h2>Créer le faire part</h2>
+			</a>
+		</div>
+	</div>
+{% endblock %}
