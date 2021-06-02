@@ -39,7 +39,7 @@ class Message
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $mediaUrl = '';
+    private string $mediaUrl;
 
     /**
      * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="messages")
@@ -90,7 +90,11 @@ class Message
 
     public function getMediaUrl(): ?string
     {
-        return $this->mediaUrl;
+        if (isset($this->mediaUrl)) {
+            return $this->mediaUrl;
+        } else {
+            return '';
+        }
     }
 
     public function setMediaUrl(string $mediaUrl): self
