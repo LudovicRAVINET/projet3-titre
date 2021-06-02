@@ -3,7 +3,12 @@
 {% block title %}Eventoo - Accueil
 {% endblock %}
 
+
 {% block body %}
+
+<header class="home-theme">
+			{% include 'component/_header.html.twig' %}
+</header>
 <!--Carousel-->
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
@@ -32,7 +37,7 @@
 <div class="display-events text-center">
     <div class="box-events wedding">
         <img src="{{ asset('build/images/background-images/bg-wedding.2ad0d1a8.jpg') }}" alt="Wedding background image">
-        <a href="#">
+        <a href="{{ path('wedding_index') }}">
             <h2>Mariage</h2>
         </a>
     </div>
