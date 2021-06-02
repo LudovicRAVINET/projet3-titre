@@ -1,0 +1,29 @@
+.mourning-theme {
+    background-color: $mourning-main-theme; 
+    .t {
+      color: $wedding-main-theme;
+    }
+    li a {
+      color: $black;
+    }
+    .login-btn {
+      background-color: $black !important;
+      color: $white !important;
+    }
+  }
+
+  .w-mourning {
+    .previous {
+      background-color: $mourning-main-theme;
+      h2 {
+        color: $black;
+      }
+    }
+    .event-name {
+      background-color: $mourning-main-theme;
+    }
+    
+  }
+  .d-block w-100 {
+    height: 100px;
+}
