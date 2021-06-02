@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Message;
 use App\Form\MessageType;
 use App\Repository\EventRepository;
+use App\Repository\MessageRepository;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,10 +35,13 @@ class WeddingController extends AbstractController
     public function diary(
         int $id,
         EventRepository $eventRepository,
+        MessageRepository $messageRepository,
         EntityManagerInterface $entityManager,
         Request $request,
         FileUploader $fileUploader
     ): Response {
+
+        /* //// Message Form //// */
         $message = new Message();
         $message->setMessageDateTime(new DateTime('now'));
         $message->setEventId($eventRepository->find($id));
@@ -59,9 +63,17 @@ class WeddingController extends AbstractController
             return $this->redirectToRoute('wedding_diary', ['id' => $id]);
         }
 
+        /* //// Messages Display //// */
+        $messagesList = $messageRepository->findBy(
+            ['eventId' => $id],
+            ['messageDateTime' => 'DESC'],
+            10
+        );
+
         return $this->render('wedding/diary.html.twig', [
             'message' => $message,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'messagesList' => $messagesList
         ]);
     }
 }

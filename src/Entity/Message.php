@@ -39,7 +39,7 @@ class Message
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $mediaUrl;
+    private string $mediaUrl = '';
 
     /**
      * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="messages")
