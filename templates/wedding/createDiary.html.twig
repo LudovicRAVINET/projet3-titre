@@ -4,6 +4,10 @@
 
 {% block body %}
 
+    <header class="">
+        {% include 'component/_header.html.twig' %}
+    </header>
+
 {{ form_start(form) }}
     <div class="createDiary-eventDescription">
         {{ form_label(form.eventDescription) }}{{ form_widget(form.eventDescription) }}
