@@ -1,0 +1,53 @@
+.wedding-theme {
+  background-color: $wedding-main-theme; 
+  .t {
+    color: $wedding-main-theme;
+  }
+  li a {
+    color: $black;
+  }
+  .login-btn {
+    background-color: $black !important;
+    color: $white !important;
+  }
+}
+
+.middle-section {
+  display: flex;
+  margin-left: 25rem;
+  padding-top: 5rem;
+  justify-content: space-between;
+  .previous {
+    border-radius: 8px;
+    padding: 0.25rem 0.75rem;
+    width: max-content;
+    background-color: $wedding-main-theme;
+    h2 {
+      color: $black;
+    }
+  }
+  .event-name {
+    min-width: 800px;
+    background-color: $wedding-main-theme;
+    h2 {
+      color: $white;
+      margin: 0.5rem 0 0 01rem;
+      text-shadow: 2px 1px 1px $black;
+    }
+  }
+}
+
+.w-btn {
+  background-color: $wedding-main-theme !important;
+  color: $black !important;
+  border-radius: 8px;
+  padding: 0.25rem 0.5rem !important;
+}
+
+.wed {
+  h2 {
+    background-color: rgba(255, 236, 227, 0.8) !important;
+    color: $black !important;
+    font-size: large !important;
+  }
+}

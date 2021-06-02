@@ -1,10 +1,24 @@
 /*====================
-    Carousel section
+    Home header section
 =====================*/
 
 /*====================
 Display Events section
 =====================*/
+.home-theme{
+  background-color: $home-main-theme;
+  .login-btn {
+    background-color: $white !important ;
+    color: $black !important ;
+  }
+  
+  .t{
+    color: $t-blue;
+  }
+  li a{
+    color:$white !important;
+  }
+}
 .display-events {
   padding: 5rem 0;
   .birthday h2 {

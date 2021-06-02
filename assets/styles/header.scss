@@ -1,19 +1,10 @@
 .eventoo-header {
-  background-color: $home-main-theme;
   padding: 1rem 0;
   header {
-    .t {
-      color: $t-blue;
-      text-shadow: 1px 1px 3px $white;
-    }
     .fs-4 {
+      text-shadow: 1px 1px 3px $black;
       font-weight: 700;
       color: $white;
-    }
-    .nav {
-      li a {
-        color: $white;
-      }
     }
   }
 }
