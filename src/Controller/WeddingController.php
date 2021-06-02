@@ -75,14 +75,20 @@ class WeddingController extends AbstractController
         int $id,
         Request $request,
         WeddingRepository $weddingRepository,
-        EntityManagerInterface $manager
+        EntityManagerInterface $manager,
+        FileUploader $fileUploader
     ): Response {
         $wedding = $weddingRepository->find($id);
         $form = $this->createForm(WeddingType::class, $wedding);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $eventPicture */
+            $eventPicture = $form->get('eventPicture')->getData();
             if (!empty($wedding)) {
+                $eventPictureFileName = $fileUploader->upload($eventPicture);
+                $wedding->setEventPicture($eventPictureFileName);
+
                 $manager->persist($wedding);
                 $manager->flush();
             }
