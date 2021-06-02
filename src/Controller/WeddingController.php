@@ -82,20 +82,19 @@ class WeddingController extends AbstractController
         $form = $this->createForm(WeddingType::class, $wedding);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && !empty($wedding)) {
             /** @var UploadedFile $eventPicture */
             $eventPicture = $form->get('eventPicture')->getData();
-            if (!empty($wedding)) {
+            if (!empty($eventPicture)) {
                 $eventPictureFileName = $fileUploader->upload($eventPicture);
                 $wedding->setEventPicture($eventPictureFileName);
+            }
 
                 $manager->persist($wedding);
                 $manager->flush();
-            }
 
             return $this->redirectToRoute('wedding_index');
         }
-
 
         return $this->render('wedding/createDiary.html.twig', [
             'form' => $form->createView()

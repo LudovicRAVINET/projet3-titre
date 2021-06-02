@@ -58,7 +58,7 @@ abstract class Event
     private string $eventCountry;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private string $eventDescription;
 
