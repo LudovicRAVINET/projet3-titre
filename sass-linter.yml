@@ -3,8 +3,5 @@ files:
 options:
   formatter: stylish
 rules:
-  indentation:
-    - 2
-    - size: 2
   empty-line-between-blocks:
     - 2
