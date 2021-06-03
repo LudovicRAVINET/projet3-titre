@@ -1,0 +1,15 @@
+<div class="diary-message">
+    <div class="diary-message-container">
+        <div class="diary-message-author">
+            {{ message.messageAuthor }}
+        </div>
+        {% if message.mediaURL is not empty %}
+            <div class="diary-message-media">
+                <img src="{{ asset('uploads/files/' ~ message.mediaURL ~ ' ') }}" alt="">
+            </div>
+        {% endif %}
+    </div>
+    <div class="diary-message-text">
+        {{ message.messageText }}
+    </div>
+</div>
