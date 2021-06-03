@@ -58,7 +58,7 @@ abstract class Event
     private string $eventCountry;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private string $eventDescription;
 
@@ -71,6 +71,11 @@ abstract class Event
      * @ORM\OneToMany(targetEntity=Message::class, mappedBy="eventId")
      */
     private Collection $messages;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private string $eventPicture;
 
     public function __construct()
     {
@@ -216,6 +221,18 @@ abstract class Event
                 $message->setEventId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEventPicture(): ?string
+    {
+        return $this->eventPicture;
+    }
+
+    public function setEventPicture(string $eventPicture): self
+    {
+        $this->eventPicture = $eventPicture;
 
         return $this;
     }
