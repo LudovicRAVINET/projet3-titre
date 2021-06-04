@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mariage - Création Journal{% endblock %}
+
+{% block body %}
+
+    <header class="">
+        {% include 'component/_header.html.twig' %}
+    </header>
+
+    <div class="createDiary-container">
+        {{ form_start(form, {'attr': {'class': 'createDiary-form'}}) }}
+
+            <div class="createDiary-left">
+                <!--A modifier pour créer zone chargement image-->
+                <div class="createDiary-eventPicture">
+                    {{ form_label(form.eventPicture) }}
+                    {{ form_widget(form.eventPicture) }}
+                </div>
+
+                <div class="createDiary-husbandFirstname">
+                    {{ form_label(form.husbandFirstname) }}
+                    {{ form_widget(form.husbandFirstname) }}
+                </div>
+
+                <div class="createDiary-husbandLastname">
+                    {{ form_label(form.husbandLastname) }}
+                    {{ form_widget(form.husbandLastname) }}
+                </div>
+
+                <div class="createDiary-wifeFirstname">
+                    {{ form_label(form.wifeFirstname) }}
+                    {{ form_widget(form.wifeFirstname) }}
+                </div>
+
+                <div class="createDiary-wifeLastname">
+                    {{ form_label(form.wifeLastname) }}
+                    {{ form_widget(form.wifeLastname) }}
+                </div>
+            </div>
+
+            <div class="createDiary-right">
+                <div class="createDiary-eventDescription">
+                    <div>
+                        {{ form_label(form.eventDescription) }}
+                    </div>
+                    <div class="createDiary-eventDescription-text">
+                        {{ form_widget(form.eventDescription, {'attr': {
+                            'placeholder': 'Décrivez cet événement',
+                            'class': 'createDiary-form-text'
+                        }}) }}
+                    </div>
+                </div>
+
+                <div class="createDiary-submitButton">
+                    <input type="submit" id="createDiary-save-button" value="Enregistrer">
+                </div>
+            </div>
+
+        {{ form_end(form) }}
+
+        <div class="createDiary-invite">
+            <input type="submit" id="invite" value="Inviter des proches">
+        </div>
+    </div>
+
+{% endblock %}

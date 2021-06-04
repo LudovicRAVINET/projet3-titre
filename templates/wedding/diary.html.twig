@@ -2,4 +2,21 @@
 
 {% block title %}Mariage - Journal{% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+    <header class="">
+        {% include 'component/_header.html.twig' %}
+    </header>
+
+    {# /// message form /// #}
+    {% include "component/_messageForm.html.twig" %}
+
+    {# /// messages display /// #}
+    <div class="diary-messages-list">
+        <div class="diary-messages-title">Les publications :</div>
+
+        {% for message in messagesList %}
+            {{ include('component/_messageDisplay.html.twig', {message: message}) }}
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,167 @@
+/* ////// Message Form ////// */
+
+.diary-form-control {
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 40%;
+    background-color: white;
+    box-shadow: 5px 5px 10px grey, -2px -2px 10px grey;
+}
+
+.diary-form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+
+    label {
+        margin-top: 20px;
+        margin-left: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+.diary-form-head {
+    display: flex;
+    justify-content: space-between;
+
+    .diary-title {
+        background-color: rgb(248, 192, 120);
+        color: white;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    .diary-author-name {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    
+        label {
+            padding-right: 10px;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        input {
+            background-color: rgb(228, 226, 226);
+            border-radius: 5px;
+        }
+    }
+}
+
+.diary-form-text {
+    background-color: rgb(228, 226, 226);
+    border-radius: 30px;
+    height: 100px;
+    padding: 20px;
+}
+
+.diary-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.diary-media {
+    display: flex;
+    flex-direction: column;
+}
+
+#diary-send-btn {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    align-self: flex-end;
+    border-style: none;
+    background-color: white;
+
+    img {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+
+/* ////// Messages Display ////// */
+
+.diary-messages-list {
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 20px;
+    width: 40%;
+    background-color: white;
+    box-shadow: 5px 5px 10px grey, -2px -2px 10px grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.diary-messages-title {
+    background-color: rgb(248, 192, 120);
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 180px;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.diary-message {
+    background-color: rgb(228, 226, 226);
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 10px;
+    
+    .diary-message-container {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+
+        .diary-message-author {
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .diary-message-media {
+            text-align: center;
+            
+            img {
+                height: 100px;
+            }
+        }
+    }
+
+    .diary-message-text {
+        display: inline-block;
+        width: 60%;
+        background: rgb(199, 198, 198);
+        box-shadow: 5px 5px 10px grey;
+        position: relative;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 5px;
+        padding: 10px;
+        margin-right: 20px;
+    }
+
+    .diary-message-text:before {
+        content: "";
+        position: absolute;
+        right: 99%;
+        top: 6px;
+        width: 0;
+        height: 0;
+        border-top: 13px solid transparent;
+        border-right: 36px solid rgb(199, 198, 198);
+        border-bottom: 13px solid transparent;
+    }
+}

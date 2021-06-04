@@ -1,14 +1,28 @@
 @import "variables.scss";
 @import "custom.scss";
 @import "~bootstrap/scss/bootstrap.scss";
+@import 'variables.scss';
+@import 'diary.scss';
+@import 'createDiary.scss';
 @import "header.scss";
 @import "home.scss";
+@import "wedding.scss";
+@import "mourning.scss";
+@import "birthday.scss";
+
+
+
+@import "footer.scss";
 
 * {
   margin: 0;
   padding: 0;
 }
+a{
+  text-decoration: none;
+}
 
 body {
   font-family: "Roboto", sans-serif;
 }
+

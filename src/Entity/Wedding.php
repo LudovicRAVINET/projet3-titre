@@ -24,7 +24,7 @@ class Wedding extends Event
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $wifeFirtname;
+    private string $wifeFirstname;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -55,14 +55,14 @@ class Wedding extends Event
         return $this;
     }
 
-    public function getWifeFirtname(): ?string
+    public function getWifeFirstname(): ?string
     {
-        return $this->wifeFirtname;
+        return $this->wifeFirstname;
     }
 
-    public function setWifeFirtname(string $wifeFirtname): self
+    public function setWifeFirstname(string $wifeFirstname): self
     {
-        $this->wifeFirtname = $wifeFirtname;
+        $this->wifeFirstname = $wifeFirstname;
 
         return $this;
     }
