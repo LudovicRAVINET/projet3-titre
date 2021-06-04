@@ -90,7 +90,11 @@ class Message
 
     public function getMediaUrl(): ?string
     {
-        return $this->mediaUrl;
+        if (isset($this->mediaUrl)) {
+            return $this->mediaUrl;
+        } else {
+            return '';
+        }
     }
 
     public function setMediaUrl(string $mediaUrl): self
