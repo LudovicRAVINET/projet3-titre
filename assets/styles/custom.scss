@@ -3,6 +3,10 @@
   color: $white;
   padding: 0.5rem 1rem;
 }
+.carousel-item img{
+  height: 400px;
+  object-fit: none;
+}
 .my-5 {
   background-color: #373737;
   margin-top: 3rem !important;
