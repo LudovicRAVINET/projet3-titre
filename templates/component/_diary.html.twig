@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - Journal{% endblock %}
+
+{% block body %}
+    <header class="wedding-theme">
+        {% include 'component/_header.html.twig' %}
+    </header>
+
+    <!--Journal banner -->
+	{% block banner %}{% endblock %}
+
+    	<!--Middle Section-->
+	<div class="middle-section ">
+		<div class="previous">
+			<a href="{{ path('wedding_index') }}">
+				<h2>Précédent</h2>
+			</a>
+	    </div>
+	</div>
+
+
+    {# /// message form /// #}
+    {% include "component/_messageForm.html.twig" %}
+
+    {# /// messages display /// #}
+    <div class="diary-messages-list">
+        <div class="diary-messages-title">Les publications :</div>
+
+        {% for message in messagesList %}
+            {{ include('component/_messageDisplay.html.twig', {message: message}) }}
+        {% endfor %}
+    </div>
+
+{% endblock %}

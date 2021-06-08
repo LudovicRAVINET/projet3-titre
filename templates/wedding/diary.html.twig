@@ -1,22 +1,115 @@
-{% extends 'base.html.twig' %}
+{% extends 'component/_diary.html.twig' %}
 
-{% block title %}Mariage - Journal{% endblock %}
+{% block title %}Mariage{{ parent() }}{% endblock %}
 
-{% block body %}
-    <header class="">
-        {% include 'component/_header.html.twig' %}
-    </header>
-
-    {# /// message form /// #}
-    {% include "component/_messageForm.html.twig" %}
-
-    {# /// messages display /// #}
-    <div class="diary-messages-list">
-        <div class="diary-messages-title">Les publications :</div>
-
-        {% for message in messagesList %}
-            {{ include('component/_messageDisplay.html.twig', {message: message}) }}
-        {% endfor %}
+{% block banner %}
+    <!--Journal banner -->
+    <div class="diary-banner">
+        <div id="wedding-image">
+            {% if event.eventPicture is null %}
+                <img src="{{ asset('build/images/banner/WeddingDefault.png') }}" class="d-block w-100" alt="Diary wedding banner">
+            {% else %}
+                <img src="{{ asset('uploads/files/' ~ event.eventPicture ~ ' ') }}" class="d-block w-100" alt="Diary wedding banner">
+            {% endif %}
+        </div>
+        <div class="diary-wrapper">
+            <i class="fas fa-quote-left"></i>
+                <p contenteditable="true" id="eventDescription" value="test" onblur="update(this, {{ event.id }})" onclick="validate(this)">
+                    {{ event.eventDescription }}
+                </p>
+                <i class="fas fa-pencil-alt"></i>
+            <i class="fas fa-quote-right"></i>
+        </div>
     </div>
 
+    <form id="uploadForm" role="form" method="post" enctype=multipart/form-data>
+        <input type="file" id="file" name="file">
+        <input type="submit" id="file-btn" onClick="pictureUpload({{ event.id }})" value="Valider la photo">
+    </form>
+
+    <!--Editable fields: div attribute "id" has to be equal to event property-->
+    <div class="diary-banner-sentence">
+        <div>Mariage de Mademoiselle </div>
+        <div contenteditable="true" id="wifeFirstname" value="test" onBlur="update(this, {{ event.id }})" onClick="validate(this)">
+            {{ event.wifeFirstname }}
+            <i class="fas fa-pencil-alt"></i>
+        </div>
+        <div contenteditable="true" id="wifeLastname" value="test" onBlur="update(this, {{ event.id }})" onClick="validate(this)">
+            {{ event.wifeLastname }}
+            <i class="fas fa-pencil-alt"></i>
+        </div>
+        <div> et de Monsieur </div>
+        <div contenteditable="true" id="husbandFirstname" value="test" onBlur="update(this, {{ event.id }})" onClick="validate(this)">
+            {{ event.husbandFirstname }}
+            <i class="fas fa-pencil-alt"></i>
+        </div>
+        <div contenteditable="true" id="husbandLastname" value="test" onBlur="update(this, {{ event.id }})" onClick="validate(this)">
+            {{ event.husbandLastname }}
+            <i class="fas fa-pencil-alt"></i>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"
+        integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs="
+        crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript">
+        function validate() {
+            console.log('Modifying the value...');
+        }
+
+        function update(element, id) {
+            const currentValue = element.innerText;
+            let data = new FormData();
+            data.set('prop', element.id);
+            data.set('value', currentValue);
+            axios({
+                method: 'post',
+                dataType: 'json',
+                url: '/wedding/'+id+'/bannerDiary',
+                data: data
+            })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                throw err;
+            });
+        }
+
+        const form = document.querySelector("#uploadForm");
+
+        function pictureUpload(eventId) {
+            form.addEventListener("submit", (evt) => {
+                evt.preventDefault();
+                const imageFile = document.querySelector('#file');
+                console.log(imageFile.files[0]);
+                let formData = new FormData();
+                formData.append("image", imageFile.files[0]);
+                axios({
+                    method: "post",
+                    url: '/wedding/'+eventId+'/bannerDiary',
+                    data: formData,
+                    headers: {'Content-Type': 'multipart/form-data'}
+                })
+                .then((res) => {
+                    return res.data.image;
+                })
+                .then((image) => {
+                    const weddingImageHtml = `
+                        <img src="{{ asset('uploads/files/${image}') }}" class="d-block w-100" alt="Diary wedding banner">
+                    `;
+                    document.querySelector('#wedding-image').innerHTML = weddingImageHtml;
+                })
+                .catch((err) => {
+                    throw err;
+                });
+            });
+        };
+    </script>
 {% endblock %}

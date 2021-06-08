@@ -165,3 +165,33 @@
         border-bottom: 13px solid transparent;
     }
 }
+
+.diary-banner{
+    position: relative;
+    .fas{
+        color: $wedding-main-theme;
+        font-size: xx-large;
+        margin: 0 1rem;
+    }
+
+    .diary-wrapper{
+        display: flex;
+        position: absolute;
+        right: 10%;
+        top: 15%;
+        p{
+            color: $white;
+            font-size: xx-large;
+        }
+    }
+}
+
+.diary-banner-sentence {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+    div {
+        margin: 3px;
+    }
+}
