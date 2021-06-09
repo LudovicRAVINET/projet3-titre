@@ -2,14 +2,12 @@
 
 namespace App\DataFixtures;
 
-
 use App\Entity\Wedding;
 use App\Entity\Birthday;
 use App\Entity\Mourning;
 use DateTime;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-
 
 class EventFixtures extends Fixture
 {
@@ -72,7 +70,7 @@ class EventFixtures extends Fixture
         $mourning->setEventCity('Lyon');
         $mourning->setEventCountry('France');
         $mourning->setEventCreatedAt($mourningCreationDate);
-        
+
         $manager->persist($wedding);
         $manager->persist($birthday);
         $manager->persist($mourning);
