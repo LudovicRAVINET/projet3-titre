@@ -20,18 +20,5 @@ class AppFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-
-        $user = new User();
-
-        $hash = $this->encoder->encodePassword($user, "password");
-
-        $user->setEmail("pierre@gmail.com")
-            ->setFullName("Pierre Martin")
-            ->setPassword($hash);
-
-        $manager->persist($user);
-
-
-        $manager->flush();
     }
 }
