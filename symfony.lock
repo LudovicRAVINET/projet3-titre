@@ -133,6 +133,9 @@
     "friendsoftwig/twigcs": {
         "version": "v5.0.0"
     },
+    "fzaninotto/faker": {
+        "version": "v1.9.2"
+    },
     "gitonomy/gitlib": {
         "version": "v1.2.3"
     },
@@ -162,6 +165,9 @@
     },
     "pdepend/pdepend": {
         "version": "2.9.1"
+    },
+    "php": {
+        "version": "7.4"
     },
     "php-parallel-lint/php-console-highlighter": {
         "version": "v0.4"
