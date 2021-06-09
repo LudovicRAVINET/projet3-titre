@@ -24,8 +24,9 @@
 
 					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
 						<li>
-							<a class="dropdown-item" href="{{ path('security_logout') }}">Se déconnecter</a>
+							<a class="dropdown-item" onclick="logoutConfirm()">Se déconnecter</a>
 						</li>
+						<input type="hidden" id="profile" value="{{ path('security_logout') }}">
 					</ul>
 				</div>
 			{% else %}
@@ -37,6 +38,18 @@
 				</li>
 			{% endif %}
 
+			<script>
+				function logoutConfirm()
+				{
+				var confirmation = confirm("Etes vous sûr(e) de vous déconnecter ?");
+				if(confirmation == true) {
+					const profileId = document.getElementById('profile').value;
+					console.log(profileId);
+					const route = "{{ path('security_logout')|escape('js') }}";
+					document.location.href= route
+					}
+				}
+			</script>
 		</ul>
 	</header>
 </div>
