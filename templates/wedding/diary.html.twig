@@ -14,7 +14,7 @@
         </div>
         <div class="diary-wrapper">
             <i class="fas fa-quote-left"></i>
-                <p contenteditable="true" id="eventDescription" value="test" onblur="update(this, {{ event.id }})" onclick="validate(this)">
+                <p contenteditable="true" id="eventDescription" value="test" onblur="update(this, {{ event.id }})">
                     {{ event.eventDescription }}
                 </p>
                 <i class="fas fa-pencil-alt"></i>
@@ -30,86 +30,26 @@
     <!--Editable fields: div attribute "id" has to be equal to event property-->
     <div class="diary-banner-sentence">
         <div>Mariage de Mademoiselle </div>
-        <div contenteditable="true" id="wifeFirstname" value="test" onBlur="update(this, {{ event.id }})" onClick="validate(this)">
+        <div contenteditable="true" id="wifeFirstname" value="test" onBlur="update(this, {{ event.id }})">
             {{ event.wifeFirstname }}
             <i class="fas fa-pencil-alt"></i>
         </div>
-        <div contenteditable="true" id="wifeLastname" value="test" onBlur="update(this, {{ event.id }})" onClick="validate(this)">
+        <div contenteditable="true" id="wifeLastname" value="test" onBlur="update(this, {{ event.id }})">
             {{ event.wifeLastname }}
             <i class="fas fa-pencil-alt"></i>
         </div>
         <div> et de Monsieur </div>
-        <div contenteditable="true" id="husbandFirstname" value="test" onBlur="update(this, {{ event.id }})" onClick="validate(this)">
+        <div contenteditable="true" id="husbandFirstname" value="test" onBlur="update(this, {{ event.id }})">
             {{ event.husbandFirstname }}
             <i class="fas fa-pencil-alt"></i>
         </div>
-        <div contenteditable="true" id="husbandLastname" value="test" onBlur="update(this, {{ event.id }})" onClick="validate(this)">
+        <div contenteditable="true" id="husbandLastname" value="test" onBlur="update(this, {{ event.id }})">
             {{ event.husbandLastname }}
             <i class="fas fa-pencil-alt"></i>
         </div>
     </div>
 
 {% endblock %}
-
 {% block js %}
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"
-        integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs="
-        crossorigin="anonymous"
-    ></script>
-
-    <script type="text/javascript">
-        function validate() {
-            console.log('Modifying the value...');
-        }
-
-        function update(element, id) {
-            const currentValue = element.innerText;
-            let data = new FormData();
-            data.set('prop', element.id);
-            data.set('value', currentValue);
-            axios({
-                method: 'post',
-                dataType: 'json',
-                url: '/wedding/'+id+'/bannerDiary',
-                data: data
-            })
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                throw err;
-            });
-        }
-
-        const form = document.querySelector("#uploadForm");
-
-        function pictureUpload(eventId) {
-            form.addEventListener("submit", (evt) => {
-                evt.preventDefault();
-                const imageFile = document.querySelector('#file');
-                console.log(imageFile.files[0]);
-                let formData = new FormData();
-                formData.append("image", imageFile.files[0]);
-                axios({
-                    method: "post",
-                    url: '/wedding/'+eventId+'/bannerDiary',
-                    data: formData,
-                    headers: {'Content-Type': 'multipart/form-data'}
-                })
-                .then((res) => {
-                    return res.data.image;
-                })
-                .then((image) => {
-                    const weddingImageHtml = `
-                        <img src="{{ asset('uploads/files/${image}') }}" class="d-block w-100" alt="Diary wedding banner">
-                    `;
-                    document.querySelector('#wedding-image').innerHTML = weddingImageHtml;
-                })
-                .catch((err) => {
-                    throw err;
-                });
-            });
-        };
-    </script>
+    <script src="{{ asset('/diary.js') }}"></script>
 {% endblock %}
