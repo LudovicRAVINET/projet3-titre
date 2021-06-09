@@ -10,6 +10,7 @@ use App\Entity\Message;
 use App\Form\MessageType;
 use App\Repository\EventRepository;
 use App\Repository\MessageRepository;
+use App\Service\BannerUpdate;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,24 +38,25 @@ class WeddingController extends AbstractController
      */
     public function diary(
         int $id,
-        EventRepository $eventRepository,
         MessageRepository $messageRepository,
+        WeddingRepository $weddingRepository,
         EntityManagerInterface $entityManager,
         Request $request,
         FileUploader $fileUploader
     ): Response {
 
         /* //// Message Form //// */
+        $event = $weddingRepository->find($id);
         $message = new Message();
         $message->setMessageDateTime(new DateTime('now'));
-        $message->setEventId($eventRepository->find($id));
+        $message->setEventId($event);
 
-        $form = $this->createForm(MessageType::class, $message);
-        $form->handleRequest($request);
+        $messageForm = $this->createForm(MessageType::class, $message);
+        $messageForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($messageForm->isSubmitted() && $messageForm->isValid()) {
             /** @var UploadedFile $mediaUrlFile */
-            $mediaUrlFile = $form->get('mediaUrl')->getData();
+            $mediaUrlFile = $messageForm->get('mediaUrl')->getData();
             if (!empty($mediaUrlFile)) {
                 $mediaUrlFileName = $fileUploader->upload($mediaUrlFile);
                 $message->setMediaUrl($mediaUrlFileName);
@@ -75,9 +77,41 @@ class WeddingController extends AbstractController
 
         return $this->render('wedding/diary.html.twig', [
             'message' => $message,
-            'form' => $form->createView(),
-            'messagesList' => $messagesList
+            'form' => $messageForm->createView(),
+            'messagesList' => $messagesList,
+            'event' => $event,
         ]);
+    }
+
+    /**
+     * @Route("/{id}/bannerDiary", name="banner_diary", methods={"GET","POST"})
+     */
+    public function bannerDiary(
+        Wedding $event,
+        Request $request,
+        EntityManagerInterface $entityManager,
+        FileUploader $fileUploader,
+        BannerUpdate $bannerUpdate
+    ): Response {
+        if ($request->request != null) {
+            $bannerUpdate->update($request, $event, Wedding::class);
+
+            $requestPicture = $request->files->get('image');
+
+            /** @var UploadedFile $pictureFile */
+            $pictureFile = $requestPicture;
+            if (!empty($pictureFile)) {
+                $pictureFileName = $fileUploader->upload($pictureFile);
+                $event->setEventPicture($pictureFileName);
+            }
+
+            $entityManager->flush();
+        }
+
+        return $this->json([
+            'code' => 200,
+            'image' => $event->getEventPicture()
+        ], 200);
     }
 
     /**

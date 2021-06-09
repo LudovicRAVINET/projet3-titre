@@ -1,22 +1,55 @@
-{% extends 'base.html.twig' %}
+{% extends 'component/_diary.html.twig' %}
 
-{% block title %}Mariage - Journal{% endblock %}
+{% block title %}Mariage{{ parent() }}{% endblock %}
 
-{% block body %}
-    <header class="">
-        {% include 'component/_header.html.twig' %}
-    </header>
-
-    {# /// message form /// #}
-    {% include "component/_messageForm.html.twig" %}
-
-    {# /// messages display /// #}
-    <div class="diary-messages-list">
-        <div class="diary-messages-title">Les publications :</div>
-
-        {% for message in messagesList %}
-            {{ include('component/_messageDisplay.html.twig', {message: message}) }}
-        {% endfor %}
+{% block banner %}
+    <!--Journal banner -->
+    <div class="diary-banner">
+        <div id="wedding-image">
+            {% if event.eventPicture is null %}
+                <img src="{{ asset('build/images/banner/WeddingDefault.png') }}" class="d-block w-100" alt="Diary wedding banner">
+            {% else %}
+                <img src="{{ asset('uploads/files/' ~ event.eventPicture ~ ' ') }}" class="d-block w-100" alt="Diary wedding banner">
+            {% endif %}
+        </div>
+        <div class="diary-wrapper">
+            <i class="fas fa-quote-left"></i>
+                <p contenteditable="true" id="eventDescription" value="test" onblur="update(this, {{ event.id }})">
+                    {{ event.eventDescription }}
+                </p>
+                <i class="fas fa-pencil-alt"></i>
+            <i class="fas fa-quote-right"></i>
+        </div>
     </div>
 
+    <form id="uploadForm" role="form" method="post" enctype=multipart/form-data>
+        <input type="file" id="file" name="file">
+        <input type="submit" id="file-btn" onClick="pictureUpload({{ event.id }})" value="Valider la photo">
+    </form>
+
+    <!--Editable fields: div attribute "id" has to be equal to event property-->
+    <div class="diary-banner-sentence">
+        <div>Mariage de Mademoiselle </div>
+        <div contenteditable="true" id="wifeFirstname" value="test" onBlur="update(this, {{ event.id }})">
+            {{ event.wifeFirstname }}
+            <i class="fas fa-pencil-alt"></i>
+        </div>
+        <div contenteditable="true" id="wifeLastname" value="test" onBlur="update(this, {{ event.id }})">
+            {{ event.wifeLastname }}
+            <i class="fas fa-pencil-alt"></i>
+        </div>
+        <div> et de Monsieur </div>
+        <div contenteditable="true" id="husbandFirstname" value="test" onBlur="update(this, {{ event.id }})">
+            {{ event.husbandFirstname }}
+            <i class="fas fa-pencil-alt"></i>
+        </div>
+        <div contenteditable="true" id="husbandLastname" value="test" onBlur="update(this, {{ event.id }})">
+            {{ event.husbandLastname }}
+            <i class="fas fa-pencil-alt"></i>
+        </div>
+    </div>
+
+{% endblock %}
+{% block js %}
+    <script src="{{ asset('/diary.js') }}"></script>
 {% endblock %}
