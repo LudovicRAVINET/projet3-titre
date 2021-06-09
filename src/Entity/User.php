@@ -32,12 +32,18 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
-    private $password;
+    private string $password;
+
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $fullName;
+    private string $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $firstname;
 
     public function getId(): ?int
     {
@@ -120,14 +126,27 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getFullName(): ?string
+
+    public function getLastname(): ?string
     {
-        return $this->fullName;
+        return $this->lastname;
     }
 
-    public function setFullName(string $fullName): self
+    public function setLastname(string $lastname): self
     {
-        $this->fullName = $fullName;
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
 
         return $this;
     }
