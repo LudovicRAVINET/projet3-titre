@@ -9,7 +9,7 @@
 		{% include 'component/_header.html.twig' %}
 	</header>
 	<form class="form-login col-4 mx-auto" method="post">
-		{% if error is defined %}
+		{% if error %}
 			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
 
