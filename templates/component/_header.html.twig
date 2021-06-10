@@ -42,7 +42,7 @@
 						<li>
 							<a class="dropdown-item" onclick="logoutConfirm()">Se déconnecter</a>
 						</li>
-						<input type="hidden" id="profile" value="{{ path('security_logout') }}">
+						<input type="hidden" id="profile" value="{{ path('app_logout') }}">
 					</ul>
 				</div>
 				{% endif %}
@@ -51,17 +51,4 @@
 
 	</header>
 </div>
-
-	<script>
-		function logoutConfirm()
-		{
-		var confirmation = confirm("Etes vous sûr(e) de vous déconnecter ?");
-		if(confirmation == true) {
-			const profileId = document.getElementById('profile').value;
-			console.log(profileId);
-			const route = "{{ path('security_logout')|escape('js') }}";
-			document.location.href= route
-			}
-		}
-	</script>
 
