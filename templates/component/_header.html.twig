@@ -31,27 +31,24 @@
 				</div>
 
 			{% else %}
+
 				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="image/png" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-						Bonjour
-						{{ app.user.lastname }}<img src="{{ asset('build/images/utilisateur.fc004123.png') }}">
 
+					<button class="btn btn-secondary dropdown-toggle initials" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							{{ app.user.lastName|slice(0, 1) }}
 					</button>
-					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-						<li class="nav-item">
-							<a href="{{ path('app_logout') }}" class="nav-link active login-btn">
-								Se déconnecter</a>
-						</li>
 
+					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+						<li>
+							<a class="dropdown-item" onclick="logoutConfirm()">Se déconnecter</a>
+						</li>
+						<input type="hidden" id="profile" value="{{ path('app_logout') }}">
 					</ul>
 				</div>
-
-
-			{% endif %}
+				{% endif %}
 		</ul>
 
-	</ul>
 
-
-</header></div>
+	</header>
+</div>
 
