@@ -42,7 +42,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setGoogleId($owner->getId())
             ->setEmail($owner->getEmail())
             ->setFirstName($owner->getFirstName())
-            ->setLastname($owner->getLastName())
+            ->setLastname($owner->getName())
             ->setPassword('int');
         $entityManager = $this->getEntityManager();
         $entityManager->persist($user);
