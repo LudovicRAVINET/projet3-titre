@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use League\OAuth2\Client\Provider\GoogleResourceOwner;
+use League\OAuth2\Client\Provider\GoogleUser;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
 /**
@@ -23,7 +24,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         parent::__construct($registry, User::class);
     }
-    public function findOrCreateFromGoogleOauth(ResourceOwnerInterface $owner): User
+    public function findOrCreateFromGoogleOauth(GoogleUser $owner): User
     {
         $user = $this->createQueryBuilder('u')
             ->where('u.googleId = :googleId')
@@ -39,8 +40,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setRoles(['ROLE_USER'])
             ->setGoogleId($owner->getId())
             ->setEmail($owner->getEmail())
-            ->setFirstName('string')
-            ->setLastname('string')
+            ->setFirstName($owner->getFirstName())
+            ->setLastname($owner->getLastName())
             ->setPassword('int');
         $entityManager = $this->getEntityManager();
         $entityManager->persist($user);
