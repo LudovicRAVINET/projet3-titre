@@ -8,6 +8,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use League\OAuth2\Client\Provider\GoogleResourceOwner;
+use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,6 +22,31 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
+    }
+    public function findOrCreateFromGoogleOauth(ResourceOwnerInterface $owner):User
+    {
+        $user = $this->createQueryBuilder('u')
+            ->where('u.googleId = :googleId')
+            ->setParameters([
+                'googleId' => $owner->getId()
+            ])
+            ->getQuery()
+            ->getOneOrNullResult();
+        if ($user){
+            return $user;
+        }
+        $user =(new user ())
+            ->setRoles(['ROLE_USER'])
+            ->setGoogleId($owner->getId())
+            ->setEmail($owner->getEmail())
+            ->setFirstName('string')
+            ->setLastname('string')
+            ->setPassword(0);
+        $entityManager = $this->getEntityManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+            return $user;
     }
 
     /**
@@ -35,6 +62,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
+
+    
 
     // /**
     //  * @return User[] Returns an array of User objects
@@ -65,3 +94,4 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
     */
 }
+

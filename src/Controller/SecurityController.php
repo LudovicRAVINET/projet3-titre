@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\LoginType;
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -32,6 +34,15 @@ class SecurityController extends AbstractController
             'last_username' => $lastUsername,
             'error' => $error
         ]);
+    }
+    /**
+     * @Route("/login/google" , name="google_connect")
+     */
+    public function connect(ClientRegistry $clientRegistry):Response 
+    {
+        /** @var GoogleClient $client */
+        $client = $clientRegistry->getClient('google');
+        return $client->redirect(['profile', 'email']);
     }
 
     /**
