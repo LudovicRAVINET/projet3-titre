@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class SecurityController extends AbstractController
@@ -38,11 +39,10 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login/google" , name="google_connect")
      */
-    public function connect(ClientRegistry $clientRegistry):Response 
+    public function connect(ClientRegistry $clientRegistry): Response
     {
-        /** @var GoogleClient $client */
         $client = $clientRegistry->getClient('google');
-        return $client->redirect(['profile', 'email']);
+        return $client->redirect(['profile'], ['email']);
     }
 
     /**

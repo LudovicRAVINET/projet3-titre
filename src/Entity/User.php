@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -48,7 +49,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $googleId;
+    private ?string $googleId;
 
     public function getId(): ?int
     {
@@ -168,4 +169,3 @@ class User implements UserInterface
         return $this;
     }
 }
-

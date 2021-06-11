@@ -20,17 +20,16 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 class GoogleAuthenticator extends SocialAuthenticator
 {
-
     use TargetPathTrait;
 
     private RouterInterface $router;
     private ClientRegistry $clientRegistry;
     private UserRepository $userRepository;
 
-    public function __construct (RouterInterface $router, ClientRegistry $clientRegistry, UserRepository $userRepository) {
+    public function __construct(RouterInterface $router, ClientRegistry $clientRegistry, UserRepository $userRepository)
+    {
 
         $this->router = $router;
         $this->clientRegistry = $clientRegistry;
@@ -57,14 +56,13 @@ class GoogleAuthenticator extends SocialAuthenticator
 
     /**
      * Récupère l'utilisateur à partir du AccessToken
-     * 
+     *
      * @param AccessToken $credentials
      */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        
         $googleUser = $this->getClient()->fetchUserFromToken($credentials);
-        
+
         if ($googleUser->getEmail() === null) {
             throw new NotVerifiedEmailException();
         }
@@ -87,7 +85,8 @@ class GoogleAuthenticator extends SocialAuthenticator
         return new RedirectResponse($targetPath ?: '/');
     }
 
-    private function getClient (): GoogleClient {
+    private function getClient(): GoogleClient
+    {
         return $this->clientRegistry->getClient('google');
     }
 }
