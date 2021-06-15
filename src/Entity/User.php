@@ -45,6 +45,11 @@ class User implements UserInterface
      */
     private string $firstname;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Subscription::class, inversedBy="users")
+     */
+    private ?Subscription $subscription;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -147,6 +152,18 @@ class User implements UserInterface
     public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getSubscription(): ?Subscription
+    {
+        return $this->subscription;
+    }
+
+    public function setSubscription(?Subscription $subscription): self
+    {
+        $this->subscription = $subscription;
 
         return $this;
     }
