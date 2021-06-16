@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\LoginType;
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\SubscriptionRepository;
@@ -13,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class SecurityController extends AbstractController
@@ -33,6 +36,14 @@ class SecurityController extends AbstractController
             'last_username' => $lastUsername,
             'error' => $error
         ]);
+    }
+    /**
+     * @Route("/login/google" , name="google_connect")
+     */
+    public function connect(ClientRegistry $clientRegistry): Response
+    {
+        $client = $clientRegistry->getClient('google');
+        return $client->redirect(['profile'], ['email']);
     }
 
     /**
