@@ -97,4 +97,10 @@ class Subscription
 
         return $this;
     }
+
+    /* to fix typed properties proxies - try remove when php v8 */
+    public function __sleep()
+    {
+        return [];
+    }
 }
