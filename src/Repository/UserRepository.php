@@ -40,8 +40,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $user = (new user())
             ->setRoles(['ROLE_USER'])
             ->setGoogleId($owner->getId())
-            ->setEmail($owner->getEmail())
-            ->setFirstName($owner->getFirstName())
+            ->setEmail($owner->getEmail() ?? '')
+            ->setFirstName($owner->getFirstName() ?? '')
             ->setLastname($owner->getName())
             ->setPassword('int');
         $entityManager = $this->getEntityManager();
