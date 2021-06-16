@@ -21,25 +21,28 @@
 			</div>
 		{% endif %}
 
-		<h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
-		<label for="inputEmail">Email</label>
-		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-		<label for="inputPassword">Mot de passe</label>
-		<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+		<h1 class="h3 mb-3 font-weight-normal text-muted">S'identifier</h1>
+
+		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="p-2 m-3 ident" autocomplete="email" required autofocus placeholder="Email">
+
+		<input type="password" name="password" id="inputPassword" class="p-2 m-3 ident" autocomplete="current-password" required placeholder="Mot de passe">
 
 		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-		<div class="d-flex justify-content-between checkbox mb-3">
+		<div class="d-flex checkbox mb-3">
 			<label>
 				<input type="checkbox" name="_remember_me">
-				Se souvenir de moi ?
+				Rester connecté
 			</label>
-			<a href="{{ path('app_register') }}">
-				<p>Pas encore de compte ?</p>
-			</a>
+
 		</div>
-		<button class="btn btn-lg btn-dark" type="submit">
-			Se connecter
+		<button class="btn btn-primary btn-security" type="submit">
+			Connexion
 		</button>
+		<p class="text-secondary p-2 m-3">Pas encore inscrit ?
+				<a href="{{ path('app_register') }}" class="fw-bold text-dark ">
+					Inscrivez-vous
+				</a>
+			</p>
 	</form>
 {% endblock %}
 
