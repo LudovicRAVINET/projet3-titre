@@ -21,30 +21,15 @@
 							<p class="subscription col-md-5 col-sm-12 fw-bold text-md-start">{{ app.user.getSubscription.name }}</p>
                         </div>
                         <div class="row justify-content-around">
-							<!-- GRATUIT -->
-							<div class="card col-md-3 col-sm-8 mb-2 mb-md-0 m-1">
-								<div class="card-body">
-									<h6 class="card-title fw-bold">{{ subscriptions.0.name }}</h6>
-									<p class="card-text">{{ subscriptions.0.price }}€ / mois</p>
-									<div class="col-sm-12 mb-2 mb-md-0"> <a href="#" class="btn btn-out btn-primary btn-square btn-large text-white">Continuer</a> </div>
+							{% for subscription in subscriptions %}
+								<div class="card col-md-3 col-sm-8 mb-2 mb-md-0 m-1">
+									<div class="card-body">
+										<h6 class="card-title fw-bold">{{ subscription.name }}</h6>
+										<p class="card-text">{{ subscription.price }}€ / mois</p>
+										<div class="col-sm-12 mb-2 mb-md-0"> <a href="{{ path('subscription_choice', {"id": subscription.id}) }}" class="btn btn-out btn-primary btn-square btn-large text-white">Continuer</a> </div>
+									</div>
 								</div>
-							</div>
-							<!-- Premium -->
-							<div class="card col-md-3 col-sm-8 mb-2 mb-md-0 m-1">
-								<div class="card-body">
-									<h6 class="card-title fw-bold">{{ subscriptions.1.name }}</h6>
-									<p class="card-text">{{ subscriptions.1.price }}€ / mois</p>
-									<div class="col-sm-12 mb-2 mb-md-0"> <a href="#" class="btn btn-out btn-primary btn-square btn-large text-white">Continuer</a> </div>
-								</div>
-							</div>
-							<!-- Entreprise -->
-							<div class="card col-md-3 col-sm-8 mb-2 mb-md-0 m-1">
-								<div class="card-body">
-									<h6 class="card-title fw-bold">{{ subscriptions.2.name }}</h6>
-									<p class="card-text">{{ subscriptions.2.price }}€ / mois</p>
-									<div class="col-sm-12 mb-2 mb-md-0"> <a href="#" class="btn btn-out btn-primary btn-square btn-large text-white">Continuer</a> </div>
-								</div>
-							</div>
+							{% endfor %}
                         </div>
                     </div>
                 </div>
