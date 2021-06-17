@@ -8,23 +8,31 @@
 		{% include 'component/_header.html.twig' %}
 	</header>
 
-	<div class="example-wrapper mx-auto">
-		<i class="fas fa-check-circle"></i>
-		<p>Félicitations, vous êtes inscrit sur Eventoo</p>
-		<p>Vous pouvez maintenant :</p>
-		<ul>
-			<li>Créer un journal et inviter des proches</li>
-		</ul>
-		<p>Pour plus de fonctionnalités, vous pouvez choisir un abonnement</p>
-
-		<div class="continue d-flex p-2 justify-content-between">
-			<a href="#">
-				<p class="p-3">Créer un abonnement</p>
-			</a>
-			<a href="{{ path('home_index') }}">
-				<p class="p-3">Continuer sans abonnement</p>
-			</a>
-		</div>
-
-	</div>
+	<div class="container d-flex justify-content-center mt-3">
+            <div class="col-lg-8 col-md-12">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="row m-2">
+							<i class="fas fa-check-circle col-lg-4 col-md-3 col-sm-1 mb-2 mb-md-0 text-md-end"></i>
+							<h4 class="title col-lg-8 col-md-9 col-sm-11 text-primary text-md-start">votre compte a bien été créé</h4>
+                        </div>
+                        <div class="row">
+                        	<p class="description col-md-7 col-sm-12 mb-2 mb-md-0 text-md-end">Votre abonnement actuel :</p>
+							<p class="subscription col-md-5 col-sm-12 fw-bold text-md-start">{{ app.user.getSubscription.name }}</p>
+                        </div>
+                        <div class="row justify-content-around">
+							{% for subscription in subscriptions %}
+								<div class="card col-md-3 col-sm-8 mb-2 mb-md-0 m-1">
+									<div class="card-body">
+										<h6 class="card-title fw-bold">{{ subscription.name }}</h6>
+										<p class="card-text">{{ subscription.price }}€ / mois</p>
+										<div class="col-sm-12 mb-2 mb-md-0"> <a href="{{ path('subscription_choice', {"id": subscription.id}) }}" class="btn btn-out btn-primary btn-square btn-large text-white">Continuer</a> </div>
+									</div>
+								</div>
+							{% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 {% endblock %}

@@ -6,6 +6,7 @@ use App\Form\LoginType;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\SubscriptionRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,7 +60,8 @@ class SecurityController extends AbstractController
     public function register(
         Request $request,
         EntityManagerInterface $manager,
-        UserPasswordEncoderInterface $encoder
+        UserPasswordEncoderInterface $encoder,
+        SubscriptionRepository $subscripRepository
     ): Response {
         $user = new User();
 
@@ -71,15 +73,22 @@ class SecurityController extends AbstractController
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
 
+            $freeSubscription = $subscripRepository->findOneBy(['name' => 'GRATUIT']);
+            if ($freeSubscription !== null) {
+                $freeSubscription->addUser($user);
+            }
+
             $manager->persist($user);
             $manager->flush();
+
+            $subscriptions = $subscripRepository->findAll();
 
             //Automatic login after registration
             $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
             $this->container->get('security.token_storage')->setToken($token);
             $this->container->get('session')->set('_security_main', serialize($token));
 
-            return $this->render('confirm/index.html.twig');
+            return $this->render('confirm/index.html.twig', ['subscriptions' => $subscriptions]);
         }
 
         return $this->render('security/register.html.twig', [
