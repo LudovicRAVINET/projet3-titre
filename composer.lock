@@ -484,12 +484,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "2f286f4beaacf3ce57706ececa72622e196e2f5f"
+                "reference": "f1453c5c1bedc1d60baa6849fdce9b442c79811a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2f286f4beaacf3ce57706ececa72622e196e2f5f",
-                "reference": "2f286f4beaacf3ce57706ececa72622e196e2f5f",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/f1453c5c1bedc1d60baa6849fdce9b442c79811a",
+                "reference": "f1453c5c1bedc1d60baa6849fdce9b442c79811a",
                 "shasum": ""
             },
             "require": {
@@ -580,7 +580,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-05T17:48:35+00:00"
+            "time": "2021-06-16T21:54:12+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -9909,16 +9909,16 @@
         },
         {
             "name": "phpstan/phpstan-symfony",
-            "version": "0.12.36",
+            "version": "0.12.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-symfony.git",
-                "reference": "c3ac708fc1860146e35760b16b8eb2a08dd25d62"
+                "reference": "45e2ae29f6f53f5039b3d5c401dfc26724d8f5bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-symfony/zipball/c3ac708fc1860146e35760b16b8eb2a08dd25d62",
-                "reference": "c3ac708fc1860146e35760b16b8eb2a08dd25d62",
+                "url": "https://api.github.com/repos/phpstan/phpstan-symfony/zipball/45e2ae29f6f53f5039b3d5c401dfc26724d8f5bb",
+                "reference": "45e2ae29f6f53f5039b3d5c401dfc26724d8f5bb",
                 "shasum": ""
             },
             "require": {
@@ -9970,7 +9970,7 @@
                 }
             ],
             "description": "Symfony Framework extensions and rules for PHPStan",
-            "time": "2021-06-10T12:35:06+00:00"
+            "time": "2021-06-16T13:00:16+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
