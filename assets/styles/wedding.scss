@@ -1,5 +1,5 @@
 .wedding-theme {
-  background-color: $wedding-main-theme; 
+  background-color: $wedding-main-theme;
   .t {
     color: $wedding-main-theme;
   }
@@ -11,6 +11,128 @@
     color: $white !important;
   }
 }
+
+#event {
+  background-image: url(/public/build/images/background-images/wedding.65f13512.png);
+  background-position: center;
+  background-size: cover;
+}
+
+#event .container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#event .info .h1-event,
+#event .info p {
+  margin-bottom: 30px;
+}
+
+#event .info .h1-event {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+#event .links {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#event .link {
+  width: 140px;
+  height: 140px;
+  margin-right: 15px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
+}
+
+#event .link p {
+  margin-bottom: 0;
+}
+
+/* rajouter le lien de la 1ere image, effacer le ligne background-color */
+#event .link .link-img {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+#event .link .link-img1 {
+  background-image: url(/public/build/images/buttons/Vector.60ec9888.png);
+}
+
+#event .link .link-img2 {
+  background-image: url(/public/build/images/buttons/Vector.60ec9888.png);
+}
+
+#event .link .link-img3 {
+  background-image: url(/public/build/images/buttons/Vector.60ec9888.png);
+}
+
+#event .link .link-img4 {
+  background-image: url(/public/build/images/buttons/Vector.60ec9888.png);
+}
+
+#event .link:hover .link-img1 {
+  background-image: url(/public/build/images/buttons/Vector-yellow.dbf0c108.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* -------------------------- */
+
+section .container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+section h3 {
+  color: $primary;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+}
+
+section h2 {
+  height: 46px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 30px;
+}
+
+section .btn {
+  border-radius: 25px;
+  color: white;
+  font-size: 20px;
+}
+
+.section-1 {
+  background-color: #faf9f7;
+}
+
+.title-img {
+  position: absolute;
+  left: -80px;
+  top: 25px;
+  //background-color: thistle;
+  width: 80px;
+  height: 80px;
+}
+
+/* -------------------------- */
 
 .middle-section {
   display: flex;
