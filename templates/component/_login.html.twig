@@ -1,0 +1,53 @@
+<button type="button" id="loginBtn" class="btn btn-primary mx-auto d-block mt-5 visually-hidden" data-bs-toggle="modal" data-bs-target="#modalConnect">
+    Bootstrap Modal popup
+</button>
+<div class="modal fade" tabindex="-1" id="modalConnect" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<form class="form-login mx-auto" method="post">
+					{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					{% if app.user %}
+						<div class="mb-3">
+							Vous êtes connecté en tant que
+							{{ app.user.lastname }},
+							<a href="{{ path('app_logout') }}">Se déconnecter</a>
+						</div>
+					{% endif %}
+
+					<div class="modal-header">
+						<h1 class="h3 mb-3 font-weight-normal">S'identifier</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<label for="inputEmail">Email</label>
+					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+					<label for="inputPassword">Mot de passe</label>
+					<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					<div class="d-flex justify-content-between checkbox mb-3">
+						<label>
+							<input type="checkbox" name="_remember_me">
+							Se souvenir de moi ?
+						</label>
+						<a href="{{ path('app_register') }}">
+							<p>Pas encore de compte ?</p>
+						</a>
+					</div>
+					<button class="btn btn-lg btn-dark" type="submit">
+						Se connecter
+					</button>
+
+					<button class="btn btn-lg btn-dark" type="submit">
+						<p>
+						<a href="{{ path('google_connect') }}">se connecter avec google</a>
+						</p>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
