@@ -12,3 +12,13 @@ function popup() {
     });
     /* eslint-enable */
 }
+
+function passwordEye() {
+    document.getElementById('eye').classList.toggle('fa-eye-slash');
+    const pwd = document.getElementById('inputPassword');
+    if (pwd.getAttribute('type') === 'password') {
+        pwd.setAttribute('type', 'text');
+    } else {
+        pwd.setAttribute('type', 'password');
+    }
+}

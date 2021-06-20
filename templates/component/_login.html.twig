@@ -2,10 +2,10 @@
     Bootstrap Modal popup
 </button>
 <div class="modal fade" tabindex="-1" id="modalConnect" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<form class="form-login mx-auto" method="post">
+				<form class="form-login mx-auto w-100" method="post" action="{{ path('app_login') }}">
 					{% if error %}
 						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 					{% endif %}
@@ -18,34 +18,49 @@
 						</div>
 					{% endif %}
 
-					<div class="modal-header">
+					<div class="modal-header border-0">
 						<h1 class="h3 mb-3 font-weight-normal">S'identifier</h1>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-					<label for="inputEmail">Email</label>
-					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-					<label for="inputPassword">Mot de passe</label>
-					<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-					<div class="d-flex justify-content-between checkbox mb-3">
-						<label>
-							<input type="checkbox" name="_remember_me">
-							Se souvenir de moi ?
-						</label>
-						<a href="{{ path('app_register') }}">
-							<p>Pas encore de compte ?</p>
+					<div class="row align-items-start mt-2">
+						<div id="connectRS" class="col-6 text-center">
+							<p class="text-start ps-4">Se connecter avec</p>
+							<button class="btn btn-light border w-75" type="submit">
+								<div class="row align-items-start ms-1">
+									<img class="col-3" src="{{ asset('build/images/content/LogoGoogle.png') }}">
+									<a class="col-5 mt-1" href="{{ path('google_connect') }}">Google</a>
+								</div>
+							</button>
+						</div>
+
+						<div class="col-6 border-start">
+							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-3" autocomplete="email" placeholder="Email" required autofocus>
+							<input type="password" name="password" id="inputPassword" class="form-control mb-4" autocomplete="current-password" placeholder="Mot de passe" required>
+							<span toggle="#input-pwd" id="eye" class="fa fa-fw fa-eye field-icon toggle-password" onClick="passwordEye()"></span>
+
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							<div class="mb-3">
+								<label class="form-check-label">
+									<input type="checkbox" name="_remember_me">
+									Rester connecté
+								</label>
+							</div>
+							<button class="btn btn-primary text-white col-12 my-4 fs-4 py-1" type="submit">
+								Connexion
+							</button>
+							<a href="#">
+								<p class="text-primary text-center">Mot de passe oublié</p>
+							</a>
+						</div>
+					</div>
+
+					<div class="row align-items-start">
+						<p class="col-3">Pas encore inscrit ?</p>
+						<a class="col-9" href="{{ path('app_register') }}">
+							<p class="fw-bold">inscrivez-vous</p>
 						</a>
 					</div>
-					<button class="btn btn-lg btn-dark" type="submit">
-						Se connecter
-					</button>
-
-					<button class="btn btn-lg btn-dark" type="submit">
-						<p>
-						<a href="{{ path('google_connect') }}">se connecter avec google</a>
-						</p>
-					</button>
 				</form>
 			</div>
 		</div>
