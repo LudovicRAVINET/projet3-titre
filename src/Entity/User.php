@@ -56,6 +56,17 @@ class User implements UserInterface
      */
     private ?string $googleId;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private \DateTimeInterface $birthDate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Gender::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private Gender $gender;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -182,6 +193,30 @@ class User implements UserInterface
     public function setGoogleId(?string $googleId): self
     {
         $this->googleId = $googleId;
+
+        return $this;
+    }
+
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birthDate;
+    }
+
+    public function setBirthDate(\DateTimeInterface $birthDate): self
+    {
+        $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    public function getGender(): ?Gender
+    {
+        return $this->gender;
+    }
+
+    public function setGender(Gender $gender): self
+    {
+        $this->gender = $gender;
 
         return $this;
     }
