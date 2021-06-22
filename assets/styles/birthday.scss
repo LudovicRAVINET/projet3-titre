@@ -1,29 +1,269 @@
-.birthday-theme {
-    background-color: $birthday-main-theme; 
-    .t {
-      color: $wedding-main-theme;
-    }
-    li a {
-      color: $black;
-    }
-    .login-btn {
-      background-color: $black !important;
-      color: $white !important;
-    }
-  }
 
-  .w-birthday {
-    .previous {
-      background-color: $birthday-main-theme;
-      h2 {
-        color: $black;
-      }
-    }
-    .event-name {
-      background-color: $birthday-main-theme;
-    }
-    
-  }
-  .d-block w-100 {
-    height: 100px;
+
+#event-hb {
+  background-image: url(/public/build/images/background-images/birthday.d8ac0e33.png);
+  background-position: center;
+  background-size: cover;
+}
+
+#event-hb .container {
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#event-hb .test {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+#event-hb .info .h1-event,
+#event-hb .info p {
+  margin-bottom: 30px;
+}
+
+#event-hb .info .h1-event {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+#event-hb .display-3 {
+  width: 700px;
+  height: 221px;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 67px;
+  color: #ffffff;
+}
+.lead-p {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
+}
+
+.lead-s {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 30px;
+  color: #353746;
+  padding-top: 15px;
+  padding-bottom: 50px;
+}
+#event-hb .links-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 155%;
+}
+
+#event-hb .link {
+  width: 150px;
+  height: 150px;
+  margin-right: 15px;
+  border-radius: 14px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
+}
+
+#event-hb .link p {
+  margin-bottom: 0;
+}
+
+/* rajouter le lien de la 1ere image, effacer le ligne background-color */
+#event-hb .link .link-img {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+#event-hb .link .link-img1 {
+  background-image: url(/public/build/images/buttons/Vector.60ec9888.png);
+}
+
+#event-hb .link .link-img2 {
+  background-image: url(/public/build/images/buttons/retro.e8b071b9.png);
+}
+
+#event-hb .link .link-img3 {
+  background-image: url(/public/build/images/buttons/faire-part.d215600c.png);
+}
+
+#event-hb .link .link-img4 {
+  background-image: url(/public/build/images/buttons/direct.b09ceaae.png);
+}
+
+#event-hb .link .link-img5 {
+  background-image: url(/public/build/images/buttons/prestataire.c04b0c92.png);
+}
+
+#event-bottom .link p {
+  margin-bottom: 0;
+}
+
+#event-bottom .link .link-img {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+#event-bottom .link .link-img6 {
+  background-image: url(/public/build/images/buttons/mariage.ad9d257d.png);
+}
+
+#event-bottom .link .link-img7 {
+  background-image: url(/public/build/images/buttons/anniversaire.0991b3a7.png);
+}
+
+#event-bottom .link .link-img8 {
+  background-image: url(/public/build/images/buttons/deuil.e41199d9.png);
+}
+
+#event-hb .link:hover .link-img1 {
+  background-image: url(/public/build/images/buttons/Vector-yellow.dbf0c108.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#event-hb .link:hover .link-img2 {
+  background-image: url(/public/build/images/buttons/retro-y.7bdcb90a.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#event-hb .link:hover .link-img3 {
+  background-image: url(/public/build/images/buttons/faire-part-y.ba23aa34.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#event-hb .link:hover .link-img4 {
+  background-image: url(/public/build/images/buttons/direct-y.64351990.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#event-hb .link:hover .link-img5 {
+  background-image: url(/public/build/images/buttons/prestataire-b.a1b96a2b.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#event-bottom .link:hover .link-img6 {
+  background-image: url(/public/build/images/buttons/wedding-b.15dac304.png);
+}
+
+#event-bottom .link:hover .link-img7 {
+  background-image: url(/public/build/images/buttons/birthday-b.48e53700.png);
+}
+
+#event-bottom .link:hover .link-img8 {
+  background-image: url(/public/build/images/buttons/mourning-b.3cbd942f.png);
+}
+/* -------------------------- */
+
+section .container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+section .event-title {
+  color: $primary;
+  font-family: "poppinsregular";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px !important;
+  line-height: 30px;
+  padding-bottom: 10px;
+}
+
+section h2 {
+  height: 46px;
+  font-family: "poppinsregular";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 30px;
+}
+
+section .btn {
+  border-radius: 25px;
+  color: white;
+  font-size: 20px;
+}
+
+.section-1,
+.section-3 {
+  background-color: #faf9f7;
+  position: relative;
+}
+
+.section-2,
+.section-4 {
+  background-color: #fff;
+}
+
+.title-img {
+  position: absolute;
+  left: 0px;
+  top: 25px;
+  //background-color: thistle;
+  width: 80px;
+  height: 80px;
+}
+
+section .event-bottom {
+  color: #ffffff;
+  font-family: "poppinsregular";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px !important;
+  line-height: 30px;
+  padding-bottom: 10px;
+}
+
+.section-5 {
+  background:  #10B7C0;
+}
+
+.event-bottom-h2 {
+  color: #ffffff;
+  height: 46px;
+  font-family: "poppinsregular";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 30px;
+}
+
+#event-bottom .links-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+#event-bottom .link {
+  width: 129px;
+  height: 129px;
+  margin-right: 15px;
+  border-radius: 14px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
 }

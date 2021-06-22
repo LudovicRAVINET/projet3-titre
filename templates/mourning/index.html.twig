@@ -1,68 +1,204 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Deuil - Accueil{% endblock %}
+{% block title %}Deuil - Accueil
+{% endblock %}
+
 
 {% block body %}
 
-<header class="mourning-theme">
-			{% include 'component/_header.html.twig' %}
-</header>
-	<!--Carousel-->
-	<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-		<div class="carousel-inner">
-			<div class="carousel-item active" data-bs-interval="10000">
-				<img src="{{ asset('build/images/carousel/death-mourning.74ac9fae.jpg') }}" class="d-block w-100" alt="Step 1 ">
-			</div>
-			<div class="carousel-item" data-bs-interval="2000">
-				<img src="{{ asset('build/images/carousel/candle-mourning.b07b539b.jpg') }}" class="d-block w-100" alt="Step 2">
-			</div>
-			<div class="carousel-item">
-				<img src="{{ asset('build/images/carousel/roses-mourning.9dd194d9.jpg') }}" class="d-block w-100" alt="Step 3">
+	<div id="event-m" class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="jumbotron">
+						<div class="info">
+							<h1 class="display-3">Il arrive parfois que l'on ressente le besoin d'exprimer</h1>
+
+							<p class="lead-p">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+
+							</p>
+						</div>
+
+						<!-- rajouter les liens des boutons -->
+						<div class="links-buttons">
+							<a href="#" class="link">
+								<div class="link-img link-img1"></div>
+								<p>Créer un journal</p>
+							</a>
+
+							<a href="#" class="link">
+								<div class="link-img link-img2"></div>
+								<p>Rétro-planning</p>
+							</a>
+
+							<a href="#" class="link">
+								<div class="link-img link-img3"></div>
+								<p>Faire-part</p>
+							</a>
+
+							<a href="#" class="link">
+								<div class="link-img link-img4"></div>
+								<p>Faire un direct</p>
+							</a>
+
+							<a href="#" class="link">
+								<div class="link-img link-img5"></div>
+								<p>Prestataire</p>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
 	</div>
 
 
-	<!--Middle Section-->
-	<div class="middle-section w-mourning">
-		<div class="previous">
-			<a href="{{ path('home_index') }}">
-				<h2>Précédent</h2>
-			</a>
-		</div>
-		<div class="event-name">
-			<h2>Deuil</h2>
-		</div>
-	</div>
+	<section class="container-fluid section-1">
+		<img src="/build/images/content/rose.fd573497.png" alt="" class="title-img"/>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="jumbotron">
+						<h3 class="event-title">Créer un journal</h3>
+						<h2>Créer un évenement interactif</h2>
 
-	<!--Diary-->
-	<div class="display-events text-center ">
-		<div class="box-events wedding wed">
-			<img src="{{ asset('build/images/background-images/bg-wedding.2ad0d1a8.jpg') }}" alt="Wedding background image">
-			<a href="#">
-				<h2>Créer le journal</h2>
-			</a>
+						<p class="lead-s">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen boot. It has survived not only five centuries, but also the leap into electronic typesetting, remaining.
+						</p>
+
+						<p class="lead">
+							<a class="btn btn-warning btn-lg btm" href="#" role="button">Créer maintenant</a>
+						</p>
+					</div>
+				</div>
+
+				<div
+					class="col-md-6">
+					<!-- rajouter lien de l'image / alt -->
+					<img src="" alt="image description"/>
+				</div>
+			</div>
 		</div>
-		<div class="box-events mourning wed">
-			<img src="{{ asset('build/images/background-images/bg-mourning.277cb7d4.png') }}" alt="Mourning background image">
-			<a href="#">
-				<h2>Créer le programme</h2>
-			</a>
+	</section>
+
+	<section class="container-fluid section-2">
+		<div class="container">
+			<div class="row">
+				<div
+					class="col-md-6">
+					<!-- rajouter lien de l'image / alt -->
+					<img src="" alt="image description"/>
+				</div>
+
+				<div class="col-md-6">
+					<div class="jumbotron">
+						<h3 class="event-title">Rétro planning</h3>
+						<h2>Organiser des obsèques</h2>
+
+						<p class="lead-s">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen boot. It has survived not only five centuries, but also the leap into electronic typesetting, remaining.
+						</p>
+
+						<p class="lead">
+							<a class="btn btn-warning btn-lg btm" href="#" role="button">Je commence avec la première tâche</a>
+						</p>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="box-events birthday wed">
-			<img src="{{ asset('build/images/background-images/bg-birthday.cc144639.jpeg') }}" alt="Birthday background image">
-			<a href="#">
-				<h2>Créer le faire part</h2>
-			</a>
+	</section>
+
+	<section class="container-fluid section-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="jumbotron">
+						<h3 class="event-title">Faire-part</h3>
+						<h2>Gestion des invités</h2>
+
+						<p class="lead-s">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen boot. It has survived not only five centuries, but also the leap into electronic typesetting, remaining.
+						</p>
+
+						<p class="lead">
+							<a class="btn btn-warning btn-lg btm" href="#" role="button">Créer maintenant</a>
+						</p>
+					</div>
+				</div>
+
+				<div
+					class="col-md-6">
+					<!-- rajouter lien de l'image / alt -->
+					<img src="" alt="image description"/>
+				</div>
+			</div>
 		</div>
-	</div>
+	</section>
+
+	<section class="container-fluid section-4">
+		<div class="container">
+			<div class="row">
+				<div
+					class="col-md-6">
+					<!-- rajouter lien de l'image / alt -->
+					<img src="" alt="image description"/>
+				</div>
+
+				<div class="col-md-6">
+					<div class="jumbotron">
+						<h3 class="event-title">Faire un direct</h3>
+						<h2>Créer un évènement interactif</h2>
+
+						<p class="lead-s">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen boot. It has survived not only five centuries, but also the leap into electronic typesetting, remaining.
+						</p>
+
+						<p class="lead">
+							<a class="btn btn-warning btn-lg btm" href="#" role="button">Je commence maintenant</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="container-fluid section-5">
+		<div id="event-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="jumbotron">
+							<h3 class="event-bottom">A voir aussi</h3>
+							<h2 class="event-bottom-h2">Autre évènement intéractif</h2>
+						</div>
+					</div>
+
+					<div
+						class="col-md-6">
+						<!-- rajouter lien de l'image / alt -->
+						<div class="links-buttons">
+								<a href="{{ path('wedding_index') }}" class="link">
+									<div class="link-img link-img6"></div>
+									<p>Mariage</p>
+								</a>
+
+								<a href="{{ path('birthday_index') }}" class="link">
+									<div class="link-img link-img7"></div>
+									<p>Anniversaire</p>
+								</a>
+
+								<a href="{{ path('mourning_index') }}" class="link">
+									<div class="link-img link-img8"></div>
+									<p>Deuil</p>
+								</a>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+
 {% endblock %}
-

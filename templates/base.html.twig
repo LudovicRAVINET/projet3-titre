@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
-		<title>
-			{% block title %}Projet 3 Name{% endblock %}
-		</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
+        <title>
+            {% block title %}Projet 3 Name
+            {% endblock %}
+        </title>
 
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
-	</head>
-	<body>
-		{% block body %}{% endblock %}
-		<footer>{% include 'component/_footer.html.twig' %}<footer>
-	</body>
-	{% block js %}{% endblock %}
-	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-	 <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"
-        integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs="
-        crossorigin="anonymous"
-    ></script>
-	<script src="/logout.js"></script>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% include 'component/_nav.html.twig' %}
+        {% block body %}{% endblock %}
+        <footer>{% include 'component/_footer.html.twig' %}</footer>
+        {% block js %}{% endblock %}
+        <script src='https://kit.fontawesome.com/a076d05399.js'</script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+    </body>
 </html>

@@ -3,7 +3,7 @@ small {
  }
 
  .bold-text {
-     color: #FFFFFF !important
+     color: #7B7B7B !important
  }
 
  .mt-55 {
@@ -22,15 +22,22 @@ small {
      font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
  }
  .list-unstyled{
-     color:#FFFFFF;
+     color:#7B7B7B;
  }
  .rowCopy{
-     text-align: center;
-     color:#FFFFFF;
+     color:#ffffff;
+     height: 60px;
+     background-color: #C4C4C4;
+     width: 100%;
+     font-size: 14px;
+     line-height: 21px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
  }
  .my-5 {
-    background-color: #373737;
-    margin-top: 3rem !important;
+    background-color:#FAF9F7;
+    margin-top: 0 !important;
     margin-bottom: 0 !important; 
   }
   .py-5{
