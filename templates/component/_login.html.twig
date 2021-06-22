@@ -6,10 +6,6 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<form class="form-login mx-auto w-100" method="post" action="{{ path('app_login') }}">
-					{% if error %}
-						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-					{% endif %}
-
 					{% if app.user %}
 						<div class="mb-3">
 							Vous êtes connecté en tant que
@@ -20,7 +16,7 @@
 
 					<div class="modal-header border-0">
 						<h1 class="h3 mb-3 font-weight-normal">S'identifier</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						<button type="button" id="loginBtnClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 
 					<div class="row align-items-start mt-2">
@@ -35,9 +31,9 @@
 						</div>
 
 						<div class="col-6 border-start">
-							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-3" autocomplete="email" placeholder="Email" required autofocus>
+							<input type="email" name="email" id="inputEmail" class="form-control mb-3" autocomplete="email" placeholder="Email" required autofocus>
 							<input type="password" name="password" id="inputPassword" class="form-control mb-4" autocomplete="current-password" placeholder="Mot de passe" required>
-							<span toggle="#input-pwd" id="eye" class="fa fa-fw fa-eye field-icon toggle-password" onClick="passwordEye()"></span>
+							<span toggle="#input-pwd" id="eye" class="fa fa-fw fa-eye field-icon toggle-password" onClick="passwordEye('eye', 'inputPassword')"></span>
 
 							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 							<div class="mb-3">
@@ -57,10 +53,15 @@
 
 					<div class="row align-items-start">
 						<p class="col-3">Pas encore inscrit ?</p>
-						<a class="col-9" href="{{ path('app_register') }}">
+						<a class="col-9" onClick="loginRegister()">
 							<p class="fw-bold">inscrivez-vous</p>
 						</a>
 					</div>
+
+					{% if error is defined and error %}
+						<div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+						<input type="hidden" id="connectError" value="{{ error.messageKey }}">
+					{% endif %}
 				</form>
 			</div>
 		</div>

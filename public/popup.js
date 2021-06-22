@@ -1,21 +1,30 @@
-function popup() {
-    const popupDiv = document.querySelector('#popupForm');
-    /* eslint-disable */
-    axios.get('/login')
-    .then((res) => res.data)
-    .then((data) => {
-        popupDiv.innerHTML = data;
-        document.getElementById("loginBtn").click();
-    })
-    .catch((err) => {
-        throw err;
-    });
-    /* eslint-enable */
+function popup(btn) {
+    document.getElementById(btn).click();
 }
 
-function passwordEye() {
-    document.getElementById('eye').classList.toggle('fa-eye-slash');
-    const pwd = document.getElementById('inputPassword');
+function registerLogin() {
+    popup('registerBtnClose');
+    popup('loginBtn');
+}
+
+function loginRegister() {
+    popup('loginBtnClose');
+    popup('registerBtn');
+}
+
+const newUser = document.getElementById('newUser').value;
+if (newUser === '1') {
+    popup('confirmBtn');
+}
+
+const error = document.getElementById('connectError').value;
+if (error !== '') {
+    popup('loginBtn');
+}
+
+function passwordEye(id, inputPwd) {
+    document.getElementById(id).classList.toggle('fa-eye-slash');
+    const pwd = document.getElementById(inputPwd);
     if (pwd.getAttribute('type') === 'password') {
         pwd.setAttribute('type', 'text');
     } else {
