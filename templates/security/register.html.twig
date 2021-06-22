@@ -8,6 +8,14 @@
 	<header class="home-theme">
 		{% include 'component/_header.html.twig' %}
 	</header>
+
+	{% for category, messages in app.flashes %}
+		{% for message in messages %}
+			<div class="alert alert-{{ category }}">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endfor %}
 	<div>
 		<div class="form-login col-4 mx-auto ">
 			<h1 id="inscription">Inscrivez-vous</h1>
@@ -23,6 +31,7 @@
 			<div class="row register-row p-2 m-4 text-center">{{ form_row(form.password, {'label': ' ','attr': {'placeholder': 'Mot de passe'}}) }}</div>
 
 			<div class="button register-btn text-center px-2 py-1">
+				<div class="g-recaptcha" data-sitekey="6Ld5fNAaAAAAAOKYlFfR7wi-idO-V7zb1PYBMgvQ"></div>
 				<button class="btn" type="submit">
 					S'inscrire
 				</button>
