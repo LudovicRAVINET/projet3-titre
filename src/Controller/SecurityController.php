@@ -33,7 +33,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', [
+        return $this->render('home/index.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error
         ]);
@@ -52,7 +52,7 @@ class SecurityController extends AbstractController
      */
     public function logout(): Response
     {
-        return $this->render('security/login.html.twig');
+        return $this->render('home/index.html.twig');
     }
 
     /**
@@ -87,22 +87,31 @@ class SecurityController extends AbstractController
                     $manager->persist($user);
                     $manager->flush();
 
-                    $subscriptions = $subscripRepository->findAll();
-
                     //Automatic login after registration
                     $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
                     $this->container->get('security.token_storage')->setToken($token);
                     $this->container->get('session')->set('_security_main', serialize($token));
 
-                    return $this->render('confirm/index.html.twig', ['subscriptions' => $subscriptions]);
+                    return $this->render('home/index.html.twig', ['newUser' => true]);
                 } else {
                     $this-> addFlash('danger', 'Veuillez svp valider le RECAPTCHA');
-                    return $this->redirectToRoute('app_register');
+                    return $this->redirectToRoute('home_index');
                 }
             }
         }
-        return $this->render('security/register.html.twig', [
+
+        return $this->render('component/_register.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/registerConfirm", name="app_register_confirm")
+     */
+    public function registerConfirm(SubscriptionRepository $subscripRepository): Response
+    {
+        $subscriptions = $subscripRepository->findAll();
+
+        return $this->render('component/_registerConfirm.html.twig', ['subscriptions' => $subscriptions]);
     }
 }
