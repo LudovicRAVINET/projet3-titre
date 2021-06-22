@@ -17,6 +17,9 @@
 		{% endblock %}
 	</head>
 	<body>
+		<div id="loginForm">{% include 'component/_login.html.twig' %}</div>
+		<div id="registerForm">{{ render(controller('App\\Controller\\SecurityController::register')) }}</div>
+		<div id="registerConfirm">{{ render(controller('App\\Controller\\SecurityController::registerConfirm')) }}</div>
 		{% block body %}{% endblock %}
 		<footer>{% include 'component/_footer.html.twig' %}<footer>
 	</body>
@@ -28,4 +31,5 @@
         crossorigin="anonymous"
     ></script>
 	<script src="/logout.js"></script>
+	<script src="{{ asset('/popup.js') }}"></script>
 </html>

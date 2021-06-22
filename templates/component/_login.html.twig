@@ -1,0 +1,69 @@
+<button type="button" id="loginBtn" class="btn btn-primary mx-auto d-block mt-5 visually-hidden" data-bs-toggle="modal" data-bs-target="#modalConnect">
+    Bootstrap Modal popup
+</button>
+<div class="modal fade" tabindex="-1" id="modalConnect" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<form class="form-login mx-auto w-100" method="post" action="{{ path('app_login') }}">
+					{% if app.user %}
+						<div class="mb-3">
+							Vous êtes connecté en tant que
+							{{ app.user.lastname }},
+							<a href="{{ path('app_logout') }}">Se déconnecter</a>
+						</div>
+					{% endif %}
+
+					<div class="modal-header border-0">
+						<h1 class="h3 mb-3 font-weight-normal">S'identifier</h1>
+						<button type="button" id="loginBtnClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+
+					<div class="row align-items-start mt-2">
+						<div id="connectRS" class="col-6 text-center">
+							<p class="text-start ps-4">Se connecter avec</p>
+							<button class="btn btn-light border w-75" type="submit">
+								<div class="row align-items-start ms-1">
+									<img class="col-3" src="{{ asset('build/images/content/LogoGoogle.png') }}">
+									<a class="col-5 mt-1" href="{{ path('google_connect') }}">Google</a>
+								</div>
+							</button>
+						</div>
+
+						<div class="col-6 border-start">
+							<input type="email" name="email" id="inputEmail" class="form-control mb-3" autocomplete="email" placeholder="Email" required autofocus>
+							<input type="password" name="password" id="inputPassword" class="form-control mb-4" autocomplete="current-password" placeholder="Mot de passe" required>
+							<span toggle="#input-pwd" id="eye" class="fa fa-fw fa-eye field-icon toggle-password" onClick="passwordEye('eye', 'inputPassword')"></span>
+
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							<div class="mb-3">
+								<label class="form-check-label">
+									<input type="checkbox" name="_remember_me">
+									Rester connecté
+								</label>
+							</div>
+							<button class="btn btn-primary text-white col-12 my-4 fs-4 py-1" type="submit">
+								Connexion
+							</button>
+							<a href="#">
+								<p class="text-primary text-center">Mot de passe oublié</p>
+							</a>
+						</div>
+					</div>
+
+					<div class="row align-items-start">
+						<p class="col-3">Pas encore inscrit ?</p>
+						<a class="col-9" onClick="loginRegister()">
+							<p class="fw-bold">inscrivez-vous</p>
+						</a>
+					</div>
+
+					{% if error is defined and error %}
+						<div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+						<input type="hidden" id="connectError" value="{{ error.messageKey }}">
+					{% endif %}
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
