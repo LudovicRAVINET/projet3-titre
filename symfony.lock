@@ -124,6 +124,15 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "easycorp/easyadmin-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "b131e6cbfe1b898a508987851963fff485986285"
+        }
+    },
     "egulias/email-validator": {
         "version": "3.1.1"
     },
@@ -136,11 +145,38 @@
     "gitonomy/gitlib": {
         "version": "v1.2.3"
     },
+    "guzzlehttp/guzzle": {
+        "version": "7.3.0"
+    },
+    "guzzlehttp/promises": {
+        "version": "1.4.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.8.2"
+    },
     "jakub-onderka/php-console-color": {
         "version": "v0.2"
     },
+    "knpuniversity/oauth2-client-bundle": {
+        "version": "1.20",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.20",
+            "ref": "80acc9223a205cbf5d9828fd616c82a374d281dd"
+        },
+        "files": [
+            "config/packages/knpu_oauth2_client.yaml"
+        ]
+    },
     "laminas/laminas-code": {
         "version": "4.2.2"
+    },
+    "league/oauth2-client": {
+        "version": "2.6.0"
+    },
+    "league/oauth2-google": {
+        "version": "4.0.0"
     },
     "monolog/monolog": {
         "version": "2.2.0"
@@ -153,6 +189,9 @@
     },
     "opis/closure": {
         "version": "3.6.2"
+    },
+    "paragonie/random_compat": {
+        "version": "v9.99.100"
     },
     "pdepend/pdepend": {
         "version": "2.9.1"
@@ -208,11 +247,20 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
@@ -477,6 +525,9 @@
     "symfony/polyfill-php81": {
         "version": "v1.23.0"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.23.0"
+    },
     "symfony/process": {
         "version": "v5.2.7"
     },
@@ -584,6 +635,9 @@
     "symfony/twig-pack": {
         "version": "v1.0.1"
     },
+    "symfony/uid": {
+        "version": "v5.2.10"
+    },
     "symfony/validator": {
         "version": "4.3",
         "recipe": {
@@ -644,6 +698,9 @@
     },
     "symfony/yaml": {
         "version": "v5.2.7"
+    },
+    "twbs/bootstrap": {
+        "version": "v5.0.1"
     },
     "twig/extra-bundle": {
         "version": "v3.3.0"

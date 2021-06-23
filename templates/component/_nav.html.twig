@@ -20,11 +20,11 @@
 					</button>
 					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
 						<li>
-							<a class="dropdown-item" href="{{ path('app_login') }}">Se connecter</a>
+							<a class="dropdown-item" onClick="popup('loginBtn')">Se connecter</a>
 
 						</li>
 						<li>
-							<a class="dropdown-item" href="{{ path('app_register') }}">S'inscrire</a>
+							<a class="dropdown-item" onClick="popup('registerBtn')">S'inscrire</a>
 
 						</li>
 					</ul>
@@ -45,7 +45,7 @@
 						<input type="hidden" id="profile" value="{{ path('app_logout') }}">
 					</ul>
 				</div>
-				{% endif %}
+			{% endif %}
 		</ul>
 
 

@@ -1,0 +1,35 @@
+.eventoo-header {
+  padding: 1rem 0;
+  header {
+    .fs-4 {
+      text-shadow: 1px 1px 3px $black;
+      font-weight: 700;
+      color: $white;
+    }
+  }
+}
+
+.initials
+{
+  border-radius: 50%;
+  background-color: brown;
+  height: 50px;
+}
+
+span.field-icon {
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  right: 2rem;
+  top: 11.5rem;
+  z-index: 10;
+}
+
+#connectRS img {
+  height: 2em;
+  width: auto;
+}
+
+#acceptCGV {
+  font-size: xx-small;
+}
