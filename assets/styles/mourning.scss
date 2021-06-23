@@ -178,6 +178,15 @@ section .container {
   padding-top: 50px;
   padding-bottom: 50px;
   position: relative;
+  height: 640px;
+  display: flex;
+  align-items: center;
+}
+
+section .container-bottom {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
 }
 
 section .event-title {
@@ -233,6 +242,8 @@ section .event-bottom {
   font-size: 25px !important;
   line-height: 30px;
   padding-bottom: 10px;
+  padding-left: 100px;
+  padding-top: 20px;
 }
 
 .section-5 {
@@ -272,4 +283,11 @@ section .event-bottom {
 .btm {
   background: #353746;
   border-color: #353746;
+}
+
+.group-left {
+  position: absolute;
+  padding-left: 0 !important;
+  padding-top: 40px;
+  margin-left: -12px;
 }
