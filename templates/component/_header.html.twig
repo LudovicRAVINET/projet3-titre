@@ -1,38 +1,59 @@
 {# Here goes the header (nav) #}
-<div class="container-fluid eventoo-header">
-	<header class="d-flex flex-wrap justify-content-center py-3 px-5 ">
-		<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-			<svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-			<span class="fs-4">Even<span class="t">t</span>oo</span>
-		</a>
-		<ul class="nav nav-pills">
-			<li class="nav-item">
-				<a href="#" class="nav-link" aria-current="page">Comment ça marche</a>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link">Qui sommes-nous</a>
-			</li>
+
+{# Menu burger#}
+<div class="menu nav" id="nav">
+	<div class="container-fluid">
+		<div class="row m-4 justify-content-between">
+			<img class="logoH col-4" src="{{ asset('build/images/content/whiteLogo.png') }}" alt="logo">
+			<button type="button" id="menuBtnClose" class="btn-close col-2 btn-close-white" onclick="menuDisplay()"></button>
+		</div>
+
+		{% if not app.user %}
+			<div class="row text-white fs-1 mx-4">
+				<p>Bienvenue sur eventoo</p>
+			</div>
+		{% endif %}
+
+		<div class="row navbar-text mx-4">
+			<a class="text-white mb-2 fs-4" href="#">Prestataires</a>
+			<a class="text-white mb-2 fs-4" href="#">Comment ça marche</a>
+			<a class="text-white mb-2 fs-4" href="#">Qui sommes nous?</a>
+			<a class="text-white mb-2 fs-4" href="#">Tarifs</a>
+			<a class="text-white mb-5 fs-4" href="#">Blog</a>
 
 			{% if not app.user %}
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="image/png" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-						<img src="{{ asset('build/images/utilisateur.fc004123.png') }}">
-					</button>
-					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-						<li>
-							<a class="dropdown-item" onClick="popup('loginBtn')">Se connecter</a>
+				<a class="text-white mb-2 mt-4 fs-4" href="#" onClick="popup('registerBtn')">S'inscrire</a>
+				<a class="text-white mb-2 fs-4" href="#" onClick="popup('loginBtn')">S'identifier</a>
+			{% else %}
+				<a class="text-white mb-2 border-top border-bottom py-2 fs-4" href="#">Mon profil</a>
+				<a class="text-white mb-2 py-2 fs-4" onclick="activitiesDisplay()" id="activityLink" href="#"><span id="chevron" class="pe-1 visually-hidden">></span>Activités</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="weddingLink" href="#">Mariage</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="birthdateLink" href="#">Anniversaire</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="mourningLink" href="#">Deuil</a>
+				<a class="text-white mb-2 border-top pt-2 fs-4" href="#" onclick="logoutConfirm()">Se déconnecter</a>
+			{% endif %}
+		</div>
+	</div>
+</div>
 
-						</li>
-						<li>
-							<a class="dropdown-item" onClick="popup('registerBtn')">S'inscrire</a>
+{# Navbar#}
+<div class="container-fluid eventoo-header py-0">
+	<header class="d-flex flex-wrap justify-content-center px-5 ">
+		<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+			<img class="h-50 my-4" src="{{ asset('build/images/content/logo.png') }}">
+		</a>
+		<div id="buttonNav" class="row w-75 justify-content-end align-items-center">
 
-						</li>
-					</ul>
+			{% if not app.user %}
+				<div id="registerBtnDiv" class="col-lg-3 col-sm-4 col-xs-0">
+					<a id="registerBtnNav" class="btn btn-primary text-white my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center" onClick="popup('registerBtn')">S'inscrire</a>
+				</div>
+				<div id="loginBtnDiv" class="col-lg-3 col-sm-4 col-xs-0">
+					<a id="loginBtnNav" class="btn btn-light text-dark my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center border border-3" onClick="popup('loginBtn')">S'identifier</a>
 				</div>
 
 			{% else %}
-
-				<div class="dropdown">
+				<div id="dropdownDiv" class="dropdown col-1">
 
 					<button class="btn btn-secondary dropdown-toggle initials" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 							{{ app.user.lastName|slice(0, 1) }}
@@ -40,13 +61,18 @@
 
 					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
 						<li>
-							<a class="dropdown-item" onclick="logoutConfirm()">Se déconnecter</a>
+							<a class="dropdown-item pe-auto" onclick="logoutConfirm()">Se déconnecter</a>
 						</li>
 						<input type="hidden" id="profile" value="{{ path('app_logout') }}">
 					</ul>
 				</div>
 			{% endif %}
-		</ul>
+			<div class="col-3 ms-4">
+				<a id='toggle_btn' class="col-1 mt-2 btn btn-link" onclick="menuDisplay()">
+					<img class="h-25 my-4" src="{{ asset('build/images/buttons/MenuBurger.png') }}">
+				</a>
+			</div>
+		</div>
 
 
 	</header>

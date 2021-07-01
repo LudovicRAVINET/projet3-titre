@@ -33,3 +33,83 @@ span.field-icon {
 #acceptCGV {
   font-size: xx-small;
 }
+
+
+
+
+
+
+.toggle_btn {
+  height: 30px;
+  width: 30px;
+  position: relative;
+  float: right;
+  margin-right: 10px;
+  margin-top:5px;
+  cursor:pointer;
+}
+
+.toggle_btn span {
+  height: 3px;
+  background-color: black;
+  width: 100%;
+  position:absolute;
+  top:20px;
+  left:0;
+}
+
+.toggle_btn span::before {
+  content: '';
+  height: 3px;
+  background-color:black;
+  width: 100%;
+  position:absolute;
+  top:-10px;
+  left:0;
+}
+
+.toggle_btn span::after {
+  content: '';
+  height: 3px;
+  background-color:black;
+  width: 100%;
+  position:absolute;
+  top:10px;
+  left:0;
+}
+
+.menu {
+  height: 100vh;
+  background-color: $blueDark;
+  width: 100px;
+}
+
+.nav {
+  margin-left:2100px;
+  transition-duration: 0.2s;
+  position:fixed;
+  top:0;
+  height: 100%;
+  z-index: 10;
+}
+
+.nav_open {
+  position: absolute;
+  margin-left: calc(100% - 400px);
+  transition-duration: 0.2s;
+  position:fixed;
+  top:0;
+  height: 100%;
+  z-index: 10;
+  width: 400px;
+}
+
+@media (max-width: 720px) {
+  #registerBtnDiv, #loginBtnDiv {
+    display: none!important;
+  }
+
+  #buttonNav {
+    width: 25%!important;
+  }
+}
