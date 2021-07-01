@@ -34,11 +34,6 @@ span.field-icon {
   font-size: xx-small;
 }
 
-
-
-
-
-
 .toggle_btn {
   height: 30px;
   width: 30px;
@@ -102,6 +97,16 @@ span.field-icon {
   height: 100%;
   z-index: 10;
   width: 400px;
+}
+
+.grey {
+  color: grey;
+}
+
+@media (max-width: 1000px) {
+  #homeBtnDiv, #eventCreateBtnDiv, #premiumBtnDiv, #helpBtnDiv, #bellBtnDiv {
+    display: none!important;
+  }
 }
 
 @media (max-width: 720px) {

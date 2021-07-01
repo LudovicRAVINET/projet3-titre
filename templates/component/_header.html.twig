@@ -49,26 +49,49 @@
 					<a id="registerBtnNav" class="btn btn-primary text-white my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center" onClick="popup('registerBtn')">S'inscrire</a>
 				</div>
 				<div id="loginBtnDiv" class="col-lg-3 col-sm-4 col-xs-0">
-					<a id="loginBtnNav" class="btn btn-light text-dark my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center border border-3" onClick="popup('loginBtn')">S'identifier</a>
+					<a id="loginBtnNav" class="btn btn-outline-primary text-dark my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center" onClick="popup('loginBtn')">S'identifier</a>
 				</div>
 
 			{% else %}
-				<div id="dropdownDiv" class="dropdown col-1">
-
-					<button class="btn btn-secondary dropdown-toggle initials" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-							{{ app.user.lastName|slice(0, 1) }}
-					</button>
-
-					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-						<li>
-							<a class="dropdown-item pe-auto" onclick="logoutConfirm()">Se déconnecter</a>
-						</li>
-						<input type="hidden" id="profile" value="{{ path('app_logout') }}">
-					</ul>
+				<div id="homeBtnDiv" class="col-lg-2 col-sm-3">
+					<a id="homeBtnNav" class="btn btn-outline-primary text-dark my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center" href="/">Accueil</a>
 				</div>
+				<div id="eventCreateBtnDiv" class="col-lg-3 col-sm-4">
+					<a id="eventCreateBtnNav" class="btn btn-primary text-white my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center">Créer un événement</a>
+				</div>
+				<div id="premiumBtnDiv" class="col-lg-3 col-sm-4">
+					<a id="premiumBtnNav" class="btn btn-info text-white my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center">Passer en premium</a>
+				</div>
+				<div id="helpBtnDiv" class="col-2 me-4 d-flex align-items-center justify-content-start">
+					<a href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="grey" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+							<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+						</svg>
+					</a>
+					<p class="pt-3 ps-1 me-3 text-secondary">Aide</p>
+					<a href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="grey" class="bi bi-bell-fill" viewBox="0 0 16 16">
+							<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+						</svg>
+					</a>
+					<div id="dropdownDiv" class="dropdown col-1 ms-2">
+
+						<button class="btn btn-secondary dropdown-toggle initials" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+								{{ app.user.lastName|slice(0, 1) }}
+						</button>
+
+						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+							<li>
+								<a class="dropdown-item pe-auto" onclick="logoutConfirm()">Se déconnecter</a>
+							</li>
+							<input type="hidden" id="profile" value="{{ path('app_logout') }}">
+						</ul>
+					</div>
+				</div>
+
 			{% endif %}
-			<div class="col-3 ms-4">
-				<a id='toggle_btn' class="col-1 mt-2 btn btn-link" onclick="menuDisplay()">
+			<div class="col-1 ms-3">
+				<a id='toggle_btn' class="col-1 mt-2 ms-4 btn btn-link" onclick="menuDisplay()">
 					<img class="h-25 my-4" src="{{ asset('build/images/buttons/MenuBurger.png') }}">
 				</a>
 			</div>
