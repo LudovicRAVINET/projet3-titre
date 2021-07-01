@@ -104,7 +104,7 @@ span.field-icon {
 }
 
 @media (max-width: 1000px) {
-  #homeBtnDiv, #eventCreateBtnDiv, #premiumBtnDiv, #helpBtnDiv, #bellBtnDiv {
+  #homeBtnDiv, #eventCreateBtnDiv, #premiumBtnDiv, .hidden-small {
     display: none!important;
   }
 }
