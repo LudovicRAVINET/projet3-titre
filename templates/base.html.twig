@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
-		<title>
-			{% block title %}Projet 3 Name{% endblock %}
-		</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
+        <title>
+            {% block title %}Projet 3 Name
+            {% endblock %}
+        </title>
 
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
-	</head>
-	<body>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            {% include 'component/_nav.html.twig' %}
+            <input type="hidden" id="newUser" value="{{ newUser ?? false }}">
+        </header>
+
 		<div id="loginForm">{% include 'component/_login.html.twig' %}</div>
 		<div id="registerForm">{{ render(controller('App\\Controller\\SecurityController::register')) }}</div>
 		<div id="registerConfirm">{{ render(controller('App\\Controller\\SecurityController::registerConfirm')) }}</div>
@@ -31,5 +37,6 @@
         crossorigin="anonymous"
     ></script>
 	<script src="/logout.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 	<script src="{{ asset('/popup.js') }}"></script>
 </html>
