@@ -76,10 +76,16 @@
 
 //Popup Create Diary Event //
 
+.modal-header {
+    align-items: center !important;
+    justify-content: center !important;
+  }
 
 h1.createDiary {
     color: #00B2BC;
     align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .diaryCenter {
@@ -162,7 +168,48 @@ h1.createDiary {
     background-image: url(/public/build/images/buttons/logoOther.4b063600.png);
   }
 
+  #typeEvent .link:hover .link-img1 {
+    background-image: url(/public/build/images/buttons/logoWeddingBlue.f220f0da.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #typeEvent .link:hover .link-img2 {
+    background-image: url(/public/build/images/buttons/logoBirthdayBlue.bfd131a8.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #typeEvent .link:hover .link-img3 {
+    background-image: url(/public/build/images/buttons/logoBirth.d52aafb7.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #typeEvent .link:hover .link-img4 {
+    background-image: url(/public/build/images/buttons/logoMourningBlue.310f7447.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #typeEvent .link:hover .link-img5 {
+    background-image: url(/public/build/images/buttons/logoOtherBlue.d7237ab9.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
   #typeEvent .links-buttons {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+  }
+
+  #typeEvent .links-buttons p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+#typeEvent .link:hover p {
+    color: #00b2bc;
   }
