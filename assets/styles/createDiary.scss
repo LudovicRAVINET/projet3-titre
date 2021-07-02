@@ -73,3 +73,96 @@
         margin-right: 20px;
     }
 }
+
+//Popup Create Diary Event //
+
+
+h1.createDiary {
+    color: #00B2BC;
+    align-items: center;
+}
+
+.diaryCenter {
+    align-items: center;
+}
+/*
+.titleCreate {
+    width: 600px;
+} */
+
+.previousButton {
+    background: #7B7B7B;
+    border-radius: $btn-border-radius;
+    border: 3px solid #7B7B7B;
+}
+
+.valideButton {
+    background: #00B2BC;;
+    border-radius: $btn-border-radius;
+    border: 3px solid #00B2BC;
+    align-items: flex-end;
+}
+
+.whatEvent, .createEventPerso {
+    font-family: "poppinsregular";
+    font-style: normal;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #353746;
+}
+
+.whatEvent {
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+#typeEvent .link {
+    width: 112px;
+    height: 112px;
+    margin-right: 15px;
+    border-radius: 14px;
+    background-color: white;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+  }
+  
+  #typeEvent .link .link-img {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 41px;
+    height: 41px;
+    top: 40px;
+    margin-bottom: 10px;
+  }
+  
+  #typeEvent .link .link-img1 {
+    background-image: url(/public/build/images/buttons/logoWedding.3fe9e841.png);
+  }
+  
+  #typeEvent .link .link-img2 {
+    background-image: url(/public/build/images/buttons/logoBirthday.900ae51c.png);
+  }
+  
+  #typeEvent .link .link-img3 {
+    background-image: url(/public/build/images/buttons/logoBirth.d52aafb7.png);
+  }
+  
+  #typeEvent .link .link-img4 {
+    background-image: url(/public/build/images/buttons/logoMourning.a7ebe02f.png);
+  }
+  
+  #typeEvent .link .link-img5 {
+    background-image: url(/public/build/images/buttons/logoOther.4b063600.png);
+  }
+
+  #typeEvent .links-buttons {
+      display: flex;
+      justify-content: center;
+  }
