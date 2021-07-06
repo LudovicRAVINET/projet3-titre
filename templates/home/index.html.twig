@@ -6,11 +6,6 @@
 
 {% block body %}
 
-<header class="home-theme">
-			{% include 'component/_header.html.twig' %}
-      <input type="hidden" id="newUser" value="{{ newUser ?? false }}">
-</header>
-
 {% for category, messages in app.flashes %}
 	{% for message in messages %}
 		<div class="alert alert-{{ category }}">

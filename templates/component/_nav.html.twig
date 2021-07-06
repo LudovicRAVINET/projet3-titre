@@ -1,52 +1,108 @@
 {# Here goes the header (nav) #}
-<div class="container-fluid eventoo-header">
-	<header class="d-flex flex-wrap justify-content-center py-3 px-5 ">
-		<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-			<svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-			<span class="fs-4"><img src="{{ asset('build/images/content/logoEventoo.f216b8c6.png') }}"></span>
-		</a>
-		<ul class="nav nav-pills">
-			<li class="nav-item">
-				<a href="#" class="nav-link" aria-current="page">Comment ça marche</a>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link">Qui sommes-nous</a>
-			</li>
+
+{# Menu burger#}
+<div class="menu nav" id="nav">
+	<div class="container-fluid">
+		<div class="row m-4 justify-content-between">
+			<img class="logoH col-4" src="{{ asset('build/images/content/whiteLogo.png') }}" alt="logo">
+			<button type="button" id="menuBtnClose" class="btn-close col-2 btn-close-white" onclick="menuDisplay()"></button>
+		</div>
+
+		{% if not app.user %}
+			<div class="row text-white fs-1 mx-4">
+				<p>Bienvenue sur eventoo</p>
+			</div>
+		{% endif %}
+
+		<div class="row navbar-text mx-4">
+			<a class="text-white mb-2 fs-4" href="#">Prestataires</a>
+			<a class="text-white mb-2 fs-4" href="#">Comment ça marche</a>
+			<a class="text-white mb-2 fs-4" href="#">Qui sommes nous?</a>
+			<a class="text-white mb-2 fs-4" href="#">Tarifs</a>
+			<a class="text-white mb-5 fs-4" href="#">Blog</a>
 
 			{% if not app.user %}
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="image/png" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-						<img src="{{ asset('build/images/utilisateur.fc004123.png') }}">
-					</button>
-					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-						<li>
-							<a class="dropdown-item" onClick="popup('loginBtn')">Se connecter</a>
+				<a class="text-white mb-2 mt-4 fs-4" href="#" onClick="popup('registerBtn')">S'inscrire</a>
+				<a class="text-white mb-2 fs-4" href="#" onClick="popup('loginBtn')">S'identifier</a>
+			{% else %}
+				<a class="text-white mb-2 border-top border-bottom py-2 fs-4" href="#">Mon profil</a>
+				<a class="text-white mb-2 py-2 fs-4" onclick="activitiesDisplay()" id="activityLink" href="#"><span id="chevron" class="pe-1 visually-hidden">></span>Activités</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="weddingLink" href="#">Mariage</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="birthdateLink" href="#">Anniversaire</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="mourningLink" href="#">Deuil</a>
+				<a class="text-white mb-2 border-top pt-2 fs-4" href="#" onclick="logoutConfirm()">Se déconnecter</a>
+			{% endif %}
+		</div>
+	</div>
+</div>
 
-						</li>
-						<li>
-							<a class="dropdown-item" onClick="popup('registerBtn')">S'inscrire</a>
+{# Navbar#}
+<div class="container-fluid eventoo-header py-0">
+	<header class="d-flex flex-wrap justify-content-center px-5 ">
+		<div id="buttonNav" class="row w-100 align-items-center justify-content-around">
+			<a href="/" class="col-1 mb-3 mb-md-0 me-md-auto me-sm-5 text-dark text-decoration-none">
+				<img class="h-50 my-4" src="{{ asset('build/images/content/logo.png') }}">
+			</a>
 
-						</li>
-					</ul>
+			{% if not app.user %}
+				<div id="registerBtnDiv" class="col-lg-3 col-sm-4 col-xs-0">
+					<a id="registerBtnNav" class="btn btn-primary text-white my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center" onClick="popup('registerBtn')">S'inscrire</a>
+				</div>
+				<div id="loginBtnDiv" class="col-lg-3 col-sm-4 col-xs-0">
+					<a id="loginBtnNav" class="btn btn-outline-primary text-dark my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center" onClick="popup('loginBtn')">S'identifier</a>
+				</div>
+				<div class="col-1 ms-3">
+					<a id='toggle_btn' class="col-1 mt-2 ms-4 btn btn-link" onclick="menuDisplay()">
+						<img class="h-25 my-4" src="{{ asset('build/images/buttons/MenuBurger.png') }}">
+					</a>
 				</div>
 
 			{% else %}
-
-				<div class="dropdown">
-
-					<button class="btn btn-secondary dropdown-toggle initials" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-							{{ app.user.lastName|slice(0, 1) }}
-					</button>
-
-					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-						<li>
-							<a class="dropdown-item" onclick="logoutConfirm()">Se déconnecter</a>
-						</li>
-						<input type="hidden" id="profile" value="{{ path('app_logout') }}">
-					</ul>
+				<div id="homeBtnDiv" class="col-lg-2 col-sm-2">
+					<a id="homeBtnNav" class="btn btn-outline-primary text-dark my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center" href="/">Accueil</a>
 				</div>
+				<div id="eventCreateBtnDiv" class="col-lg-3 col-sm-3">
+					<a id="eventCreateBtnNav" class="btn btn-primary text-white my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center">
+						<img class="me-3" src="{{ asset('build/images/content/CreatEvent.png') }}">
+						Créer un événement
+					</a>
+				</div>
+				<div id="premiumBtnDiv" class="col-lg-2 col-sm-3">
+					<a id="premiumBtnNav" class="btn btn-info text-white my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center">Passer en premium</a>
+				</div>
+				<div id="BtnDiv" class="col-3 me-4 d-flex align-items-center justify-content-start">
+					<a class="hidden-small" href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="grey" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+							<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+						</svg>
+					</a>
+					<p class="pt-3 ps-1 me-3 text-secondary hidden-small">Aide</p>
+					<a class="hidden-small" href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="grey" class="bi bi-bell-fill" viewBox="0 0 16 16">
+							<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+						</svg>
+					</a>
+					<div id="dropdownDiv" class="dropdown ms-2 hidden-small">
+
+						<button class="btn btn-secondary dropdown-toggle initials" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+								{{ app.user.lastName|slice(0, 1) }}
+						</button>
+
+						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+							<li>
+								<a class="dropdown-item pe-auto" onclick="logoutConfirm()">Se déconnecter</a>
+							</li>
+							<input type="hidden" id="profile" value="{{ path('app_logout') }}">
+						</ul>
+					</div>
+					<a id='toggle_btn' class="col-1 mt-2 ms-4 btn btn-link" onclick="menuDisplay()">
+						<img class="h-25 my-4" src="{{ asset('build/images/buttons/MenuBurger.png') }}">
+					</a>
+				</div>
+
 			{% endif %}
-		</ul>
+
+		</div>
 
 
 </header></div>

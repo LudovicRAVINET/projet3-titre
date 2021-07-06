@@ -6,7 +6,8 @@
 Display Events section
 =====================*/
 .home-theme{
-  background-color: $home-main-theme;
+  position: relative;
+  background-color: $white;
   .login-btn {
     background-color: $white !important ;
     color: $black !important ;
