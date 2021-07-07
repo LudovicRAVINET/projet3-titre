@@ -93,7 +93,7 @@ class SecurityController extends AbstractController
                     $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
                     $this->container->get('security.token_storage')->setToken($token);
                     $this->container->get('session')->set('_security_main', serialize($token));
-                     
+
                     // send email confirmation
                      $email = (new Email())
                       ->from(strval($this->getParameter('mailer_from')))
