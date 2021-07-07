@@ -209,7 +209,7 @@ class SecurityController extends AbstractController
 
             return $this->redirectToRoute('home_index');
         } else {
-            return $this->render('component/_resetPassword.html.twig', ['token' => $token]);
+            return $this->render('password/resetPassword.html.twig', ['token' => $token]);
         }
     }
 }
