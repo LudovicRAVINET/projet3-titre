@@ -171,7 +171,7 @@
     margin-top: 0;
     justify-content: flex-end;
     float: right; 
-    border-radius: 10px;
+    border-radius: 4px;
     margin-right: 7%;
     border: 0.5px solid #FFFFFF;
     box-sizing: border-box;
@@ -189,19 +189,12 @@
     box-sizing: border-box;
     border-radius: 10px;
     float: right;
-    margin-top: 13%;
+    margin-top: 16%;
     width: 310px;
     height: 310px;
-    left: 1027px;
-   
-
-    
+    left: 1027px;   
 }
 
-
-
- 
- 
 
  .diary-wrapper{
     display: flex;
@@ -274,8 +267,18 @@ button{
 }
 
 
-
-
+////-box date et heure-////
+.dateBox{
+    background: #FFFFFF;
+    border: 0.5px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 20px;
+    float: left;
+    margin-top: 10px;
+    width: 200px;
+    height: 150px;
+    left: 1027px;   
+}
 
 
 

@@ -11,15 +11,23 @@
             {% else %}
                 <img src="{{ asset('uploads/files/' ~ event.eventPicture ~ ' ') }}"  alt="Diary wedding banner">
             {% endif %}
-                <img src="{{ asset('build/images/buttons/leftVector.png') }}">
+                
                  </div>
         </div>
+        <div class="dateBox">
+            <p>Date et heure</p>
+            <p>Lundi 13 Juin 2021</p>
+            <p>13h00 à 14h00</p>
+
+        </div>
+
+        
         <div class="buttons">
-                <button type="button" class="btn btn-light">Comment ça marche</button><br><br>
-                <button type="button" class="btn btn-info">Compiler en livre d'or</button><br><br>
-                <button type="button" class="btn btn-light">Ajouter les photos du jour</button><br>
+                <button type="button" class="btn btn-light"><img class="img" src="{{ asset('build/images/buttons/Vector1.png') }}"> Comment ça marche</button><br><br>
+                <button type="button" class="btn btn-info"><img class="img" src="{{ asset('build/images/buttons/Vector.png') }}"> Compiler en livre d'or</button><br><br>
+                <button type="button" class="btn btn-light"><img class="img" src="{{ asset('build/images/buttons/Vector2.png') }}"> Ajouter les photos du jour</button><br>
             </div>
-        <div class ="box">
+        <div class="box">
             <br>
             <p >Gérer</p><br>
             <p >Liste des invités</p><br>
