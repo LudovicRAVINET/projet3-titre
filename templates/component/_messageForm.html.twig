@@ -1,7 +1,6 @@
 <div class="diary-form-control">
 
     {{ form_start(form, {'attr': {'class': 'diary-form'}}) }}
-        
 
         {{ form_widget(form.messageText, {'attr': {
             'placeholder': 'De quoi souhaitez-vous parler?...',
@@ -24,6 +23,7 @@
             <button id="diary-send-btn" type="submit">
                 <img src="{{ asset('build/images/send-button.svg') }}" alt=""/>
             </button>
+            
         </div>
     {{ form_end(form) }}
 
