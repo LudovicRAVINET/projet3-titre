@@ -3,13 +3,10 @@
     {{ form_start(form, {'attr': {'class': 'diary-form'}}) }}
         <div class="diary-form-head">
             <div class="diary-author-name">
-              
-                
             </div>
         </div>
-
         {{ form_widget(form.messageText, {'attr': {
-            'placeholder': 'De quoi souhaiter vous parler?...',
+            'placeholder': 'De quoi souhaitez vous parler?...',
             'class': 'diary-form-text'
         }}) }}
         <small>{{ form_help(form.messageText) }}</small>

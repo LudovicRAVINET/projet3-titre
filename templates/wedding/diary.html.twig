@@ -6,23 +6,19 @@
     <!--Journal banner -->
     <div class="diary-banner">
         <div id="wedding-image">
-            
             {% if event.eventPicture is null %}
                 <img class="img" src="{{ asset('build/images/banner/WeddingDefault.png') }}"  alt="Diary wedding banner">
             {% else %}
                 <img src="{{ asset('uploads/files/' ~ event.eventPicture ~ ' ') }}"  alt="Diary wedding banner">
             {% endif %}
-            
                 <img src="{{ asset('build/images/buttons/leftVector.png') }}">
-                 </div> 
+                 </div>
         </div>
         <div class="buttons">
                 <button type="button" class="btn btn-light">Comment ça marche</button><br><br>
-          
                 <button type="button" class="btn btn-info">Compiler en livre d'or</button><br><br>
-            
                 <button type="button" class="btn btn-light">Ajouter les photos du jour</button><br>
-        </div>
+            </div>
         <div class ="box">
             <br>
             <p >Gérer</p><br>
