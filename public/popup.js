@@ -36,3 +36,31 @@ function passwordEye(id, inputPwd) {
         pwd.setAttribute('type', 'password');
     }
 }
+
+function menuDisplay() {
+    const nav = document.getElementById('nav');
+    const loginBtn = document.getElementById('loginBtnNav');
+    const registerBtn = document.getElementById('registerBtnNav');
+    const dropdownDiv = document.getElementById('dropdownDiv');
+    nav.classList.toggle('nav_open');
+    if (dropdownDiv != null) {
+        dropdownDiv.classList.toggle('visually-hidden');
+    }
+    if (loginBtn != null && registerBtn != null) {
+        loginBtn.classList.toggle('visually-hidden');
+        registerBtn.classList.toggle('visually-hidden');
+    }
+}
+
+function activitiesDisplay() {
+    const weddingLink = document.getElementById('weddingLink');
+    const birthdateLink = document.getElementById('birthdateLink');
+    const mourningLink = document.getElementById('mourningLink');
+    const chevron = document.getElementById('chevron');
+    const activityLink = document.getElementById('activityLink');
+    weddingLink.classList.toggle('visually-hidden');
+    birthdateLink.classList.toggle('visually-hidden');
+    mourningLink.classList.toggle('visually-hidden');
+    chevron.classList.toggle('visually-hidden');
+    activityLink.classList.toggle('text-uppercase');
+}
