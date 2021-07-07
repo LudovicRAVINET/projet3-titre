@@ -33,7 +33,7 @@ function pictureUpload(eventId) {
             .then((res) => res.data.image)
             .then((image) => {
                 const weddingImageHtml = `
-                <img src="/uploads/files/${image}" class="d-block w-100" alt="Diary wedding banner">
+                <img src="/uploads/files/${image}"  alt="Diary wedding banner">
             `;
                 document.querySelector('#wedding-image').innerHTML = weddingImageHtml;
             })
