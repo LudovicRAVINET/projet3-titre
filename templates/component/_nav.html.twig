@@ -22,8 +22,8 @@
 			<a class="text-white mb-5 fs-4" href="#">Blog</a>
 
 			{% if not app.user %}
-				<a class="text-white mb-2 mt-4 fs-4" href="#" onClick="popup('registerBtn')">S'inscrire</a>
-				<a class="text-white mb-2 fs-4" href="#" onClick="popup('loginBtn')">S'identifier</a>
+				<a class="text-white mb-2 mt-4 fs-4" onClick="popup('registerBtn')">S'inscrire</a>
+				<a class="text-white mb-2 fs-4" onClick="popup('loginBtn')">S'identifier</a>
 			{% else %}
 				<a class="text-white mb-2 border-top border-bottom py-2 fs-4" href="#">Mon profil</a>
 				<a class="text-white mb-2 py-2 fs-4" onclick="activitiesDisplay()" id="activityLink" href="#"><span id="chevron" class="pe-1 visually-hidden">></span>Activités</a>
