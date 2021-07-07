@@ -12,6 +12,11 @@ function loginRegister() {
     popup('registerBtn');
 }
 
+function resetPassword() {
+    popup('loginBtnClose');
+    popup('passwordBtn');
+}
+
 const newUser = document.getElementById('newUser').value;
 if (newUser === '1') {
     popup('confirmBtn');
