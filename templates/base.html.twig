@@ -26,7 +26,7 @@
 		</header>
 
 		<div id="loginForm">{% include 'component/_login.html.twig' %}</div>
-		<div id="loginForm">{% include 'component/_createDiaryEvent.html.twig' %}</div>
+		<div id="createDiaryEvent">{% include 'component/_createDiaryEvent.html.twig' %}</div>
 		<div id="registerForm">{{ render(controller('App\\Controller\\SecurityController::register')) }}</div>
 		<div id="registerConfirm">{{ render(controller('App\\Controller\\SecurityController::registerConfirm')) }}</div>
 		<div id="resetPasswordForm">{{ render(controller('App\\Controller\\SecurityController::reset')) }}</div>
