@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile - {{ user.getLastname }}{% endblock %}
+
+{% block body %}
+    <div class="main-profile mt-4">
+        <div class="sidebar-left">
+            <div class="searchbar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Recherche">
+            </div>
+            <div class="sidebarnav common-sidebar mt-4">
+                <p>
+                    Bonjour, <br>
+                    <span>{{ user.getLastname }}</span>
+                </p>
+                <span>Afficher par</span>
+                <ul>
+                    <li class="active">Tous mes événements</li>
+                    <li>Mariage</li>
+                    <li>Anniversaire</li>
+                    <li>Naissance</li>
+                    <li>Deuil</li>
+                    <li>Autres</li>
+                </ul>
+                <p id="presta">
+                    <a href="#">Trouver des prestataires</a>
+                </p>
+            </div>
+
+            <div class="archive common-sidebar mt-4">
+                <a href="#">
+                    Archive
+                </a>
+            </div>
+
+            <div class="confidential mt-4">
+                <small>
+                    Confidentialités <br>
+                    Conditions générales
+                </small>
+            </div>
+        </div>
+
+        <div class="middle-profile">
+            <h1>Mes évènements</h1>
+            { % for event in events  % }
+                <div class="card-event">
+                    <div class="top-card">
+                        <img src="{{ event.Picture }}" alt="">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="bottom-card">
+                        <p>
+                            {{ event.Description }}
+                        </p>
+                        <div class="btn-bottom">
+                            <a href="#">Voir</a>
+                            <a href="#">Gérer</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

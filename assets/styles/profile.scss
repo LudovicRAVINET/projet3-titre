@@ -1,0 +1,97 @@
+.searchbar{
+  border-radius: $btn-border-radius;
+  padding: .5rem 1rem;
+  background-color: $blue-profile;
+  width: 270px;
+  display: inline-flex;
+  .fas{
+    margin:auto;
+  }
+  input{
+    border: none;background-color: transparent;
+  }
+}
+.middle-profile{
+  display: flex;
+  width: 700px;
+}
+
+.card-event{
+  display: inline-flex;
+  height: 280px;
+  width: 280px;
+  border: 0.5px solid $border-color-profile;
+  border-radius: 10px;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  .bottom-card{
+    padding: .6rem;
+    .btn-bottom{
+      display: flex;
+      justify-content: space-between;
+    }
+    p{
+      font-weight: bold;
+    }
+  }
+ .top-card{
+   position:relative;
+   .fas{
+     position: absolute;
+     top: 5%;
+     right: 5%;
+     padding: .8rem;
+     border-radius: 50%;
+     background-color: $white;
+   }
+   img{
+     height: 98px;
+   }
+ }
+}
+
+.middle-profile h1{
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: $black;
+}
+.sidebar-left{
+  width: 270px;
+  height: 450px;
+  margin-left: 10rem;
+  .active{
+    background-color: $primary;
+    color: $white;
+    padding: .5rem .75rem;
+  }
+}
+
+#presta a{
+  color: $black;
+}
+.sidebarnav{
+  p span{
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  li{
+    margin: .7rem 0;
+  }
+}
+
+.common-sidebar{
+  border: 1px solid $border-color-profile;
+  border-radius: 10px;
+  padding: .7rem;
+}
+ .archive{
+   a{
+     font-weight: bold;
+     color: $black;
+   }
+ }
+
+ .confidential{
+   color: $light-grey;
+ }
+
