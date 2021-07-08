@@ -227,7 +227,7 @@ abstract class Event
 
     public function getEventPicture(): ?string
     {
-        return $this->eventPicture;
+        return $this->eventPicture ?? '';
     }
 
     public function setEventPicture(string $eventPicture): self
