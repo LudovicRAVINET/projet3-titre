@@ -77,6 +77,11 @@ abstract class Event
      */
     private string $eventPicture;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
+     */
+    private User $user;
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
@@ -233,6 +238,18 @@ abstract class Event
     public function setEventPicture(string $eventPicture): self
     {
         $this->eventPicture = $eventPicture;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
