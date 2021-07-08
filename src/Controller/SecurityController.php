@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\LoginType;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use App\Entity\User;
+use App\Form\ResetPasswordType;
 use App\Form\UserType;
 use App\Repository\SubscriptionRepository;
 use App\Repository\UserRepository;
@@ -16,8 +17,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 
 class SecurityController extends AbstractController
 {
@@ -62,7 +66,8 @@ class SecurityController extends AbstractController
         Request $request,
         EntityManagerInterface $manager,
         UserPasswordEncoderInterface $encoder,
-        SubscriptionRepository $subscripRepository
+        SubscriptionRepository $subscripRepository,
+        MailerInterface $mailer
     ): Response {
         $user = new User();
 
@@ -91,6 +96,15 @@ class SecurityController extends AbstractController
                     $this->container->get('security.token_storage')->setToken($token);
                     $this->container->get('session')->set('_security_main', serialize($token));
 
+                    // send email confirmation
+                     $email = (new Email())
+                      ->from(strval($this->getParameter('mailer_from')))
+                      ->to(strval($user->getEmail()))
+                      ->subject('Confirmation de votre inscription')
+                      ->html($this->renderView('component/_email.html.twig'));
+
+                     $mailer->send($email);
+
                     return $this->render('home/index.html.twig', ['newUser' => true]);
                 } else {
                     $this-> addFlash('danger', 'Veuillez svp valider le RECAPTCHA');
@@ -112,5 +126,100 @@ class SecurityController extends AbstractController
         $subscriptions = $subscripRepository->findAll();
 
         return $this->render('component/_registerConfirm.html.twig', ['subscriptions' => $subscriptions]);
+    }
+
+    /**
+     * @Route("/forgottenPassword", name="app_forgotten_password", methods={"POST"})
+     */
+    public function reset(
+        Request $request,
+        UserRepository $users,
+        MailerInterface $mailer,
+        TokenGeneratorInterface $tokenGenerator
+    ): Response {
+
+        // This form is not linked to an entity, be carefull /\
+        $form = $this->createForm(ResetPasswordType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $data = $form->getData();
+            $user = $users->findOneByEmail($data['email']);
+
+            if ($user === null) {
+                $this->addFlash('danger', 'Cette adresse e-mail est inconnue');
+                return $this->redirectToRoute('home_index');
+            }
+
+            $token = $tokenGenerator->generateToken();
+
+            try {
+                $user->setResetToken($token);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+            } catch (\Exception $e) {
+                $this->addFlash('danger', $e->getMessage());
+                return $this->redirectToRoute('home_index');
+            }
+
+            $url = $this->generateUrl(
+                'app_reset_password',
+                array('token' => $token),
+                UrlGeneratorInterface::ABSOLUTE_URL
+            );
+
+            $message = (new Email())
+                        ->from('admin@eventoo.fr')
+                        ->to($user->getEmail())
+                        ->subject('Réinitialisation de votre mot de passe')
+                        ->html(
+                            "Bonjour,<br><br>Une demande de réinitialisation de mot
+                             de passe a été effectuée. Veuillez cliquer sur le lien suivant : " . $url,
+                            'text/html'
+                        );
+
+            $mailer->send($message);
+
+            $this->addFlash('success', 'E-mail de réinitialisation du mot de passe envoyé !');
+
+            return $this->redirectToRoute('home_index');
+        }
+
+        return $this->render('component/_forgottenPassword.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/resetPassword/{token}", name="app_reset_password")
+     */
+    public function resetPassword(
+        Request $request,
+        string $token,
+        UserPasswordEncoderInterface $passwordEncoder
+    ): Response {
+
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['resetToken' => $token]);
+
+        if ($user === null) {
+            $this->addFlash('danger', 'Token Inconnu');
+            return $this->redirectToRoute('home_index');
+        }
+
+        if ($request->isMethod('POST')) {
+            $user->setResetToken(null);
+            $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Mot de passe mis à jour');
+
+            return $this->redirectToRoute('home_index');
+        } else {
+            return $this->render('password/resetPassword.html.twig', ['token' => $token]);
+        }
     }
 }

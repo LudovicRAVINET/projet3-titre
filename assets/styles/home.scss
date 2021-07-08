@@ -1,51 +1,235 @@
 /*====================
-    Home header section
+    Home top section
 =====================*/
 
-/*====================
-Display Events section
-=====================*/
-.home-theme{
-  background-color: $home-main-theme;
-  .login-btn {
-    background-color: $white !important ;
-    color: $black !important ;
-  }
-  
-  .t{
-    color: $t-blue;
-  }
-  li a{
-    color:$white !important;
-  }
+.main-home{
+  width: 90%;
+  margin: auto;
 }
-.display-events {
-  padding: 5rem 0;
-  .birthday h2 {
-    padding: 4.5rem 1.7rem !important;
+.home-top{
+  position: relative;
+  height: 1024px;
+  color: $text-color;
+  display: flex;
+  .left-bg{
+    position: absolute;
+    left: -5%;
+    z-index: -1;
   }
-  .box-events {
-    position: relative;
-    height: 180px;
-    width: 250px;
-    display: inline-block;
-    margin: 2rem 3.5rem;
-    padding: 4rem 0;
+  .bottom-bg{
+    position: absolute;
+    bottom: 0;
+    left: -5%;
+  }
+  .top-left{
+    width: 50vw;
+    p{
+      padding: 1rem 0;
+    }
+    .about-us{
+      span{
+        font-weight: bold;
+        font-size: 60px;
+        line-height: 66px;
+      }
+      font-size: 60px;
+      line-height: 66px;
 
-    h2 {
-      color: $white;
-      text-align: center;
-      position: absolute;
-      top: 36%;
-      background-color: rgba(85, 108, 114, 0.8);
-      padding: 4.5rem 4rem;
-      height: 180px;
-      width: 250px;
     }
   }
-  img {
-    width: 250px;
-    height: 180px;
-    filter: grayscale(100%);
+  .top-right{
+    width: 50vw;
   }
+}
+
+.home-btns{
+  display: flex;
+  justify-content: space-between;
+}
+
+.common-btn{
+  margin: 0 .2rem;
+  height: 130px;
+  width: 130px;
+  background-repeat: no-repeat;
+}
+.btn-wedding{
+  background-image: url("/public/build/images/home-buttons/wedding.f5dc683b.png");
+}
+
+.btn-wedding:hover{
+  background-image: url("/public/build/images/home-buttons/wedding-h.3a733775.png");
+  transition: .2s;
+}
+
+.btn-birthday{
+  background-image: url("/public/build/images/home-buttons/birthday.d33fc4a4.png");
+}
+
+.btn-birthday:hover{
+  background-image: url("/public/build/images/home-buttons/birthday-h.c6a3673a.png");
+  transition: .2s;
+}
+
+.btn-mourning{
+  background-image: url("/public/build/images/home-buttons/mourning.469ae39c.png");
+}
+
+.btn-mourning:hover{
+  background-image: url("/public/build/images/home-buttons/mourning-h.3fc7c4fb.png");
+  transition: .2s;
+}
+
+.btn-others{
+  background-image: url("/public/build/images/home-buttons/others.b84740bb.png");
+}
+
+.btn-others:hover{
+  background-image: url("/public/build/images/home-buttons/others-h.7c01363e.png");
+  transition: .2s;
+}
+
+.btn-rl{
+  border-radius: 39px;
+  padding: .8rem 4rem;
+  width: 200px;
+  height: 45px;
+}
+
+.register{
+  background-color: $green-main;
+  color: $white;
+  border: 1px solid transparent;
+}
+
+.register:hover{
+  font-weight: bold;
+  box-shadow: 0px 5px 5px lightgrey;
+  transition: .5s;
+  color: $white;
+}
+
+.login{
+  border: 1px solid $black;
+  color: $black;
+}
+
+.login:hover{
+  border: 1px solid $green-main;
+  color: $green-main;
+  box-shadow: 0px 5px 5px lightgrey;
+  transition: .5s;
+}
+
+.carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+
+.carousel-inner img{
+  height: 1024px;
+}
+
+.carousel-indicators .active{
+  color: $green-main;
+}
+
+.what-is-eventoo{
+  padding: 228px 195px 132px 196px;
+  min-height: 537px;
+
+  background-color: $bg-light-beige;
+  text-align: center;
+}
+
+.what-is-eventoo h1{
+  margin: 1rem;
+}
+
+.what-is-eventoo span{
+  font-weight: bold;
+}
+
+.what-is-eventoo p{
+  padding-top: 1.5rem;
+  font-style: italic;
+  font-size: larger;
+  width: 70%;
+  margin: auto;
+}
+
+.what-happens-eventoo{
+  padding-top: 2rem;
+  display: flex;
+  .whe-left{
+    width: 50%;
+    h1, p{
+      padding-bottom: 2rem;
+    }
+    p{
+      max-width: 500px ;
+    }
+    span{
+      font-weight: bold;
+    }
+
+  }
+  .whe-right{
+    position: relative;
+    width: 50%;
+    text-align: center;
+    .right-bg{
+      position: absolute;
+      right: 12%;
+      top:20%;
+      z-index: -1;
+    }
+  }
+}
+
+.line{
+  width: 500px;
+  height: 0px;
+  border: 1px solid #C4C4C4;
+  margin:8rem auto 5rem auto;
+}
+
+.thinking-eventoo{
+  .testimonials{
+    .card-testimonial{
+      margin: 0 3rem;
+      display: inline-block;
+      width: 350px;
+      height: 500px;
+      .user-rating{
+        font-weight: bold;
+      }
+    }
+
+  }
+  h1{
+    padding-top:2rem;
+    padding-bottom:1rem ;
+  }
+  text-align: center;
+  p{
+    padding: 2rem 0;
+    max-width: 900px;
+    margin: auto;
+    font-size: x-large;
+  }
+  span{
+    font-weight: bold;
+  }
+}
+
+.home-btn{
+  font-weight: bold;
+  font-size: large;
+  background-color: $home-beige;
+  color: $black;
+  padding: 1.3rem 4rem;
+  border-radius: 30px;
+  width: 450px;
 }

@@ -6,10 +6,6 @@
 
 {% block body %}
 
-<header class="home-theme">
-      <input type="hidden" id="newUser" value="{{ newUser ?? false }}">
-</header>
-
 {% for category, messages in app.flashes %}
 	{% for message in messages %}
 		<div class="alert alert-{{ category }}">
@@ -18,56 +14,172 @@
 	{% endfor %}
 {% endfor %}
 
-<!--Carousel-->
-<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img src="{{ asset('build/images/carousel/step1.2cfb888d.png') }}" class="d-block w-100" alt="Step 1 ">
-    </div>
-    <div class="carousel-item" data-bs-interval="2000">
-      <img src="{{ asset('build/images/carousel/step2.756b0c85.png') }}" class="d-block w-100" alt="Step 2">
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('build/images/carousel/step3.3b8a8354.png') }}" class="d-block w-100" alt="Step 3">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+	<div class="main-home">
+		<div class="home-top">
+			<img class="left-bg" src="{{ asset('/build/images/home/home-vector.6f2dd640.png') }}" alt="">
+			<img class="bottom-bg" src="{{ asset('/build/images/home/home-vector-2.a16b74ec.png') }}" alt="">
 
+			<div class="top-left">
+				<div class="about-us">
+					<p>
+						<span>Pour parler <br> facilement <br> </span>
+						des choses qui nous <br> tiennent a coeur
+					</p>
+				</div>
+				<p>
+					Volutpat ac tincidunt vitae semper quis lectus <br> nulla at volutpat diam ut venenatis tellus <br> in metus vulputate eu.
+				</p>
 
-<!--Events-->
-<div class="display-events text-center">
-    <div class="box-events wedding">
-        <img src="{{ asset('build/images/background-images/bg-wedding.2ad0d1a8.jpg') }}" alt="Wedding background image">
-        <a href="{{ path('wedding_index') }}">
-            <h2>Mariage</h2>
-        </a>
-    </div>
-    <div class="box-events mourning">
-        <img src="{{ asset('build/images/background-images/bg-mourning.277cb7d4.png') }}" alt="Mourning background image">
-        <a href="{{ path('mourning_index') }}">
-            <h2>Deuil</h2>
-        </a>
-    </div>
-    <div class="box-events birthday">
-        <img src="{{ asset('build/images/background-images/bg-birthday.cc144639.jpeg') }}" alt="Birthday background image">
-        <a href="{{ path('birthday_index') }}">
-            <h2>Anniversaire</h2>
-        </a>
-    </div>
-    <div class="box-events others">
-        <img src="{{ asset('build/images/background-images/others.733d6be7.jpg') }}" alt="Other background image">
-        <a href="#">
-            <h2>Autres</h2>
-        </a>
-    </div>
-</div>
+				<div class="home-btns">
+					<div class="common-btn btn-wedding"></div>
+					<div class="common-btn btn-birthday"></div>
+					<div class="common-btn btn-birth"></div>
+					<div class="common-btn btn-mourning"></div>
+					<div class="common-btn btn-others"></div>
+				</div>
+
+				<div class="register-login py-5">
+					<a class="btn-rl register" onClick="popup('registerBtn')">S'inscrire</a>
+					<a class="btn-rl login mx-4" onClick="popup('loginBtn')">S'identifier</a>
+				</div>
+			</div>
+			<div class="top-right">
+				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img src="{{ asset('/build/images/home-caroussel/salon.c548b8a5.png') }}" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="{{ asset('/build/images/home-caroussel/family.505365cf.png') }}" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="{{ asset('/build/images/home-caroussel/hug.e6a992b1.png') }}" class="d-block w-100" alt="...">
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="what-is-eventoo">
+			<h1>
+				<span>eventoo,</span>
+				c'est quoi ?
+			</h1>
+			<p>
+				vous permet de parler  de choses difficiles avec d'autres personnes
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea Du commodo
+				conseprequat . velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+				sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+				anim id est laborum.
+			</p>
+		</div>
+		<div class="what-happens-eventoo">
+			<div class="whe-left">
+				<h1>
+					Que se passe-t-il lorsque vous utilisez <span>eventoo</span>
+				</h1>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+					aliquip ex ea Du commodo conseprequat . velit esse cillum dolore eu fugiat
+					nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+					culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<a href="#" class="home-btn">Voir comment fonctionne eventoo</a>
+			</div>
+
+			<div class="whe-right">
+				<img src="{{ asset('/build/images/home/whe.01c5b204.png') }}" alt="">
+				<img class="right-bg" src="{{ asset('/build/images/home/home-vector-3.15e26d57.png') }}" alt="">
+			</div>
+		</div>
+		<div class="line"></div>
+		<div class="thinking-eventoo">
+			<h1>
+				ce qu'ils pensent de <span>eventoo</span>
+			</h1>
+			<p>
+				Neque egestas congue quisque egestas diam
+				in arcu cursus euismod, quis viverra nibh
+				cras pulvinar mattis nunc sed blandit libero volutpat.
+			</p>
+
+			<div class="testimonials mt-5">
+				<div class="card-testimonial">
+					<img src="{{ asset('/build/images/home/rakoto.98ec19e5.png') }}" alt="">
+
+					<div class="rating mt-4">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+					</div>
+
+					<h6 class="mt-4">
+						J’ai passé un merveilleux moment auprès de ma compagne,
+						les plats étaient d’une finesse incroyable.  Un service
+						PARFAIT
+						Merci
+					</h6>
+					<h6 class="user-rating mt-4">
+						M Rakoto
+					</h6>
+				</div>
+				<div class="card-testimonial">
+					<img src="{{ asset('/build/images/home/rakoto.98ec19e5.png') }}" alt="">
+
+					<div class="rating mt-4">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+					</div>
+
+					<h6 class="mt-4">
+						J’ai passé un merveilleux moment auprès de ma compagne,
+						les plats étaient d’une finesse incroyable.  Un service
+						PARFAIT
+						Merci
+					</h6>
+					<h6 class="user-rating mt-4">
+						M Rakoto
+					</h6>
+				</div>
+				<div class="card-testimonial">
+					<img src="{{ asset('/build/images/home/rakoto.98ec19e5.png') }}" alt="">
+
+					<div class="rating mt-4">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+					</div>
+
+					<h6 class="mt-4">
+						J’ai passé un merveilleux moment auprès de ma compagne,
+						les plats étaient d’une finesse incroyable.  Un service
+						PARFAIT
+						Merci
+					</h6>
+					<h6 class="user-rating mt-4">
+						M Rakoto
+					</h6>
+				</div>
+			</div>
+
+			<a href="#" class="home-btn">Voir plus</a>
+		</div>
+	</div>
 
 {% endblock %}
