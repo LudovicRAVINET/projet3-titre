@@ -11,42 +11,68 @@
     border: none;background-color: transparent;
   }
 }
-.middle-profile{
+.main-profile{
   display: flex;
-  width: 700px;
 }
-
+.middle-profile{
+  width: 700px;
+  margin:auto;
+}
+.events{
+  display: flex;
+  flex-wrap: wrap;
+}
 .card-event{
-  display: inline-flex;
-  height: 280px;
-  width: 280px;
+  display: inline-block;
+  height: 315px;
+  min-width: 300px;
   border: 0.5px solid $border-color-profile;
   border-radius: 10px;
-  transform: matrix(1, 0, 0, -1, 0, 0);
+  margin:1rem;
   .bottom-card{
     padding: .6rem;
     .btn-bottom{
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
+      a{
+        padding: .3rem 3rem;
+        border-radius: $btn-border-radius;
+        border: 1px solid $light-grey;
+        background-color: $blue-profile;
+        color: $light-grey;
+      }
     }
-    p{
+    p, span{
       font-weight: bold;
     }
   }
  .top-card{
    position:relative;
    .fas{
+     font-size: large;
      position: absolute;
      top: 5%;
      right: 5%;
-     padding: .8rem;
+     padding: .5rem;
      border-radius: 50%;
      background-color: $white;
+     color: $black;
    }
    img{
+     border-radius: 10px 10px 0px 0px;
      height: 98px;
+     width: 300px;
+     object-fit: cover;
    }
  }
+}
+
+.fa-euro-sign{
+  font-size: x-small;
+  padding: .25rem;
+  border-radius: 50%;
+  color: $white;
+  background-color: $green-main;
 }
 
 .middle-profile h1{
@@ -59,6 +85,7 @@
   width: 270px;
   height: 450px;
   margin-left: 10rem;
+  position: fixed;
   .active{
     background-color: $primary;
     color: $white;
@@ -93,5 +120,57 @@
 
  .confidential{
    color: $light-grey;
+ }
+
+ .sidebar-right{
+   right: 0;
+   margin-right: 10rem;
+   position: fixed;
+   .become-presta{
+     width: 310px;
+     height: 62px;
+     background: #F2B134;
+     border: 0.5px solid #F2B134;
+     box-sizing: border-box;
+     border-radius: 10px;
+     color: $white;
+     display: flex;
+     .fas{
+       color: $white;
+       margin: auto;
+     }
+     p{
+       margin: auto;
+     }
+   }
+   .agenda{
+     width: 310px;
+     height: 347px;
+     border: 0.5px solid $border-color-profile;
+     border-radius: 10px;
+     padding: .5rem 1rem;
+     p{
+       font-size: bold;
+     }
+   }
+ }
+.how-it-works{
+  width: 310px;
+  height: 62px;
+  border: 0.5px solid $border-color-profile;
+  border-radius: 10px;
+  display: flex;
+  p{
+    margin: auto;
+  }
+}
+ .fa-question{
+   font-size: large;
+   border-radius: 50%;
+   color: $white;
+   background-color: #80CC28;
+   padding: .5rem;
+   margin: auto;
+
  }
 

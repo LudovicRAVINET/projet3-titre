@@ -17,8 +17,11 @@ class ProfileController extends AbstractController
      */
     public function index(User $user): Response
     {
+        $events = $user->getEvents();
+
         return $this->render('profile/index.html.twig', [
-            'user' => $user
+            'user' => $user,
+            'events' => $events
         ]);
     }
 }
