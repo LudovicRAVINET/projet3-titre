@@ -2,7 +2,6 @@
 
 .diary-form-control {
     margin: 0 auto;
-    margin-top: 40px;
     width: 40%;
     background-color: white;
     box-shadow: 5px 5px 10px grey, -2px -2px 10px grey;
@@ -54,7 +53,7 @@
 }
 
 .diary-form-text {
-    background-color: rgb(228, 226, 226);
+   
     border-radius: 30px;
     height: 100px;
     padding: 20px;
@@ -143,7 +142,7 @@
     .diary-message-text {
         display: inline-block;
         width: 60%;
-        background: rgb(199, 198, 198);
+        background:rgb(199, 198, 198);
         box-shadow: 5px 5px 10px grey;
         position: relative;
         -moz-border-radius: 10px;
@@ -166,27 +165,99 @@
     }
 }
 
-.diary-banner{
+/*///banner///*/
+.buttons {   
+    flex-direction: column;
+    margin-top: 0;
+    justify-content: flex-end;
+    float: right; 
+    border-radius: 4px;
+    margin-right: 7%;
+    border: 0.5px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+   
+
+ }
+
+.box{
+    position:absolute;
+    background: #FFFFFF;
+    border: 0.5px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    float: right;
+    margin-top: 16%;
+    width: 310px;
+    left: 1027px;  
+    text-align: center; 
+    text-decoration-color: black;
+}
+
+.box img{
+    vertical-align: middle;
+    display: table-cell;
+    margin:auto;
+    
+}
+
+
+ .diary-wrapper{
+    display: flex;
+    position: absolute;
+    top: 70%;
+    margin-top: -220Px;
+    margin-left: 10%;
+    p{
+        color: rgb(199, 198, 198);
+        font-size: xx-large;
+    }
+}
+.fas{
+    color: $wedding-main-theme;
+    font-size: xx-large;
+    margin: 0 1rem;
+    color: rgb(199, 198, 198);
+   
+}
+
+
+.diary-banner {
     position: relative;
+    
+    .img{
+        width: 1235px;
+        height: 297px;
+        left: 0px;
+        top: 0px;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
     .fas{
         color: $wedding-main-theme;
         font-size: xx-large;
         margin: 0 1rem;
+       
     }
+    
+   
 
-    .diary-wrapper{
+
+    #wedding-image  img{
         display: flex;
-        position: absolute;
-        right: 10%;
-        top: 15%;
-        p{
-            color: $white;
-            font-size: xx-large;
+        right: 45%;
+        top: 70%;
+        margin-left: 100px;
+        margin-right: 100px;
+      
         }
-    }
-}
+       
+       
+    }  
 
-.diary-banner-sentence {
+    .diary-banner-sentence {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -195,3 +266,53 @@
         margin: 3px;
     }
 }
+
+.previous {
+    max-width: 10%;
+}
+button{
+    width:310px
+}
+
+
+////-box date et heure-////
+.dateBox{
+    background: #FFFFFF;
+    border: 0.5px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 20px;
+    float: left;
+    margin-top: -70px;
+    width: 310px;
+    height: 240px;
+   text-align: center;
+    margin-left:10px; 
+   
+}
+
+.dateBox1{
+    background: #FFFFFF;
+    border: 0.5px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 20px;
+    float: left;
+    margin-top: 20px;
+    width: 310px;
+    height: 160px;
+   text-align: center;
+    margin-left:25px; 
+   
+}
+.parent{
+    flex-direction:column;
+    
+}
+
+.btn btn-primary{
+    background-color: rgb(65, 201, 225);
+    color: white;
+  
+}
+
+
+

@@ -66,7 +66,8 @@ class SecurityController extends AbstractController
         Request $request,
         EntityManagerInterface $manager,
         UserPasswordEncoderInterface $encoder,
-        SubscriptionRepository $subscripRepository
+        SubscriptionRepository $subscripRepository,
+        MailerInterface $mailer
     ): Response {
         $user = new User();
 
@@ -94,6 +95,15 @@ class SecurityController extends AbstractController
                     $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
                     $this->container->get('security.token_storage')->setToken($token);
                     $this->container->get('session')->set('_security_main', serialize($token));
+
+                    // send email confirmation
+                     $email = (new Email())
+                      ->from(strval($this->getParameter('mailer_from')))
+                      ->to(strval($user->getEmail()))
+                      ->subject('Confirmation de votre inscription')
+                      ->html($this->renderView('component/_email.html.twig'));
+
+                     $mailer->send($email);
 
                     return $this->render('home/index.html.twig', ['newUser' => true]);
                 } else {

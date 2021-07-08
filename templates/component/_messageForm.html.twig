@@ -1,16 +1,9 @@
 <div class="diary-form-control">
 
     {{ form_start(form, {'attr': {'class': 'diary-form'}}) }}
-        <div class="diary-form-head">
-            <div class="diary-title">Créer un post</div>
-            <div class="diary-author-name">
-                {{ form_label(form.messageAuthor, 'Votre nom') }}
-                {{ form_widget(form.messageAuthor) }}
-            </div>
-        </div>
 
         {{ form_widget(form.messageText, {'attr': {
-            'placeholder': 'écrire...',
+            'placeholder': 'De quoi souhaitez-vous parler?...',
             'class': 'diary-form-text'
         }}) }}
         <small>{{ form_help(form.messageText) }}</small>
@@ -32,5 +25,4 @@
             </button>
         </div>
     {{ form_end(form) }}
-
 </div>

@@ -1,23 +1,18 @@
+
 {% extends 'base.html.twig' %}
 
 {% block title %} - Journal{% endblock %}
 
 {% block body %}
-    <header class="wedding-theme">
-        {% include 'component/_header.html.twig' %}
-    </header>
+    <header class="wedding-theme"></header>
+
+    
 
     <!--Journal banner -->
-	{% block banner %}{% endblock %}
+    {% block banner %}{% endblock %}
 
-    	<!--Middle Section-->
-	<div class="middle-section ">
-		<div class="previous">
-			<a href="{{ path('wedding_index') }}">
-				<h2>Précédent</h2>
-			</a>
-	    </div>
-	</div>
+        <!--Middle Section-->
+
 
 
     {# /// message form /// #}
