@@ -6,11 +6,46 @@
     <!--Journal banner -->
     <div class="diary-banner">
         <div id="wedding-image">
-            {% if event.eventPicture is null %}
-                <img src="{{ asset('build/images/banner/WeddingDefault.png') }}" class="d-block w-100" alt="Diary wedding banner">
+            {% if event.eventPicture == '' %}
+                <img class="img" src="{{ asset('build/images/banner/WeddingDefault.png') }}"  alt="Diary wedding banner">
             {% else %}
-                <img src="{{ asset('uploads/files/' ~ event.eventPicture ~ ' ') }}" class="d-block w-100" alt="Diary wedding banner">
+                <img src="{{ asset('uploads/files/' ~ event.eventPicture ~ ' ') }}"  alt="Diary wedding banner">
             {% endif %}
+                 </div>
+        </div>
+        <div class="parent">
+            <div class="dateBox1">
+                <p>Date et heure</p>
+                <p><strong>Lundi 13 Juin 2021</strong></p>
+                <p>13h00 à 14h00</p>
+                <div class="button">
+                <button type="button" class="btn btn-secondary mb-2">Afficher le programme</button>
+            </div>
+        <br><br><br><br>
+            <div class="dateBox">
+                <p>Collecte de fonds</p>
+                <p>Collectés <p style="color:rgb(65, 201, 225);">8239 euros</p>
+                <p><strong>Participations</strong> <p style="color:rgb(65, 201, 225);">33 euros</p>
+                <div class="button">
+                <button type="button" class="btn btn-secondary mb-2">Gérer</button>
+            </div>
+        </div>
+    </div>
+
+
+
+        <div class="buttons">
+                <button type="button" class="btn btn-light"><img class="img" src="{{ asset('build/images/buttons/Vector1.png') }}"> Comment ça marche</button><br><br>
+                <button type="button" class="btn btn-primary"><p style="color:azure;">Compiler en livre d'or</p></button><br><br>
+                <button type="button" class="btn btn-light"><img class="img" src="{{ asset('build/images/buttons/Vector2.png') }}"> Ajouter les photos du jour</button><br>
+            </div>
+        <div class="box">
+            <br>
+            <p ><img class="img" src="{{ asset('build/images/buttons/roue.png') }}">Gérer</p><br>
+            <p ><img class="img" src="{{ asset('build/images/buttons/faire-part1.png') }}">Liste des invités</p><br>
+            <p ><img class="img" src="{{ asset('build/images/buttons/programme.png') }}">Le programme</p><br>
+            <p ><img class="img" src="{{ asset('build/images/buttons/peoples.png') }}">Faire-Part</p><br>
+            <p ><img class="img" src="{{ asset('build/images/buttons/trans.png') }}">Faire un direct</p><br>
         </div>
         <div class="diary-wrapper">
             <i class="fas fa-quote-left"></i>
@@ -19,33 +54,6 @@
                 </p>
                 <i class="fas fa-pencil-alt"></i>
             <i class="fas fa-quote-right"></i>
-        </div>
-    </div>
-
-    <form id="uploadForm" role="form" method="post" enctype=multipart/form-data>
-        <input type="file" id="file" name="file">
-        <input type="submit" id="file-btn" onClick="pictureUpload({{ event.id }})" value="Valider la photo">
-    </form>
-
-    <!--Editable fields: div attribute "id" has to be equal to event property-->
-    <div class="diary-banner-sentence">
-        <div>Mariage de Mademoiselle </div>
-        <div contenteditable="true" id="wifeFirstname" value="test" onBlur="update(this, {{ event.id }})">
-            {{ event.wifeFirstname }}
-            <i class="fas fa-pencil-alt"></i>
-        </div>
-        <div contenteditable="true" id="wifeLastname" value="test" onBlur="update(this, {{ event.id }})">
-            {{ event.wifeLastname }}
-            <i class="fas fa-pencil-alt"></i>
-        </div>
-        <div> et de Monsieur </div>
-        <div contenteditable="true" id="husbandFirstname" value="test" onBlur="update(this, {{ event.id }})">
-            {{ event.husbandFirstname }}
-            <i class="fas fa-pencil-alt"></i>
-        </div>
-        <div contenteditable="true" id="husbandLastname" value="test" onBlur="update(this, {{ event.id }})">
-            {{ event.husbandLastname }}
-            <i class="fas fa-pencil-alt"></i>
         </div>
     </div>
 
