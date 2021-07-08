@@ -32,14 +32,13 @@
 		<div id="resetPasswordForm">{{ render(controller('App\\Controller\\SecurityController::reset')) }}</div>
 
 		{% block body %}{% endblock %}
-		<footer>{#% include 'component/_footer.html.twig' %#}<footer></body>
-			{% block js %}{% endblock %}
-			<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
-			<script src="/logout.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-			<script src="https://www.google.com/recaptcha/api.js"></script>
-			<script src="{{ asset('/popup.js') }}"></script>
-		</html>
+		<footer>{#% include 'component/_footer.html.twig' %#}</footer>
+		{% block js %}{% endblock %}
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+		<script src="/logout.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="https://www.google.com/recaptcha/api.js"></script>
+		<script src="{{ asset('/popup.js') }}"></script>
 	</body>
 </html>
