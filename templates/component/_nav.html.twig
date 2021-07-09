@@ -45,26 +45,6 @@
 			</a>
 
 			{% if not app.user %}
-<<<<<<< HEAD
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="image/png" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-						<img src="{{ asset('build/images/utilisateur.fc004123.png') }}">
-					</button>
-					<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-						<li>
-							<a class="dropdown-item" onClick="popup('loginBtn')">Se connecter</a>
-
-						</li>
-						<li>
-							<a class="dropdown-item" onClick="popup('registerBtn')">S'inscrire</a>
-
-						</li>
-						<li>
-                            <a class="dropdown-item" onclick="popup('createDiaryEventBtn')">Créer un journal</a>
-
-                        </li>
-					</ul>
-=======
 				<div id="registerBtnDiv" class="col-lg-3 col-sm-4 col-xs-0">
 					<a id="registerBtnNav" class="btn btn-primary text-white my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center" onclick="popup('registerBtn')">S'inscrire</a>
 				</div>
@@ -75,7 +55,6 @@
 					<a id='toggle_btn' class="col-1 mt-2 ms-4 btn btn-link" onclick="menuDisplay()">
 						<img class="h-25 my-4" src="{{ asset('build/images/buttons/MenuBurger.png') }}">
 					</a>
->>>>>>> dev
 				</div>
 
 			{% else %}
