@@ -64,3 +64,16 @@ function activitiesDisplay() {
     chevron.classList.toggle('visually-hidden');
     activityLink.classList.toggle('text-uppercase');
 }
+
+function createEventBtn(element, evtType) {
+    const createBtns = document.getElementsByClassName('btnEvent');
+    const eventType = document.getElementById('eventType');
+    const inputEvent = `<input type="text" name="event_type" id="event_type" value="${evtType}">`;
+    Array.from(createBtns).forEach((btn) => {
+        if (btn.classList.contains('pushedBtn')) {
+            btn.classList.remove('pushedBtn');
+        }
+    });
+    element.classList.toggle('pushedBtn');
+    eventType.innerHTML = inputEvent;
+}

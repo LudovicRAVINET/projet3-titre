@@ -1,57 +1,63 @@
 <button type="button" id="createDiaryEventBtn" class="btn btn-primary mx-auto d-block mt-5 visually-hidden" data-bs-toggle="modal" data-bs-target="#modalDiary">
-    Bootstrap Modal popup
+	Bootstrap Modal popup
 </button>
 <div class="modal fade" tabindex="-1" id="modalDiary" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
+<<<<<<< HEAD
 				<form class="form-login mx-auto diaryCenter" method="post" action="{{ path('app_login') }}">
 
+=======
+				<form class="form-login mx-auto diaryCenter" method="post" action="{{ path('new_event') }}">
+>>>>>>> dev
 					<div class="modal-header border-0">
 						<button type="button" id="loginBtnClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-header border-0">
 						<h1 class="h3 mb-3 font-weight-normal createDiary">Créer un évènement</h1>
 					</div>
+					<div class="resumeBox">
 						<p class="createEventPerso">Créez un évènement personnel pour ajouter à votre agenda personnel et éventuellement partager avec vos proches.</p>
 
 						<h2 class="whatEvent">Quel type d'évènement</h2>
 
-						<div id="typeEvent" >
+						<div id="typeEvent">
 							<div class="links-buttons">
-									<a href="{{ path('wedding_index') }}" class="link">
-										<div class="link-img link-img1"></div>
-										<p>Mariage</p>
-									</a>
+								<a onclick="createEventBtn(this, 'wedding')" class="link btnEvent">
+									<div class="link-img link-img1"></div>
+									<p>Mariage</p>
+								</a>
 
-									<a href="{{ path('birthday_index') }}" class="link">
-										<div class="link-img link-img2"></div>
-										<p>Anniversaire</p>
-									</a>
+								<a onclick="createEventBtn(this, 'birthday')" class="link btnEvent">
+									<div class="link-img link-img2"></div>
+									<p>Anniversaire</p>
+								</a>
 
-									<a href="{{ path('birthday_index') }}" class="link">
-										<div class="link-img link-img3"></div>
-										<p>Naissance</p>
-									</a>
+								<a onclick="createEventBtn(this, 'birthdate')" class="link btnEvent">
+									<div class="link-img link-img3"></div>
+									<p>Naissance</p>
+								</a>
 
-									<a href="{{ path('mourning_index') }}" class="link">
-										<div class="link-img link-img4"></div>
-										<p>Deuil</p>
-									</a>
+								<a onclick="createEventBtn(this, 'mourning')" class="link btnEvent">
+									<div class="link-img link-img4"></div>
+									<p>Deuil</p>
+								</a>
 
-									<a href="{{ path('birthday_index') }}" class="link">
-										<div class="link-img link-img5"></div>
-										<p>Autres</p>
-									</a>
+								<a onclick="createEventBtn(this, 'others')" class="link btnEvent">
+									<div class="link-img link-img5"></div>
+									<p>Autres</p>
+								</a>
 							</div>
 						</div>
 
+						<div id="eventType" class="visually-hidden"></div>
 						<div class="titleCreate">
 							<label class="titleDiary">TITRE</label>
 							<input type="text" name="event_name" id="event_name" class="col-12 form-control mb-3" placeholder="Titre de l'évènement" required autofocus>
 						</div>
 
-						<div class="row align-items-start mt-2 d-flex align-items-center">
+						<div class="row align-items-start mt-2 d-flex align-items-center dateCollect">
 							<div class="col-6 dateCreate">
 								<label class="dateDiary">DATE</label>
 								<input type="date" name="event_date" id="event_date" class="form-control mb-3" placeholder="Titre de l'évènement" required autofocus>
@@ -73,6 +79,7 @@
 								Valider
 							</button>
 						</div>
+					</div>
 				</form>
 			</div>
 		</div>
