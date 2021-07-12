@@ -36,7 +36,6 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-
         return $this->render('home/index.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error
@@ -221,5 +220,15 @@ class SecurityController extends AbstractController
         } else {
             return $this->render('password/resetPassword.html.twig', ['token' => $token]);
         }
+    }
+
+    /**
+     * @Route("/login_success", name="login_success")
+     */
+    public function postLoginRedirect(): Response
+    {
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        return $this->redirectToRoute('profile_index', ['id' => $user->getId()]);
     }
 }
