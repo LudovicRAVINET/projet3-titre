@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use DateTime;
 use App\Entity\Wedding;
+use App\Entity\User;
 use App\Entity\Birthday;
 use App\Entity\Mourning;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,36 +20,45 @@ class EventController extends AbstractController
      */
     public function createEvent(Request $request, EntityManagerInterface $manager): Response
     {
-        $eventType = htmlentities(trim($request->get('event_type')));
-        $eventName = htmlentities(trim($request->get('event_name')));
-        $eventDate = htmlentities(trim($request->get('event_date')));
+        if ($this->getUser() !== null) {
+            /** @var \App\Entity\User $user */
+            $user = $this->getUser();
 
-        if ($eventType == 'wedding') {
-            $wedding = new Wedding();
-            $wedding->setEventName($eventName)
-                ->setEventDate(new DateTime($eventDate))
-                ->setEventCreatedAt(new DateTime('now'));
-            $manager->persist($wedding);
-        } elseif ($eventType == 'birthday') {
-            $birthday = new Birthday();
-            $birthday->setEventName($eventName)
-                ->setEventDate(new DateTime($eventDate))
-                ->setEventCreatedAt(new DateTime('now'));
-            $manager->persist($birthday);
-        } elseif ($eventType == 'mourning') {
-            $mourning = new Mourning();
-            $mourning->setEventName($eventName)
-                ->setEventDate(new DateTime($eventDate))
-                ->setEventCreatedAt(new DateTime('now'));
-            $manager->persist($mourning);
-        } else {
-            $this->addFlash('danger', "Veuillez selectionner un événement.");
-            return $this->redirectToRoute('home_index');
+            $eventType = htmlentities(trim($request->get('event_type')));
+            $eventName = htmlentities(trim($request->get('event_name')));
+            $eventDate = htmlentities(trim($request->get('event_date')));
+
+            if ($eventType == 'wedding') {
+                $wedding = new Wedding();
+                $wedding->setEventName($eventName)
+                    ->setEventDate(new DateTime($eventDate))
+                    ->setEventCreatedAt(new DateTime('now'))
+                    ->setUser($user);
+                $manager->persist($wedding);
+            } elseif ($eventType == 'birthday') {
+                $birthday = new Birthday();
+                $birthday->setEventName($eventName)
+                    ->setEventDate(new DateTime($eventDate))
+                    ->setEventCreatedAt(new DateTime('now'))
+                    ->setUser($user);
+                $manager->persist($birthday);
+            } elseif ($eventType == 'mourning') {
+                $mourning = new Mourning();
+                $mourning->setEventName($eventName)
+                    ->setEventDate(new DateTime($eventDate))
+                    ->setEventCreatedAt(new DateTime('now'))
+                    ->setUser($user);
+                $manager->persist($mourning);
+            } else {
+                $this->addFlash('danger', "Veuillez selectionner un événement.");
+                return $this->redirectToRoute('home_index');
+            }
+
+            $manager->flush();
+
+            $this->addFlash('success', 'Votre événement a bien été créé.');
         }
 
-        $manager->flush();
-
-        $this->addFlash('success', 'Votre événement a bien été créé.');
         return $this->redirectToRoute('home_index');
     }
 }
