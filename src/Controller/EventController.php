@@ -3,9 +3,6 @@
 namespace App\Controller;
 
 use DateTime;
-use App\Entity\Wedding;
-use App\Entity\Birthday;
-use App\Entity\Mourning;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,9 +13,11 @@ class EventController extends AbstractController
 {
     /**
      * @Route("/event", name="new_event", methods={"POST"})
-     */
+
     public function createEvent(Request $request, EntityManagerInterface $manager): Response
     {
+        $userId = $this->getUser()->getId();
+
         $eventType = htmlentities(trim($request->get('event_type')));
         $eventName = htmlentities(trim($request->get('event_name')));
         $eventDate = htmlentities(trim($request->get('event_date')));
@@ -27,19 +26,22 @@ class EventController extends AbstractController
             $wedding = new Wedding();
             $wedding->setEventName($eventName)
                 ->setEventDate(new DateTime($eventDate))
-                ->setEventCreatedAt(new DateTime('now'));
+                ->setEventCreatedAt(new DateTime('now'))
+                ->setUser($userId);
             $manager->persist($wedding);
         } elseif ($eventType == 'birthday') {
             $birthday = new Birthday();
             $birthday->setEventName($eventName)
                 ->setEventDate(new DateTime($eventDate))
-                ->setEventCreatedAt(new DateTime('now'));
+                ->setEventCreatedAt(new DateTime('now'))
+                ->setUser($userId);
             $manager->persist($birthday);
         } elseif ($eventType == 'mourning') {
             $mourning = new Mourning();
             $mourning->setEventName($eventName)
                 ->setEventDate(new DateTime($eventDate))
-                ->setEventCreatedAt(new DateTime('now'));
+                ->setEventCreatedAt(new DateTime('now'))
+                ->setUser($userId);
             $manager->persist($mourning);
         } else {
             $this->addFlash('danger', "Veuillez selectionner un événement.");
@@ -51,4 +53,5 @@ class EventController extends AbstractController
         $this->addFlash('success', 'Votre événement a bien été créé.');
         return $this->redirectToRoute('home_index');
     }
+     */
 }
