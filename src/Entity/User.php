@@ -63,11 +63,6 @@ class User implements UserInterface
      */
     private \DateTimeInterface $birthDate;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Gender::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private Gender $gender;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -222,18 +217,6 @@ class User implements UserInterface
     public function setBirthDate(\DateTimeInterface $birthDate): self
     {
         $this->birthDate = $birthDate;
-
-        return $this;
-    }
-
-    public function getGender(): ?Gender
-    {
-        return $this->gender;
-    }
-
-    public function setGender(Gender $gender): self
-    {
-        $this->gender = $gender;
 
         return $this;
     }

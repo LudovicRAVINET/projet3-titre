@@ -23,13 +23,6 @@ class UserType extends AbstractType
             ->add('birthDate', BirthdayType::class, [
                 'label' => 'Date de naissance',
                 'widget' => 'single_text',
-            ])
-            ->add('gender', EntityType::class, [
-                'label' => 'Genre',
-                'class' => Gender::class,
-                'choice_label' => 'name',
-                'multiple' => false,
-                'expanded' => false
             ]);
     }
 }

@@ -2,11 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
+use App\Repository\TypeRepository;
 use DateTime;
-use App\Entity\Wedding;
-use App\Entity\User;
-use App\Entity\Birthday;
-use App\Entity\Mourning;
+use Doctrine\DBAL\Types\TypeRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,37 +17,42 @@ class EventController extends AbstractController
     /**
      * @Route("/event", name="new_event", methods={"POST"})
      */
-    public function createEvent(Request $request, EntityManagerInterface $manager): Response
-    {
+    public function createEvent(
+        Request $request,
+        EntityManagerInterface $manager,
+        TypeRepository $typeRepository
+    ): Response {
+
         if ($this->getUser() !== null) {
+
             /** @var \App\Entity\User $user */
             $user = $this->getUser();
 
+
+        /** @var \App\Entity\Type $eventType */
             $eventType = htmlentities(trim($request->get('event_type')));
             $eventName = htmlentities(trim($request->get('event_name')));
             $eventDate = htmlentities(trim($request->get('event_date')));
+            $hasJackpot = htmlentities(trim($request->get('jackpot')));
 
-            if ($eventType == 'wedding') {
-                $wedding = new Wedding();
-                $wedding->setEventName($eventName)
-                    ->setEventDate(new DateTime($eventDate))
-                    ->setEventCreatedAt(new DateTime('now'))
+            if ($eventType != null) {
+                $event = new Event();
+
+                /** @var \App\Entity\Type $type */
+                $type = $typeRepository->findOneBy([
+                'name' => $eventType
+                ]);
+
+                $event->setTitle($eventName)
+                    ->setType($type)
+                    ->setDate(new DateTime($eventDate))
                     ->setUser($user);
-                $manager->persist($wedding);
-            } elseif ($eventType == 'birthday') {
-                $birthday = new Birthday();
-                $birthday->setEventName($eventName)
-                    ->setEventDate(new DateTime($eventDate))
-                    ->setEventCreatedAt(new DateTime('now'))
-                    ->setUser($user);
-                $manager->persist($birthday);
-            } elseif ($eventType == 'mourning') {
-                $mourning = new Mourning();
-                $mourning->setEventName($eventName)
-                    ->setEventDate(new DateTime($eventDate))
-                    ->setEventCreatedAt(new DateTime('now'))
-                    ->setUser($user);
-                $manager->persist($mourning);
+
+                if ($hasJackpot === "on") {
+                    $event->setHasJackpot(true);
+                }
+
+                $manager->persist($event);
             } else {
                 $this->addFlash('danger', "Veuillez selectionner un événement.");
                 return $this->redirectToRoute('home_index');

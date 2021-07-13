@@ -31,17 +31,19 @@
 				</p>
 
 				<div class="home-btns">
-					<a href="{{ path("wedding_index") }}"><div class="common-btn btn-wedding"></div></a>
-					<a href="{{ path("birthday_index") }}"><div class="common-btn btn-birthday"></div></a>
-					<a href="{{ path("birthday_index") }}"><div class="common-btn btn-birthday"></div></a>
-					<a href="{{ path("mourning_index") }}"><div class="common-btn btn-mourning"></div></a>
+					<div class="common-btn btn-wedding"></div>
+					<div class="common-btn btn-birthday"></div>
+					<div class="common-btn btn-birthday"></div>
+					<div class="common-btn btn-mourning"></div>
 					<div class="common-btn btn-others"></div>
 				</div>
 
-				<div class="register-login py-5">
-					<a class="btn-rl register" onClick="popup('registerBtn')">S'inscrire</a>
-					<a class="btn-rl login mx-4" onClick="popup('loginBtn')">S'identifier</a>
-				</div>
+				{% if app.user is null%}
+					<div class="register-login py-5">
+						<a class="btn-rl register" onClick="popup('registerBtn')">S'inscrire</a>
+						<a class="btn-rl login mx-4" onClick="popup('loginBtn')">S'identifier</a>
+					</div>
+				{% endif %}
 			</div>
 			<div class="top-right">
 				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
