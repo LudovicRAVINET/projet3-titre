@@ -21,29 +21,34 @@ class TypeFixtures extends Fixture
             $type->setName($eventType);
 
             if ($eventType === "wedding") {
-                $type->setDefaultPicture('https://github.com/Bachir-Ndiaye/
-                                         eventoo-images/blob/main/images/
-                                         mariage/mariage-ring.png');
+                $type->setDefaultPicture(
+                    'https://github.com/Bachir-Ndiaye/eventoo-images/
+blob/main/images/mariage/mariage-ring.png?raw=true'
+                );
             }
             if ($eventType === "birth") {
-                $type->setDefaultPicture('https://github.com/Bachir-Ndiaye/
-                                         eventoo-images/blob/main/images/
-                                         naissance/naissance-default.png');
+                $type->setDefaultPicture(
+                    'https://github.com/Bachir-Ndiaye/eventoo-images/
+blob/main/images/naissance/naissance-default.png?raw=true'
+                );
             }
             if ($eventType === "birthday") {
-                $type->setDefaultPicture('https://github.com/Bachir-Ndiaye/
-                                          eventoo-images/blob/main/images/
-                                          anniversaire/anniversaire-default.png');
+                $type->setDefaultPicture(
+                    'https://github.com/Bachir-Ndiaye/eventoo-images/
+blob/main/images/anniversaire/anniversaire-default.png?raw=true'
+                );
             }
             if ($eventType === "mourning") {
-                $type->setDefaultPicture('https://github.com/Bachir-Ndiaye/
-                                          eventoo-images/blob/main/images/
-                                          deuil/deuil-default.png');
+                $type->setDefaultPicture(
+                    'https://github.com/Bachir-Ndiaye/eventoo-images/
+blob/main/images/deuil/deuil-default.png?raw=true'
+                );
             }
             if ($eventType === "others") {
-                $type->setDefaultPicture('https://github.com/Bachir-Ndiaye/
-                                         eventoo-images/blob/main/images/
-                                         anniversaire/annniversaire-rose.png');
+                $type->setDefaultPicture(
+                    'https://github.com/Bachir-Ndiaye/eventoo-images/
+blob/main/images/anniversaire/annniversaire-rose.png?raw=true'
+                );
             }
             $this->addReference('type_' . $key, $type);
             $manager->persist($type);

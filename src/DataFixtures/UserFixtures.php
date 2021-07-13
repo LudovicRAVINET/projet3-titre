@@ -8,7 +8,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use DateTime;
 
-class UserFixtures extends AppFixtures
+class UserFixtures extends AppFixtures implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -29,11 +29,19 @@ class UserFixtures extends AppFixtures
         $regularUser->setFirstname('John');
         $regularUser->setLastname('Doe');
         $regularUser->setBirthDate(new DateTime('1982-10-16'));
+        $regularUser->setSubscription($this->getReference('gratuit'));
         $this->addReference('user_test', $regularUser);
 
         $manager->persist($adminUser);
         $manager->persist($regularUser);
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            SubscriptionFixtures::class
+        ];
     }
 }

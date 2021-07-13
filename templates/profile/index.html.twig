@@ -47,7 +47,9 @@
                 {% for event in events %}
                     <div class="card-event">
                         <div class="top-card">
-                            <img src="{{ event.image }}" alt="">
+                            {% if event.image is empty %}
+                                <img src="{{ event.getType.defaultPicture }}" alt="">
+                            {% else %}<img src="{{ event.image }}" alt="">{% endif %}
                             <i class="fas fa-lock"></i>
                         </div>
                         <div class="bottom-card">
