@@ -9,7 +9,7 @@
     <div class="diary-banner">
         <div id="banner-image">
             {% if event.image == '' %}
-                <img class="img" src="{{ event.type.defaultPicture }}"  alt="Diary banner">
+                <img class="img" src="{{ event.type.defaultPicture ~ '?raw=true' }}"  alt="Diary banner">
             {% else %}
                 <img src="{{ asset('uploads/files/' ~ event.image ~ ' ') }}"  alt="Diary banner">
             {% endif %}
