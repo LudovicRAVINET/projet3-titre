@@ -22,41 +22,47 @@ class EventController extends AbstractController
         EntityManagerInterface $manager,
         TypeRepository $typeRepository
     ): Response {
-        /** @var \App\Entity\User $user */
-        $user = $this->getUser();
+
+        if ($this->getUser() !== null) {
+
+            /** @var \App\Entity\User $user */
+            $user = $this->getUser();
+
 
         /** @var \App\Entity\Type $eventType */
-        $eventType = htmlentities(trim($request->get('event_type')));
-        $eventName = htmlentities(trim($request->get('event_name')));
-        $eventDate = htmlentities(trim($request->get('event_date')));
-        $hasJackpot = htmlentities(trim($request->get('jackpot')));
+            $eventType = htmlentities(trim($request->get('event_type')));
+            $eventName = htmlentities(trim($request->get('event_name')));
+            $eventDate = htmlentities(trim($request->get('event_date')));
+            $hasJackpot = htmlentities(trim($request->get('jackpot')));
 
-        if ($eventType != null) {
-            $event = new Event();
+            if ($eventType != null) {
+                $event = new Event();
 
-            /** @var \App\Entity\Type $type */
-            $type = $typeRepository->findOneBy([
+                /** @var \App\Entity\Type $type */
+                $type = $typeRepository->findOneBy([
                 'name' => $eventType
-            ]);
+                ]);
 
-            $event->setTitle($eventName)
-                ->setType($type)
-                ->setDate(new DateTime($eventDate))
-                ->setUser($user);
+                $event->setTitle($eventName)
+                    ->setType($type)
+                    ->setDate(new DateTime($eventDate))
+                    ->setUser($user);
 
-            if ($hasJackpot === "on") {
-                $event->setHasJackpot(true);
+                if ($hasJackpot === "on") {
+                    $event->setHasJackpot(true);
+                }
+
+                $manager->persist($event);
+            } else {
+                $this->addFlash('danger', "Veuillez selectionner un événement.");
+                return $this->redirectToRoute('home_index');
             }
 
-            $manager->persist($event);
-        } else {
-            $this->addFlash('danger', "Veuillez selectionner un événement.");
-            return $this->redirectToRoute('home_index');
+            $manager->flush();
+
+            $this->addFlash('success', 'Votre événement a bien été créé.');
         }
 
-        $manager->flush();
-
-        $this->addFlash('success', 'Votre événement a bien été créé.');
         return $this->redirectToRoute('home_index');
     }
 }
