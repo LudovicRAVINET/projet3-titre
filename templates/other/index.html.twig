@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mariage - Accueil
+{% block title %}Autre évènement - Accueil
 {% endblock %}
 
 
 {% block body %}
 
-	<div id="event" class="container-fluid">
+	<div id="event-oth" class="container-fluid">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="jumbotron">
 						<div class="info">
-							<h1 class="display-3">Tout pour organiser, inviter et partager votre mariage</h1>
+							<h1 class="display-3">Tout pour organiser, inviter et partager votre évènement</h1>
 
 							<p class="lead-p">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
 
@@ -178,7 +178,12 @@
 						<!-- rajouter lien de l'image / alt -->
 						<div class="links-buttons">
 
-								<a href="{{ path('birthday_index') }}" class="link">
+								<a href="{{ path('wedding_index') }}" class="link">
+									<div class="link-img link-img6"></div>
+									<p>Mariage</p>
+								</a>
+
+                                <a href="{{ path('birthday_index') }}" class="link">
 									<div class="link-img link-img7"></div>
 									<p>Anniversaire</p>
 								</a>
@@ -191,11 +196,6 @@
 								<a href="{{ path('mourning_index') }}" class="link">
 									<div class="link-img link-img9"></div>
 									<p>Deuil</p>
-								</a>
-
-								<a href="{{ path('other_index') }}" class="link">
-									<div class="link-img link-img10"></div>
-									<p>Autre</p>
 								</a>
 							</div>
 					</div>
