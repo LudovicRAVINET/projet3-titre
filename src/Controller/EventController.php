@@ -97,7 +97,7 @@ class EventController extends AbstractController
 
         if ($messageForm->isSubmitted() && $messageForm->isValid()) {
             /** @var UploadedFile $mediaUrlFile */
-            $mediaUrlFile = $messageForm->get('mediaUrl')->getData();
+            $mediaUrlFile = $messageForm->get('url')->getData();
             if (!empty($mediaUrlFile)) {
                 $mediaUrlFileName = $fileUploader->upload($mediaUrlFile);
                 $message->setUrl($mediaUrlFileName);
@@ -111,7 +111,7 @@ class EventController extends AbstractController
 
         /* //// Messages Display //// */
         $messagesList = $messageRepository->findBy(
-            ['id' => $id],
+            ['event' => $id],
             ['datetime' => 'DESC'],
             10
         );
