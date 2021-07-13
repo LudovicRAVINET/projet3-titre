@@ -21,7 +21,7 @@
 	</head>
 	<body>
 		<header>
-			{% include 'component/_nav.html.twig' %}
+			{{ include('component/_nav.html.twig', {home: home ?? false}) }}
 			<input type="hidden" id="newUser" value="{{ newUser ?? false }}">
 		</header>
 
