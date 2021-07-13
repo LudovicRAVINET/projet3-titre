@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MessageRepository;
+use App\Entity\Event;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -19,99 +21,93 @@ class Message
     private int $id;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank()
-     */
-    private string $messageText;
-
-    /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="255")
      */
-    private string $messageAuthor;
+    private string $comment;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private \DateTimeInterface $messageDateTime;
+    private \DateTimeInterface $datetime;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $mediaUrl;
+    private ?string $url;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $author;
 
     /**
      * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="messages")
-     * @ORM\JoinColumn(nullable=false)
      */
-    private ?Event $eventId;
+    private Event $event;
+
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getMessageText(): ?string
+    public function getComment(): ?string
     {
-        return $this->messageText;
+        return $this->comment;
     }
 
-    public function setMessageText(string $messageText): self
+    public function setComment(string $comment): self
     {
-        $this->messageText = $messageText;
+        $this->comment = $comment;
 
         return $this;
     }
 
-    public function getMessageAuthor(): ?string
+    public function getDatetime(): ?\DateTimeInterface
     {
-        return $this->messageAuthor;
+        return $this->datetime;
     }
 
-    public function setMessageAuthor(string $messageAuthor): self
+    public function setDatetime(\DateTimeInterface $datetime): self
     {
-        $this->messageAuthor = $messageAuthor;
+        $this->datetime = $datetime;
 
         return $this;
     }
 
-    public function getMessageDateTime(): ?\DateTimeInterface
+    public function getUrl(): ?string
     {
-        return $this->messageDateTime;
+        return $this->url;
     }
 
-    public function setMessageDateTime(\DateTimeInterface $messageDateTime): self
+    public function setUrl(?string $url): self
     {
-        $this->messageDateTime = $messageDateTime;
+        $this->url = $url;
 
         return $this;
     }
 
-    public function getMediaUrl(): ?string
+    public function getAuthor(): ?string
     {
-        if (isset($this->mediaUrl)) {
-            return $this->mediaUrl;
-        } else {
-            return '';
-        }
+        return $this->author;
     }
 
-    public function setMediaUrl(string $mediaUrl): self
+    public function setAuthor(string $author): self
     {
-        $this->mediaUrl = $mediaUrl;
+        $this->author = $author;
 
         return $this;
     }
 
-    public function getEventId(): ?Event
+    public function getEvent(): ?Event
     {
-        return $this->eventId;
+        return $this->event;
     }
 
-    public function setEventId(?Event $eventId): self
+    public function setEvent(Event $event): self
     {
-        $this->eventId = $eventId;
+        $this->event = $event;
 
         return $this;
     }

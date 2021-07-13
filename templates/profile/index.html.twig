@@ -47,19 +47,21 @@
                 {% for event in events %}
                     <div class="card-event">
                         <div class="top-card">
-                            <img src="{{ event.eventPicture }}" alt="">
+                            <img src="{{ event.image }}" alt="">
                             <i class="fas fa-lock"></i>
                         </div>
                         <div class="bottom-card">
                             <p>
-                                {{ event.eventName }}
+                                {{ event.title }}
                             </p>
                             <p>
-                                {{ event.eventDate|date('Y-m-d') }}
+                                {{ event.date|date('Y-m-d') }}
                             </p>
                             <p>
                                 INVITÉS <span>XX</span> <br>
-                                COLLECTE <span>XXX</span> <i class="fas fa-euro-sign"></i>
+                                {% if event.hasJackpot is not null %}
+                                    COLLECTE <span>XXX</span> <i class="fas fa-euro-sign"></i>
+                                {% endif %}
                             </p>
                             <div class="btn-bottom">
                                 <a href="#">Voir</a>

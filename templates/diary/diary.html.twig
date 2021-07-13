@@ -8,10 +8,10 @@
 
     <div class="diary-banner">
         <div id="banner-image">
-            {% if event.eventPicture == '' %}
+            {% if event.image == '' %}
                 <img class="img" src="{{ asset('build/images/banner/' ~ event.type.defaultPicture ~ ' ') }}"  alt="Diary banner">
             {% else %}
-                <img src="{{ asset('uploads/files/' ~ event.eventPicture ~ ' ') }}"  alt="Diary banner">
+                <img src="{{ asset('uploads/files/' ~ event.image ~ ' ') }}"  alt="Diary banner">
             {% endif %}
         </div>
         <div class="parent">
@@ -48,8 +48,8 @@
     </div>
     <div class="diary-wrapper">
         <i class="fas fa-quote-left"></i>
-            <p contenteditable="true" id="eventDescription" value="test" onblur="update(this, {{ event.id }})">
-                {{ event.eventDescription }}
+            <p contenteditable="true" id="title" value="test" onblur="update(this, {{ event.id }})">
+                {{ event.title }}
             </p>
             <i class="fas fa-pencil-alt"></i>
         <i class="fas fa-quote-right"></i>
