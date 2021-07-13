@@ -16,13 +16,38 @@ class TypeFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        foreach (self::EVENT_TYPE as $eventType) {
+        foreach (self::EVENT_TYPE as $key => $eventType) {
             $type = new Type();
             $type->setName($eventType);
-            $type->setDefaultPicture('https://media.istockphoto.com/photos
-                                    /audience-applauding-in-the-theater-picture-
-                                    id1207062016?b=1&k=6&m=1207062016&s=170667a&w=
-                                    0&h=MBa78DK96o5A5ImO9G8QBmdHD0hkNoXKPl0S7Vb5eZA=');
+
+            if ($eventType === "wedding") {
+                $type->setDefaultPicture('https://github.com/Bachir-Ndiaye/
+                                         eventoo-images/blob/main/images/
+                                         mariage/mariage-ring.png');
+            }
+            if ($eventType === "birth") {
+                $type->setDefaultPicture('https://github.com/Bachir-Ndiaye/
+                                         eventoo-images/blob/main/images/
+                                         naissance/naissance-default.png');
+            }
+            if ($eventType === "birthday") {
+                $type->setDefaultPicture('https://github.com/Bachir-Ndiaye/
+                                          eventoo-images/blob/main/images/
+                                          anniversaire/anniversaire-default.png');
+            }
+            if ($eventType === "mourning") {
+                $type->setDefaultPicture('https://github.com/Bachir-Ndiaye/
+                                          eventoo-images/blob/main/images/
+                                          deuil/deuil-default.png');
+            }
+            if ($eventType === "others") {
+                $type->setDefaultPicture('https://github.com/Bachir-Ndiaye/
+                                         eventoo-images/blob/main/images/
+                                         anniversaire/annniversaire-rose.png');
+            }
+            $this->addReference('type_' . $key, $type);
+            $manager->persist($type);
         }
+        $manager->flush();
     }
 }

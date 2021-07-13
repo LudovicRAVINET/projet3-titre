@@ -8,7 +8,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use DateTime;
 
-class UserFixtures extends AppFixtures implements DependentFixtureInterface
+class UserFixtures extends AppFixtures
 {
     public function load(ObjectManager $manager)
     {
@@ -22,7 +22,6 @@ class UserFixtures extends AppFixtures implements DependentFixtureInterface
         $adminUser->setLastname('Administrator');
         $adminUser->setRoles(['ROLE_ADMIN']);
         $adminUser->setBirthDate(new DateTime('1975-03-22'));
-        $adminUser->setGender($this->getReference('Undef'));
 
         $userPassword = $this->encoder->encodePassword($regularUser, 'password');
         $regularUser->setEmail('user@eventoo.fr');
@@ -30,18 +29,11 @@ class UserFixtures extends AppFixtures implements DependentFixtureInterface
         $regularUser->setFirstname('John');
         $regularUser->setLastname('Doe');
         $regularUser->setBirthDate(new DateTime('1982-10-16'));
-        $regularUser->setGender($this->getReference('Homme'));
+        $this->addReference('user_test', $regularUser);
 
         $manager->persist($adminUser);
         $manager->persist($regularUser);
 
         $manager->flush();
-    }
-
-    public function getDependencies()
-    {
-        return [
-          GenderFixtures::class
-        ];
     }
 }
