@@ -31,7 +31,7 @@
 		<div id="registerConfirm">{{ render(controller('App\\Controller\\SecurityController::registerConfirm')) }}</div>
         <div id="createDiaryEvent">{% include 'component/_createDiaryEvent.html.twig' %}</div>
 		<div id="resetPasswordForm">{{ render(controller('App\\Controller\\SecurityController::reset')) }}</div>
-		<div id="avisForm">{{ render(controller('App\\Controller\\ProfileController::avis')) }}</div>
+		<div id="avisForm">{{ render(controller('App\\Controller\\ProfileController::avis', {'id': app.user.getId})) }}</div>
 
 		{% block body %}{% endblock %}
 		<footer>{% include 'component/_footer.html.twig' %}</footer>

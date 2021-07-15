@@ -18,17 +18,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route("/avis", name="avis", methods={"POST"})
+     * @Route("/avis/{id}", name="avis", methods={"POST"})
      */
-    public function avis(Request $request, EntityManagerInterface $entityManager): Response
+    public function avis(Request $request, EntityManagerInterface $entityManager, User $user): Response
     {
-        $user = $this->getUser()->getLastname();
 
         $avis = new Avis();
         $form = $this->createForm(AvisType::class, $avis);
-//dd($_POST);
-        if (true) {
-            $avis->setName($user);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $avis->setName($user->getLastname());
             $avis->setComment($_POST['avis']['comment']);
             $avis->setNote($_POST['avis']['note']);
             $avis->setDate(new DateTime('now'));
@@ -36,12 +35,14 @@ class ProfileController extends AbstractController
             $entityManager->persist($avis);
             $entityManager->flush();
 
+
             // TODO : si la note est inférieure à 2 demander à l'utilisateur pourquoi
 
             $this->addFlash('success', 'Merci pour votre avis');
 
-            $this->redirectToRoute('profile_index', [
-                'id' => $this->getUser()->getId()
+            return $this->render('profile/index.html.twig', [
+                'user' => $user,
+                'events' => $user->getEvents()
             ]);
         }
 
