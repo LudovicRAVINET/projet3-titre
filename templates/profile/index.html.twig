@@ -16,11 +16,23 @@
                 </p>
                 <span>Afficher par</span>
                 <ul>
-                    <li class="active">Tous mes événements</li>
-                    <li>Mariage</li>
-                    <li>Anniversaire</li>
-                    <li>Naissance</li>
-                    <li>Deuil</li>
+<li class="active">
+	<a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'all'}) }}">Tous mes événements</a></li>
+</li>
+
+                    <li><a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'wedding'}) }}">Mariage</a></li>
+<li>
+	<a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'birthday'}) }}">Anniversaire</a></li>
+</li>
+
+<li>
+	<a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'birth'}) }}">Naissance</a></li>
+</li>
+
+<li>
+	<a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'mourning'}) }}">Deuil</a></li>
+</li>
+
                     <li>Autres</li>
                 </ul>
                 <p id="presta">
