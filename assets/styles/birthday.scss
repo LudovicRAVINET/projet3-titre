@@ -87,23 +87,23 @@
 }
 
 #event-hb .link .link-img1 {
-  background-image: url(/public/build/images/buttons/Vector.60ec9888.png);
+  background-image: url(/public/build/images/buttons/logoCreateDiary.eaea686c.png);
 }
 
 #event-hb .link .link-img2 {
-  background-image: url(/public/build/images/buttons/retro.e8b071b9.png);
+  background-image: url(/public/build/images/buttons/logoRetroPlanning.a3c01dbd.png);
 }
 
 #event-hb .link .link-img3 {
-  background-image: url(/public/build/images/buttons/faire-part.d215600c.png);
+  background-image: url(/public/build/images/buttons/logoAnnouncement.d801b6fc.png);
 }
 
 #event-hb .link .link-img4 {
-  background-image: url(/public/build/images/buttons/direct.b09ceaae.png);
+  background-image: url(/public/build/images/buttons/logoDirect.a9948a38.png);
 }
 
 #event-hb .link .link-img5 {
-  background-image: url(/public/build/images/buttons/prestataire.c04b0c92.png);
+  background-image: url(/public/build/images/buttons/logoProvider.b068530c.png);
 }
 
 #event-bottom .link p {
@@ -119,57 +119,82 @@
 }
 
 #event-bottom .link .link-img6 {
-  background-image: url(/public/build/images/buttons/mariage.ad9d257d.png);
+  background-image: url(/public/build/images/buttons/logoWedding.3fe9e841.png);
 }
 
 #event-bottom .link .link-img7 {
-  background-image: url(/public/build/images/buttons/anniversaire.0991b3a7.png);
+  background-image: url(/public/build/images/buttons/logoBirthday.900ae51c.png);
 }
 
 #event-bottom .link .link-img8 {
-  background-image: url(/public/build/images/buttons/deuil.e41199d9.png);
+  background-image: url(/public/build/images/buttons/logoBirth.d52aafb7.png);
+}
+
+#event-bottom .link .link-img9 {
+  background-image: url(/public/build/images/buttons/logoMourning.a7ebe02f.png);
+}
+
+#event-bottom .link .link-img10 {
+  background-image: url(/public/build/images/buttons/logoOther.4b063600.png);
 }
 
 #event-hb .link:hover .link-img1 {
-  background-image: url(/public/build/images/buttons/Vector-yellow.dbf0c108.png);
+  background-image: url(/public/build/images/buttons/logoCreateDiaryYellow.12611472.png);
   background-repeat: no-repeat;
   background-position: center;
 }
 
 #event-hb .link:hover .link-img2 {
-  background-image: url(/public/build/images/buttons/retro-y.7bdcb90a.png);
+  background-image: url(/public/build/images/buttons/logoRetroPlanningYellow.aa1ef946.png);
   background-repeat: no-repeat;
   background-position: center;
 }
 
 #event-hb .link:hover .link-img3 {
-  background-image: url(/public/build/images/buttons/faire-part-y.ba23aa34.png);
+  background-image: url(/public/build/images/buttons/logoAnnouncementYellow.cd0e13c8.png);
   background-repeat: no-repeat;
   background-position: center;
 }
 
 #event-hb .link:hover .link-img4 {
-  background-image: url(/public/build/images/buttons/direct-y.64351990.png);
+  background-image: url(/public/build/images/buttons/logoDirectYellow.267c0b33.png);
   background-repeat: no-repeat;
   background-position: center;
 }
 
 #event-hb .link:hover .link-img5 {
-  background-image: url(/public/build/images/buttons/prestataire-b.a1b96a2b.png);
+  background-image: url(/public/build/images/buttons/logoProviderBlue.e2d2809e.png);
   background-repeat: no-repeat;
   background-position: center;
 }
 
+#event-hb .link:hover p {
+  color: #F2B134;
+}
+
+#event-hb .link:hover .provider,
+#event-bottom .link:hover p {
+  color: #00B2BC;
+}
+
 #event-bottom .link:hover .link-img6 {
-  background-image: url(/public/build/images/buttons/wedding-b.15dac304.png);
+  background-image: url(/public/build/images/buttons/logoWeddingBlue.f220f0da.png);
 }
 
 #event-bottom .link:hover .link-img7 {
-  background-image: url(/public/build/images/buttons/birthday-b.48e53700.png);
+  background-image: url(/public/build/images/buttons/logoBirthdayBlue.bfd131a8.png);
 }
 
 #event-bottom .link:hover .link-img8 {
-  background-image: url(/public/build/images/buttons/mourning-b.3cbd942f.png);
+  background-image: url(/public/build/images/buttons/logoBirthBlue2.3d7aeacf.png);
+}
+
+#event-bottom .link:hover .link-img9 {
+  background-image: url(/public/build/images/buttons/logoMourningBlue.310f7447.png);
+}
+
+#event-bottom .link:hover .link-img10 {
+  background-image: url(/public/build/images/buttons/logoOtherBlue.d7237ab9.png);
 }
 /* -------------------------- */
 
