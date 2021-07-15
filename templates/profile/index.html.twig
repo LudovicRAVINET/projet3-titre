@@ -3,6 +3,13 @@
 {% block title %}Profile - {{ user.getLastname }}{% endblock %}
 
 {% block body %}
+    {% for category, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
     <div class="main-profile mt-4">
         <div class="sidebar-left">
             <div class="searchbar">
