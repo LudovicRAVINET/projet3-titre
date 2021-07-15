@@ -87,7 +87,7 @@
   margin-left: 10rem;
   position: fixed;
   .active{
-    background-color: $primary;
+    background-color: orange;
     color: $white;
     padding: .5rem .75rem;
   }
@@ -103,6 +103,10 @@
   }
   li{
     margin: .7rem 0;
+    a{
+      color: $black;
+      font-weight: bold;
+    }
   }
 }
 

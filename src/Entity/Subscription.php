@@ -34,6 +34,11 @@ class Subscription
      */
     private Collection $users;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -102,5 +107,17 @@ class Subscription
     public function __sleep()
     {
         return [];
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }

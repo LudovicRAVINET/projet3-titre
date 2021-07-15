@@ -1,7 +1,12 @@
 {% extends "@EasyAdmin/page/content.html.twig" %}
 
+{% block stylesheets %}
+<link href="/public/build/app.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-    <div class="jumbotron">
-        <h1>Bienvenue sur l'interface d'administration du site Eventoo</h1>
-    </div>
+   <div class="dashboard">
+      <p>Tableau de bord</p>
+   </div>
+
 {% endblock %}
