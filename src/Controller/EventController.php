@@ -34,12 +34,14 @@ class EventController extends AbstractController
 
             /** @var \App\Entity\User $user */
             $user = $this->getUser();
+            $userId = $user->getId();
 
 
         /** @var \App\Entity\Type $eventType */
             $eventType = htmlentities(trim($request->get('event_type')));
             $eventName = htmlentities(trim($request->get('event_name')));
             $eventDate = htmlentities(trim($request->get('event_date')));
+            $eventTime = htmlentities(trim($request->get('event_time')));
             $hasJackpot = htmlentities(trim($request->get('jackpot')));
 
             if ($eventType != null) {
@@ -53,6 +55,7 @@ class EventController extends AbstractController
                 $event->setTitle($eventName)
                     ->setType($type)
                     ->setDate(new DateTime($eventDate))
+                    ->setTime(new DateTime($eventTime))
                     ->setUser($user);
 
                 if ($hasJackpot === "on") {
@@ -62,12 +65,13 @@ class EventController extends AbstractController
                 $manager->persist($event);
             } else {
                 $this->addFlash('danger', "Veuillez selectionner un événement.");
-                return $this->redirectToRoute('home_index');
+                return $this->redirectToRoute('profile_index', ['id' => $userId]);
             }
 
             $manager->flush();
 
             $this->addFlash('success', 'Votre événement a bien été créé.');
+            return $this->redirectToRoute('profile_index', ['id' => $userId]);
         }
 
         return $this->redirectToRoute('home_index');
