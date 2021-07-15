@@ -16,6 +16,11 @@ function resetPassword() {
     popup('loginBtnClose');
     popup('passwordBtn');
 }
+function avis() {
+    popup('avisBtnClose');
+    popup('avisBtn');
+}
+
 
 const newUser = document.getElementById('newUser').value;
 if (newUser === '1') {
