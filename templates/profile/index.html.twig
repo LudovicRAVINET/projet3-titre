@@ -49,7 +49,7 @@
                         <div class="top-card">
                             {% if event.image is empty %}
                                 <img src="{{ event.getType.defaultPicture }}" alt="">
-                            {% else %}<img src="{{ event.image }}" alt="">{% endif %}
+                            {% else %}<img src="{{ asset('uploads/files/' ~ event.image) }}" alt="">{% endif %}
                             <i class="fas fa-lock"></i>
                         </div>
                         <div class="bottom-card">
@@ -57,7 +57,10 @@
                                 {{ event.title }}
                             </p>
                             <p>
-                                {{ event.date|date('Y-m-d') }}
+                                {{ event.date|date('l d F Y') }}
+                                {% if event.time != null %}
+                                     | {{ event.time|date('H:i') }}
+                                {% endif %}
                             </p>
                             <p>
                                 INVITÉS <span>XX</span> <br>
