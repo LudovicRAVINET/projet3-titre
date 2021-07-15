@@ -2,79 +2,76 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Wedding;
-use App\Entity\Birthday;
-use App\Entity\Mourning;
+use App\Entity\Event;
 use DateTime;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Symfony\Component\Validator\Constraints\Date;
 
-class EventFixtures extends Fixture
+class EventFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $weddingCreationDate = new DateTime();
-        $weddingDate = new DateTime('2020-08-01');
-        $weddingTime = new DateTime('10:15:00');
-        $wedding = new Wedding();
-        $wedding->setWifeLastname('Fathia');
-        $wedding->setWifeFirstname('Soussi');
-        $wedding->setHusbandFirstname('Dupont');
-        $wedding->setHusbandLastname('Jean');
-        $wedding->setEventName('Mariage de Fathia');
-        $wedding->setEventPostalCode('69390');
-        $wedding->setEventTime($weddingTime);
-        $wedding->setEventDate($weddingDate);
-        $wedding->setEventDescription('Le meilleur mariage of the year');
-        $wedding->setEventPicture('Image 1');
-        $wedding->setEventAddress('wild code school');
-        $wedding->setEventCity('Lyon');
-        $wedding->setEventCountry('France');
-        $wedding->setEventCreatedAt($weddingCreationDate);
+        // Wedding
+        $wedding = new Event();
+        $wedding->setTitle('Mariage de Zoto & Choco');
+        $wedding->setType($this->getReference('type_0'));
+        $wedding->setUser($this->getReference('user_test'));
+        $wedding->setDate(new DateTime('2021-06-13'));
+        $wedding->setTime(new DateTime('12:00:00'));
+        $wedding->setHasJackpot(true);
 
-        $weddingCreationDate = new DateTime();
-        $birthdayDate = new DateTime('2020-08-01');
-        $birthdayTime = new DateTime('10:30:00');
-        $birthday = new Birthday();
-        $birthday->setBirthdayDate($birthdayDate);
-        $birthday->setBirthdayFirstname('John');
-        $birthday->setBirthdayLastname('Doe');
-        $birthday->setEventName('Anniversaire de Mister John');
-        $birthday->setEventPostalCode('69390');
-        $birthday->setEventTime($birthdayDate);
-        $birthday->setEventDate($birthdayTime);
-        $birthday->setEventDescription('25ans ça se fête les amis');
-        $birthday->setEventPicture('Image 2 ');
-        $birthday->setEventAddress('15 rue des tontons');
-        $birthday->setEventCity('Paris');
-        $birthday->setEventCountry('France');
-        $birthday->setEventCreatedAt($weddingCreationDate);
+        // Birthday
+        $birthday = new Event();
+        $birthday->setTitle('Anniversaire de Karine');
+        $birthday->setType($this->getReference('type_1'));
+        $birthday->setUser($this->getReference('user_test'));
+        $birthday->setDate(new DateTime('2021-06-13'));
+        $birthday->setTime(new DateTime('12:00:00'));
+        $birthday->setHasJackpot(true);
 
-        $mourningCreationDate = new DateTime();
-        $mourningDate = new DateTime('2020-08-01');
-        $mourningTime = new DateTime('10:30:00');
-        $mourning = new Mourning();
-        $mourning->setDeadBiography('Une personne en Or');
-        $mourning->setDeadFirstname('Francis');
-        $mourning->setDeadLastname('Desangs');
-        $mourning->setDeadBiography('Comme dit, une personne en Or');
-        $mourning->setDeadBirthDay($mourningDate);
-        $mourning->setDeadDeathDay($mourningTime);
-        $mourning->setEventName('Deces dun ange');
-        $mourning->setEventPostalCode('69390');
-        $mourning->setEventTime(new DateTime());
-        $mourning->setEventDate(new DateTime());
-        $mourning->setEventDescription('Triste nouvelle, dèces de notre cher ami Francis');
-        $mourning->setEventPicture('Image 3 ');
-        $mourning->setEventAddress('12 rue des anges');
-        $mourning->setEventCity('Lyon');
-        $mourning->setEventCountry('France');
-        $mourning->setEventCreatedAt($mourningCreationDate);
+        // Wedding
+        $wedding2 = new Event();
+        $wedding2->setTitle('Mariage de Mamy & Nadia');
+        $wedding2->setType($this->getReference('type_0'));
+        $wedding2->setUser($this->getReference('user_test'));
+        $wedding2->setDate(new DateTime('2021-06-13'));
+        $wedding2->setTime(new DateTime('12:00:00'));
+        $wedding2->setHasJackpot(true);
+
+        // Mourning
+        $mourning = new Event();
+        $mourning->setTitle('Funeraille de George');
+        $mourning->setType($this->getReference('type_3'));
+        $mourning->setUser($this->getReference('user_test'));
+        $mourning->setDate(new DateTime('2021-06-13'));
+        $mourning->setTime(new DateTime('12:00:00'));
+        $mourning->setHasJackpot(true);
+
+        // Birth
+        $birth = new Event();
+        $birth->setTitle('Naissance de Jeanne');
+        $birth->setType($this->getReference('type_2'));
+        $birth->setUser($this->getReference('user_test'));
+        $birth->setDate(new DateTime('2021-06-13'));
+        $birth->setTime(new DateTime('12:00:00'));
+        $birth->setHasJackpot(true);
 
         $manager->persist($wedding);
+        $manager->persist($wedding2);
+        $manager->persist($birth);
         $manager->persist($birthday);
         $manager->persist($mourning);
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            UserFixtures::class,
+            TypeFixtures::class,
+        ];
     }
 }
