@@ -35,8 +35,6 @@ class EventController extends AbstractController
             /** @var \App\Entity\User $user */
             $user = $this->getUser();
 
-            dd($request);
-
 
         /** @var \App\Entity\Type $eventType */
             $eventType = htmlentities(trim($request->get('event_type')));
