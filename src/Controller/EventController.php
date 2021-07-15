@@ -11,6 +11,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Message;
+use App\Form\MessageType;
+use App\Repository\EventRepository;
+use App\Repository\MessageRepository;
+use App\Service\BannerUpdate;
+use App\Service\FileUploader;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class EventController extends AbstractController
 {
@@ -64,5 +71,87 @@ class EventController extends AbstractController
         }
 
         return $this->redirectToRoute('home_index');
+    }
+
+    /**
+     * @Route("/event/{id}/diary", name="event_diary", methods={"GET","POST"})
+     */
+    public function diary(
+        int $id,
+        MessageRepository $messageRepository,
+        EventRepository $eventRepository,
+        EntityManagerInterface $entityManager,
+        Request $request,
+        FileUploader $fileUploader
+    ): Response {
+
+        /* //// Message Form //// */
+        /** @var \App\Entity\Event $event */
+        $event = $eventRepository->find($id);
+        $message = new Message();
+        $message->setDateTime(new DateTime('now'));
+        $message->setEvent($event);
+
+        $messageForm = $this->createForm(MessageType::class, $message);
+        $messageForm->handleRequest($request);
+
+        if ($messageForm->isSubmitted() && $messageForm->isValid()) {
+            /** @var UploadedFile $mediaUrlFile */
+            $mediaUrlFile = $messageForm->get('url')->getData();
+            if (!empty($mediaUrlFile)) {
+                $mediaUrlFileName = $fileUploader->upload($mediaUrlFile);
+                $message->setUrl($mediaUrlFileName);
+            }
+
+            $entityManager->persist($message);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('event_diary', ['id' => $id]);
+        }
+
+        /* //// Messages Display //// */
+        $messagesList = $messageRepository->findBy(
+            ['event' => $id],
+            ['datetime' => 'DESC'],
+            10
+        );
+
+        return $this->render('diary/diary.html.twig', [
+            'message' => $message,
+            'form' => $messageForm->createView(),
+            'messagesList' => $messagesList,
+            'event' => $event,
+        ]);
+    }
+
+    /**
+     * @Route("/event/{id}/bannerDiary", name="banner_diary", methods={"GET","POST"})
+     */
+    public function bannerDiary(
+        Event $event,
+        Request $request,
+        EntityManagerInterface $entityManager,
+        FileUploader $fileUploader,
+        BannerUpdate $bannerUpdate
+    ): Response {
+        if ($request->request != null) {
+            $bannerUpdate->update($request, $event, Event::class);
+
+            $requestPicture = $request->files->get('image');
+
+            /** @var UploadedFile $pictureFile */
+            $pictureFile = $requestPicture;
+            if (!empty($pictureFile)) {
+                $pictureFileName = $fileUploader->upload($pictureFile);
+                $event->setImage($pictureFileName);
+            }
+
+            $entityManager->flush();
+        }
+
+        return $this->json([
+            'code' => 200,
+            'image' => $event->getImage()
+        ], 200);
     }
 }
