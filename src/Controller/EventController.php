@@ -40,6 +40,7 @@ class EventController extends AbstractController
             $eventType = htmlentities(trim($request->get('event_type')));
             $eventName = htmlentities(trim($request->get('event_name')));
             $eventDate = htmlentities(trim($request->get('event_date')));
+            $eventTime = htmlentities(trim($request->get('event_time')));
             $hasJackpot = htmlentities(trim($request->get('jackpot')));
 
             if ($eventType != null) {
@@ -53,6 +54,7 @@ class EventController extends AbstractController
                 $event->setTitle($eventName)
                     ->setType($type)
                     ->setDate(new DateTime($eventDate))
+                    ->setTime(new DateTime($eventTime))
                     ->setUser($user);
 
                 if ($hasJackpot === "on") {
