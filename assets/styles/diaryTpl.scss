@@ -79,7 +79,7 @@
     border: 0.5px solid #c4c4c4;
     border-radius: 10px;
     width: 96%;
-    height: 149px;
+    height: 195px;
     margin: auto;
     margin-top: 20px;
   }
@@ -90,7 +90,11 @@
     border-radius: 10px;
     width: 96%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 30px;
+  }
+  
+  .avatar {
+    width: 10%;
   }
   
   .img-avatar img {
@@ -99,3 +103,50 @@
     border-radius: 50%;
     padding: 10px;
   }
+  
+  .write-msg {
+    width: 90%;
+  }
+
+  .col-content {
+    padding: 10px;
+  }
+
+  .diary-part {
+    color: #7B7B7B;
+    font-family: "poppinsregular";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 30px;
+  }
+
+  .diary-date-time {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .collect {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .diary-collect {
+    color: #353746;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .diary-nbpart {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
