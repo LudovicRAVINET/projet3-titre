@@ -6,13 +6,13 @@
 
 {% block body %}
 
-{% for category, messages in app.flashes %}
-	{% for message in messages %}
-		<div class="alert alert-{{ category }}">
-			{{ message }}
-		</div>
+	{% for category, messages in app.flashes %}
+		{% for message in messages %}
+			<div class="alert alert-{{ category }}">
+				{{ message }}
+			</div>
+		{% endfor %}
 	{% endfor %}
-{% endfor %}
 
 	<div class="main-home">
 		<div class="home-top">
@@ -22,26 +22,36 @@
 			<div class="top-left">
 				<div class="about-us">
 					<p>
-						<span>Pour parler <br> facilement <br> </span>
-						des choses qui nous <br> tiennent a coeur
+						<span>Pour parler
+							<br>
+							facilement
+							<br>
+						</span>
+						des choses qui nous
+						<br>
+						tiennent a coeur
 					</p>
 				</div>
 				<p>
-					Volutpat ac tincidunt vitae semper quis lectus <br> nulla at volutpat diam ut venenatis tellus <br> in metus vulputate eu.
+					Volutpat ac tincidunt vitae semper quis lectus
+					<br>
+					nulla at volutpat diam ut venenatis tellus
+					<br>
+					in metus vulputate eu.
 				</p>
 
 				<div class="home-btns">
-					<div class="common-btn btn-wedding"></div>
-					<div class="common-btn btn-birthday"></div>
-					<div class="common-btn btn-birthday"></div>
-					<div class="common-btn btn-mourning"></div>
-					<div class="common-btn btn-others"></div>
+					<a href="{{ path('home_wedding') }}" class="common-btn btn-wedding"></a>
+					<a href="{{ path('home_birthday') }}" class="common-btn btn-birthday"></a>
+					<a href="{{ path('home_birth') }}" class="common-btn btn-birthday"></a>
+					<a href="{{ path('home_mourning') }}" class="common-btn btn-mourning"></a>
+					<a href="{{ path('home_other') }}" class="common-btn btn-others"></a>
 				</div>
 
 				{% if app.user is null%}
 					<div class="register-login py-5">
-						<a class="btn-rl register" onClick="popup('registerBtn')">S'inscrire</a>
-						<a class="btn-rl login mx-4" onClick="popup('loginBtn')">S'identifier</a>
+						<a class="btn-rl register" onclick="popup('registerBtn')">S'inscrire</a>
+						<a class="btn-rl login mx-4" onclick="popup('loginBtn')">S'identifier</a>
 					</div>
 				{% endif %}
 			</div>
@@ -74,26 +84,27 @@
 			</h1>
 			<p>
 				vous permet de parler  de choses difficiles avec d'autres personnes
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea Du commodo
-				conseprequat . velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-				sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-				anim id est laborum.
+																																											Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+																																											tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+																																											quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea Du commodo
+																																											conseprequat . velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+																																											sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+																																											anim id est laborum.
 			</p>
 		</div>
 		<div class="what-happens-eventoo">
 			<div class="whe-left">
 				<h1>
-					Que se passe-t-il lorsque vous utilisez <span>eventoo</span>
+					Que se passe-t-il lorsque vous utilisez
+					<span>eventoo</span>
 				</h1>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-					aliquip ex ea Du commodo conseprequat . velit esse cillum dolore eu fugiat
-					nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum.
+																																																						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+																																																						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+																																																						aliquip ex ea Du commodo conseprequat . velit esse cillum dolore eu fugiat
+																																																						nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+																																																						culpa qui officia deserunt mollit anim id est laborum.
 				</p>
 				<a href="#" class="home-btn">Voir comment fonctionne eventoo</a>
 			</div>
@@ -106,12 +117,13 @@
 		<div class="line"></div>
 		<div class="thinking-eventoo">
 			<h1>
-				ce qu'ils pensent de <span>eventoo</span>
+				ce qu'ils pensent de
+				<span>eventoo</span>
 			</h1>
 			<p>
 				Neque egestas congue quisque egestas diam
-				in arcu cursus euismod, quis viverra nibh
-				cras pulvinar mattis nunc sed blandit libero volutpat.
+																																											in arcu cursus euismod, quis viverra nibh
+																																											cras pulvinar mattis nunc sed blandit libero volutpat.
 			</p>
 
 			<div class="testimonials mt-5">
@@ -128,9 +140,9 @@
 
 					<h6 class="mt-4">
 						J’ai passé un merveilleux moment auprès de ma compagne,
-						les plats étaient d’une finesse incroyable.  Un service
-						PARFAIT
-						Merci
+																																																																	les plats étaient d’une finesse incroyable. Un service
+																																																																	PARFAIT
+																																																																	Merci
 					</h6>
 					<h6 class="user-rating mt-4">
 						M Rakoto
@@ -149,9 +161,9 @@
 
 					<h6 class="mt-4">
 						J’ai passé un merveilleux moment auprès de ma compagne,
-						les plats étaient d’une finesse incroyable.  Un service
-						PARFAIT
-						Merci
+																																																																	les plats étaient d’une finesse incroyable. Un service
+																																																																	PARFAIT
+																																																																	Merci
 					</h6>
 					<h6 class="user-rating mt-4">
 						M Rakoto
@@ -170,9 +182,9 @@
 
 					<h6 class="mt-4">
 						J’ai passé un merveilleux moment auprès de ma compagne,
-						les plats étaient d’une finesse incroyable.  Un service
-						PARFAIT
-						Merci
+																																																																	les plats étaient d’une finesse incroyable. Un service
+																																																																	PARFAIT
+																																																																	Merci
 					</h6>
 					<h6 class="user-rating mt-4">
 						M Rakoto
@@ -183,5 +195,4 @@
 			<a href="#" class="home-btn">Voir plus</a>
 		</div>
 	</div>
-
 {% endblock %}
