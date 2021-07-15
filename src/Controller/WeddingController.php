@@ -75,7 +75,7 @@ class WeddingController extends AbstractController
             10
         );
 
-        return $this->render('wedding/diary.html.twig', [
+        return $this->render('diary/diary.html.twig', [
             'message' => $message,
             'form' => $messageForm->createView(),
             'messagesList' => $messagesList,

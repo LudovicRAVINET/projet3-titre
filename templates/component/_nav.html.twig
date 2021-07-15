@@ -21,17 +21,18 @@
 			<a class="text-white mb-5 fs-4" href="#">Blog</a>
 
 			{% if not app.user %}
-				<a class="text-white mb-2 mt-4 fs-4" onclick="popup('registerBtn')">S'inscrire</a>
-				<a class="text-white mb-2 fs-4" onclick="popup('loginBtn')">S'identifier</a>
-			{% else %}
-				<a class="text-white mb-2 border-top border-bottom py-2 fs-4" href="#">Mon profil</a>
-				<a class="text-white mb-2 py-2 fs-4" onclick="activitiesDisplay()" id="activityLink" href="#">
-					<span id="chevron" class="pe-1 visually-hidden">></span>Activités</a>
-				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="weddingLink" href="#">Mariage</a>
-				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="birthdateLink" href="#">Anniversaire</a>
-				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="mourningLink" href="#">Deuil</a>
-				<a class="text-white mb-2 border-top pt-2 fs-4" href="#" onclick="logoutConfirm()">Se déconnecter</a>
-			{% endif %}
+                <a class="text-white mb-2 mt-4 fs-4" onclick="popup('registerBtn')">S'inscrire</a>
+                <a class="text-white mb-2 fs-4" onclick="popup('loginBtn')">S'identifier</a>
+            {% else %}
+                <a class="text-white mb-2 border-top border-bottom py-2 fs-4" href="#">Mon profil</a>
+                <a class="text-white mb-2 py-2 fs-4" onclick="activitiesDisplay()" id="activityLink" href="#">
+                    <span id="chevron" class="pe-1 visually-hidden">></span>Activités</a>
+                <a class="text-white mb-2 visually-hidden ps-5 fs-4" id="weddingLink" href="{{ path('wedding_index') }}">Mariage</a>
+                <a class="text-white mb-2 visually-hidden ps-5 fs-4" id="birthdateLink" href="{{ path('birthday_index') }}">Anniversaire</a>
+                <a class="text-white mb-2 visually-hidden ps-5 fs-4" id="birthLink" href="{{ path('birth_index') }}">Naissance</a>
+                <a class="text-white mb-2 visually-hidden ps-5 fs-4" id="mourningLink" href="{{ path('mourning_index') }}">Deuil</a>
+                <a class="text-white mb-2 border-top pt-2 fs-4" href="#" onclick="logoutConfirm()">Se déconnecter</a>
+            {% endif %}
 		</div>
 	</div>
 </div>

@@ -2,92 +2,91 @@
 
 .diary-form-control {
     margin: 0 auto;
-    width: 40%;
+    width: 95%;
     background-color: white;
-    box-shadow: 5px 5px 10px grey, -2px -2px 10px grey;
-}
-
-.diary-form {
+    //box-shadow: 5px 5px 10px grey, -2px -2px 10px grey;
+  }
+  
+  .diary-form {
     padding: 20px;
     display: flex;
     flex-direction: column;
     color: black;
-
+  
     label {
-        margin-top: 20px;
-        margin-left: 5px;
-        margin-bottom: 5px;
+      margin-top: 20px;
+      margin-left: 5px;
+      margin-bottom: 5px;
     }
-}
-
-.diary-form-head {
+  }
+  
+  .diary-form-head {
     display: flex;
     justify-content: space-between;
-
+  
     .diary-title {
-        background-color: rgb(248, 192, 120);
-        color: white;
-        border-radius: 15px;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        padding: 10px 20px;
+      background-color: rgb(248, 192, 120);
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
     }
-
+  
     .diary-author-name {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    
-        label {
-            padding-right: 10px;
-            color: black;
-            margin-bottom: 20px;
-        }
-
-        input {
-            background-color: rgb(228, 226, 226);
-            border-radius: 5px;
-        }
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+  
+      label {
+        padding-right: 10px;
+        color: black;
+        margin-bottom: 20px;
+      }
+  
+      input {
+        background-color: rgb(228, 226, 226);
+        border-radius: 5px;
+      }
     }
-}
-
-.diary-form-text {
-   
+  }
+  
+  .diary-form-text {
     border-radius: 30px;
-    height: 100px;
-    padding: 20px;
-}
-
-.diary-bottom {
+    height: 46px;
+    //padding: 20px;
+  }
+  
+  .diary-bottom {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-
-.diary-media {
+  }
+  
+  .diary-media {
     display: flex;
     flex-direction: column;
-}
-
-#diary-send-btn {
+    padding-top: 25px;
+  }
+  
+  #diary-send-btn {
     height: 50px;
     width: 50px;
     padding: 0;
     align-self: flex-end;
     border-style: none;
     background-color: white;
-
+  
     img {
-        height: 30px;
-        width: 30px;
+      height: 30px;
+      width: 30px;
     }
-}
-
-
-/* ////// Messages Display ////// */
-
-.diary-messages-list {
+  }
+  
+  /* ////// Messages Display ////// */
+  
+  .diary-messages-list {
     margin: 0 auto;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -98,9 +97,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.diary-messages-title {
+  }
+  
+  .diary-messages-title {
     background-color: rgb(248, 192, 120);
     color: white;
     border-radius: 15px;
@@ -109,210 +108,193 @@
     width: 180px;
     align-items: center;
     padding: 15px 20px;
-}
-
-.diary-message {
+  }
+  
+  .diary-message {
     background-color: rgb(228, 226, 226);
     border-radius: 30px;
     display: flex;
     justify-content: space-between;
     padding: 20px;
     margin-bottom: 10px;
-    
+  
     .diary-message-container {
-        display: flex;
-        flex-direction: column;
-        width: 30%;
-
-        .diary-message-author {
-            display: inline-block;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .diary-message-media {
-            text-align: center;
-            
-            img {
-                height: 100px;
-            }
-        }
-    }
-
-    .diary-message-text {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+  
+      .diary-message-author {
         display: inline-block;
-        width: 60%;
-        background:rgb(199, 198, 198);
-        box-shadow: 5px 5px 10px grey;
-        position: relative;
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        border-radius: 5px;
-        padding: 10px;
-        margin-right: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+  
+      .diary-message-media {
+        text-align: center;
+  
+        img {
+          height: 100px;
+        }
+      }
     }
-
+  
+    .diary-message-text {
+      display: inline-block;
+      width: 60%;
+      background: rgb(199, 198, 198);
+      box-shadow: 5px 5px 10px grey;
+      position: relative;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 5px;
+      padding: 10px;
+      margin-right: 20px;
+    }
+  
     .diary-message-text:before {
-        content: "";
-        position: absolute;
-        right: 99%;
-        top: 6px;
-        width: 0;
-        height: 0;
-        border-top: 13px solid transparent;
-        border-right: 36px solid rgb(199, 198, 198);
-        border-bottom: 13px solid transparent;
+      content: "";
+      position: absolute;
+      right: 99%;
+      top: 6px;
+      width: 0;
+      height: 0;
+      border-top: 13px solid transparent;
+      border-right: 36px solid rgb(199, 198, 198);
+      border-bottom: 13px solid transparent;
     }
-}
-
-/*///banner///*/
-.buttons {   
+  }
+  
+  /*///banner///*/
+  .buttons {
     flex-direction: column;
     margin-top: 0;
     justify-content: flex-end;
-    float: right; 
+    float: right;
     border-radius: 4px;
     margin-right: 7%;
-    border: 0.5px solid #FFFFFF;
+    border: 0.5px solid #ffffff;
     box-sizing: border-box;
     border-radius: 10px;
     width: 300px;
     height: 200px;
-   
-
- }
-
-.box{
-    position:absolute;
-    background: #FFFFFF;
-    border: 0.5px solid #C4C4C4;
+  }
+  
+  .box {
+    position: absolute;
+    background: #ffffff;
+    border: 0.5px solid #c4c4c4;
     box-sizing: border-box;
     border-radius: 10px;
     float: right;
     margin-top: 16%;
     width: 310px;
-    left: 1027px;  
-    text-align: center; 
+    left: 1027px;
+    text-align: center;
     text-decoration-color: black;
-}
-
-.box img{
+  }
+  
+  .box img {
     vertical-align: middle;
     display: table-cell;
-    margin:auto;
-    
-}
-
-
- .diary-wrapper{
+    margin: auto;
+  }
+  
+  .diary-wrapper {
     display: flex;
     position: absolute;
     top: 70%;
-    margin-top: -220Px;
-    margin-left: 10%;
-    p{
-        color: rgb(199, 198, 198);
-        font-size: xx-large;
+    margin-top: -350px;
+    margin-left: 1%;
+    p {
+      color: white; //rgb(199, 198, 198);
+      font-size: xx-large;
     }
-}
-.fas{
+  }
+  .fas {
     color: $wedding-main-theme;
     font-size: xx-large;
     margin: 0 1rem;
-    color: rgb(199, 198, 198);
-   
-}
-
-
-.diary-banner {
+    color: white; //rgb(199, 198, 198);
+  }
+  
+  .diary-banner {
     position: relative;
-    
-    .img{
-        width: 1235px;
-        height: 297px;
-        left: 0px;
-        top: 0px;
-        margin-left: 100px;
-        margin-right: 100px;
+  
+    .img {
+      width: 1235px;
+      height: 297px;
+      left: 0px;
+      top: 0px;
+      margin-left: 100px;
+      margin-right: 100px;
     }
-    .fas{
-        color: $wedding-main-theme;
-        font-size: xx-large;
-        margin: 0 1rem;
-       
+    .fas {
+      color: $wedding-main-theme;
+      font-size: xx-large;
+      margin: 0 1rem;
     }
-    
-   
-
-
-    #wedding-image  img{
-        display: flex;
-        right: 45%;
-        top: 70%;
-        margin-left: 100px;
-        margin-right: 100px;
-      
-        }
-       
-       
-    }  
-
-    .diary-banner-sentence {
+  
+    #banner-image img {
+      display: flex;
+      right: 45%;
+      top: 70%;
+      margin-left: 100px;
+      margin-right: 100px;
+    }
+  }
+  
+  .diary-banner-sentence {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
+  
     div {
-        margin: 3px;
+      margin: 3px;
     }
-}
-
-.previous {
+  }
+  
+  .previous {
     max-width: 10%;
-}
-button{
-    width:310px
-}
-
-
-////-box date et heure-////
-.dateBox{
-    background: #FFFFFF;
-    border: 0.5px solid #C4C4C4;
+  }
+  button {
+    width: 310px;
+  }
+  
+  ////-box date et heure-////
+  .dateBox {
+    background: #ffffff;
+    border: 0.5px solid #c4c4c4;
     box-sizing: border-box;
     border-radius: 20px;
     float: left;
     margin-top: -70px;
     width: 310px;
     height: 240px;
-   text-align: center;
-    margin-left:10px; 
-   
-}
-
-.dateBox1{
-    background: #FFFFFF;
-    border: 0.5px solid #C4C4C4;
+    text-align: center;
+    margin-left: 10px;
+  }
+  
+  .dateBox1 {
+    background: #ffffff;
+    border: 0.5px solid #c4c4c4;
     box-sizing: border-box;
     border-radius: 20px;
     float: left;
     margin-top: 20px;
     width: 310px;
     height: 160px;
-   text-align: center;
-    margin-left:25px; 
-   
-}
-.parent{
-    flex-direction:column;
-    
-}
-
-.btn btn-primary{
+    text-align: center;
+    margin-left: 25px;
+  }
+  .parent {
+    flex-direction: column;
+  }
+  
+  .btn btn-primary {
     background-color: rgb(65, 201, 225);
     color: white;
-  
-}
+  }
 
-
-
+  p .diary-part1 {
+    color: red;
+  }
