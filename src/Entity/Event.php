@@ -185,4 +185,15 @@ class Event
 
         return $this;
     }
+
+    public function getDateFr(): ?string
+    {
+        setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
+        $dateFr = strftime("%A %e %B %Y", $this->date->getTimestamp());
+        if ($dateFr === false) {
+            return 'date invalide';
+        }
+
+        return $dateFr;
+    }
 }

@@ -64,7 +64,7 @@
                                 {{ event.title }}
                             </p>
                             <p>
-                                {{ event.date|date('l d F Y') }}
+                                {{ event.getDateFr() }}
                                 {% if event.time != null %}
                                      | {{ event.time|date('H:i') }}
                                 {% endif %}
