@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Journal{% endblock %}
+
+{% block body %}
+	<header class="wedding-theme"></header>
+	<!--Journal banner -->
+
+    <div class="diary-banner">
+        <div id="banner-image">
+            {% if event.image == '' %}
+                <img class="img" src="{{ event.type.defaultPicture ~ '?raw=true' }}"  alt="Diary banner">
+            {% else %}
+                <img src="{{ asset('uploads/files/' ~ event.image ~ ' ') }}"  alt="Diary banner">
+            {% endif %}
+        </div>
+        <form id="uploadForm" role="form" method="post" enctype=multipart/form-data>
+            <input type="file" id="file" name="file">
+            <input type="submit" id="file-btn" onClick="pictureUpload({{ event.id }})" value="Valider la photo">
+        </form>
+        <div class="parent">
+            <div class="dateBox1">
+                <p>Date et heure</p>
+                <p><strong>Lundi 13 Juin 2021</strong></p>
+                <p>13h00 à 14h00</p>
+                <div class="button">
+                <button type="button" class="btn btn-secondary mb-2">Afficher le programme</button>
+            </div>
+            <br><br><br><br>
+            <div class="dateBox">
+                <p>Collecte de fonds</p>
+                <p>Collectés <p style="color:rgb(65, 201, 225);">8239 euros</p>
+                <p><strong>Participations</strong> <p style="color:rgb(65, 201, 225);">33 euros</p>
+                <div class="button">
+                <button type="button" class="btn btn-secondary mb-2">Gérer</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button type="button" class="btn btn-light"><img class="img" src="{{ asset('build/images/buttons/Vector1.png') }}"> Comment ça marche</button><br><br>
+        <button type="button" class="btn btn-primary"><p style="color:azure;">Compiler en livre d'or</p></button><br><br>
+        <button type="button" class="btn btn-light"><img class="img" src="{{ asset('build/images/buttons/Vector2.png') }}"> Ajouter les photos du jour</button><br>
+    </div>
+    <div class="box">
+        <br>
+        <p ><img class="img" src="{{ asset('build/images/buttons/roue.png') }}">Gérer</p><br>
+        <p ><img class="img" src="{{ asset('build/images/buttons/faire-part1.png') }}">Liste des invités</p><br>
+        <p ><img class="img" src="{{ asset('build/images/buttons/programme.png') }}">Le programme</p><br>
+        <p ><img class="img" src="{{ asset('build/images/buttons/peoples.png') }}">Faire-Part</p><br>
+        <p ><img class="img" src="{{ asset('build/images/buttons/trans.png') }}">Faire un direct</p><br>
+    </div>
+    <div class="diary-wrapper">
+        <i class="fas fa-quote-left"></i>
+            <p contenteditable="true" id="title" value="test" onblur="update(this, {{ event.id }})">
+                {{ event.title }}
+            </p>
+            <i class="fas fa-pencil-alt"></i>
+        <i class="fas fa-quote-right"></i>
+    </div>
+
+	<!--Middle Section-->
+
+	{# /// message form /// #}
+	{% include "component/_messageForm.html.twig" %}
+
+	{# /// messages display /// #}
+	<div class="diary-messages-list">
+		<div class="diary-messages-title">
+            Les publications :
+        </div>
+
+		{% for message in messagesList %}
+			{{ include('component/_messageDisplay.html.twig', {message: message}) }}
+		{% endfor %}
+	</div>
+
+    {% block js %}
+        <script src="{{ asset('/diary.js') }}"></script>
+    {% endblock %}
+{% endblock %}

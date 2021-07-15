@@ -1,15 +1,15 @@
 <div class="diary-message">
     <div class="diary-message-container">
         <div class="diary-message-author">
-            {{ message.messageAuthor }}
+            {{ message.author }}
         </div>
-        {% if message.mediaURL is not empty %}
+        {% if message.url is not empty %}
             <div class="diary-message-media">
-                <img src="{{ asset('uploads/files/' ~ message.mediaURL ~ ' ') }}" alt="">
+                <img src="{{ asset('uploads/files/' ~ message.url ~ ' ') }}" alt="">
             </div>
         {% endif %}
     </div>
     <div class="diary-message-text">
-        {{ message.messageText }}
+        {{ message.comment }}
     </div>
 </div>

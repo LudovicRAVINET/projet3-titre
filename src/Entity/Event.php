@@ -3,17 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use App\Entity\Type;
+use App\Entity\Message;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="discriminator", type="string")
- * @ORM\DiscriminatorMap({"event" = "Event", "birthday" = "Birthday", "wedding" = "Wedding", "mourning" = "Mourning"})
- */
-abstract class Event
+   */
+class Event
 {
     /**
      * @ORM\Id
@@ -25,62 +24,42 @@ abstract class Event
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $eventName;
+    private string $title;
 
     /**
      * @ORM\Column(type="date")
      */
-    private \DateTimeInterface $eventDate;
+    private \DateTimeInterface $date;
 
     /**
      * @ORM\Column(type="time", nullable=true)
      */
-    private \DateTimeInterface $eventTime;
+    private ?\DateTimeInterface $time;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $eventAddress;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private string $eventPostalCode;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private string $eventCity;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private string $eventCountry;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private string $eventDescription;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private \DateTimeInterface $eventCreatedAt;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="eventId")
-     */
-    private Collection $messages;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private string $eventPicture;
+    private ?string $image;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
      */
     private User $user;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private ?bool $hasJackpot;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="events")
+     */
+    private Type $type;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="event")
+     */
+    private Collection $messages;
 
     public function __construct()
     {
@@ -92,110 +71,87 @@ abstract class Event
         return $this->id;
     }
 
-    public function getEventName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->eventName;
+        return $this->title;
     }
 
-    public function setEventName(string $eventName): self
+    public function setTitle(string $title): self
     {
-        $this->eventName = $eventName;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getEventDate(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->eventDate;
+        return $this->date;
     }
 
-    public function setEventDate(\DateTimeInterface $eventDate): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->eventDate = $eventDate;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getEventTime(): ?\DateTimeInterface
+    public function getTime(): ?\DateTimeInterface
     {
-        return $this->eventTime;
+        return $this->time;
     }
 
-    public function setEventTime(\DateTimeInterface $eventTime): self
+    public function setTime(\DateTimeInterface $time): self
     {
-        $this->eventTime = $eventTime;
+        $this->time = $time;
 
         return $this;
     }
 
-    public function getEventAddress(): ?string
+
+    public function getImage(): ?string
     {
-        return $this->eventAddress;
+        return $this->image ?? '';
     }
 
-    public function setEventAddress(string $eventAddress): self
+    public function setImage(string $image): self
     {
-        $this->eventAddress = $eventAddress;
+        $this->image = $image;
 
         return $this;
     }
 
-    public function getEventPostalCode(): ?string
+    public function getUser(): ?User
     {
-        return $this->eventPostalCode;
+        return $this->user;
     }
 
-    public function setEventPostalCode(string $eventPostalCode): self
+    public function setUser(User $user): self
     {
-        $this->eventPostalCode = $eventPostalCode;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getEventCity(): ?string
+    public function getHasJackpot(): ?bool
     {
-        return $this->eventCity;
+        return $this->hasJackpot;
     }
 
-    public function setEventCity(string $eventCity): self
+    public function setHasJackpot(?bool $hasJackpot): self
     {
-        $this->eventCity = $eventCity;
+        $this->hasJackpot = $hasJackpot;
 
         return $this;
     }
 
-    public function getEventCountry(): ?string
+    public function getType(): ?Type
     {
-        return $this->eventCountry;
+        return $this->type;
     }
 
-    public function setEventCountry(string $eventCountry): self
+    public function setType(Type $type): self
     {
-        $this->eventCountry = $eventCountry;
-
-        return $this;
-    }
-
-    public function getEventDescription(): ?string
-    {
-        return $this->eventDescription;
-    }
-
-    public function setEventDescription(string $eventDescription): self
-    {
-        $this->eventDescription = $eventDescription;
-
-        return $this;
-    }
-
-    public function getEventCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->eventCreatedAt;
-    }
-
-    public function setEventCreatedAt(\DateTimeInterface $eventCreatedAt): self
-    {
-        $this->eventCreatedAt = $eventCreatedAt;
+        $this->type = $type;
 
         return $this;
     }
@@ -212,7 +168,7 @@ abstract class Event
     {
         if (!$this->messages->contains($message)) {
             $this->messages[] = $message;
-            $message->setEventId($this);
+            $message->setEvent($this);
         }
 
         return $this;
@@ -222,34 +178,10 @@ abstract class Event
     {
         if ($this->messages->removeElement($message)) {
             // set the owning side to null (unless already changed)
-            if ($message->getEventId() === $this) {
-                $message->setEventId(null);
+            if ($message->getEvent() === $this) {
+                $message->setEvent($message->getEvent());
             }
         }
-
-        return $this;
-    }
-
-    public function getEventPicture(): ?string
-    {
-        return $this->eventPicture ?? '';
-    }
-
-    public function setEventPicture(string $eventPicture): self
-    {
-        $this->eventPicture = $eventPicture;
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(User $user): self
-    {
-        $this->user = $user;
 
         return $this;
     }

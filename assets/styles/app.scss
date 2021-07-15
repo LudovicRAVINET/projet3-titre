@@ -14,6 +14,7 @@
 @import "other.scss";
 @import "confirm.scss";
 @import "footer.scss";
+@import "profile.scss";
 
 @font-face {
   font-family: "poppinsregular";
@@ -29,6 +30,10 @@
 }
 a {
   text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
 }
 
 body {

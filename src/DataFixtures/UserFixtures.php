@@ -22,7 +22,6 @@ class UserFixtures extends AppFixtures implements DependentFixtureInterface
         $adminUser->setLastname('Administrator');
         $adminUser->setRoles(['ROLE_ADMIN']);
         $adminUser->setBirthDate(new DateTime('1975-03-22'));
-        $adminUser->setGender($this->getReference('Undef'));
 
         $userPassword = $this->encoder->encodePassword($regularUser, 'password');
         $regularUser->setEmail('user@eventoo.fr');
@@ -30,7 +29,8 @@ class UserFixtures extends AppFixtures implements DependentFixtureInterface
         $regularUser->setFirstname('John');
         $regularUser->setLastname('Doe');
         $regularUser->setBirthDate(new DateTime('1982-10-16'));
-        $regularUser->setGender($this->getReference('Homme'));
+        $regularUser->setSubscription($this->getReference('gratuit'));
+        $this->addReference('user_test', $regularUser);
 
         $manager->persist($adminUser);
         $manager->persist($regularUser);
@@ -41,7 +41,7 @@ class UserFixtures extends AppFixtures implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-          GenderFixtures::class
+            SubscriptionFixtures::class
         ];
     }
 }

@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile - {{ user.getLastname }}{% endblock %}
+
+{% block body %}
+    <div class="main-profile mt-4">
+        <div class="sidebar-left">
+            <div class="searchbar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Recherche">
+            </div>
+            <div class="sidebarnav common-sidebar mt-4">
+                <p>
+                    Bonjour, <br>
+                    <span>{{ user.getLastname }}</span>
+                </p>
+                <span>Afficher par</span>
+                <ul>
+                    <li class="active">Tous mes événements</li>
+                    <li>Mariage</li>
+                    <li>Anniversaire</li>
+                    <li>Naissance</li>
+                    <li>Deuil</li>
+                    <li>Autres</li>
+                </ul>
+                <p id="presta">
+                    <a href="#">Trouver des prestataires</a>
+                </p>
+            </div>
+
+            <div class="archive common-sidebar mt-4">
+                <a href="#">
+                    Archive
+                </a>
+            </div>
+
+            <div class="confidential mt-4">
+                <small>
+                    Confidentialités <br>
+                    Conditions générales
+                </small>
+            </div>
+        </div>
+        <div class="middle-profile">
+            <h1>Mes évènements</h1>
+            <div class="events">
+                {% for event in events %}
+                    <div class="card-event">
+                        <div class="top-card">
+                            {% if event.image is empty %}
+                                <img src="{{ event.getType.defaultPicture }}" alt="">
+                            {% else %}<img src="{{ event.image }}" alt="">{% endif %}
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="bottom-card">
+                            <p>
+                                {{ event.title }}
+                            </p>
+                            <p>
+                                {{ event.date|date('Y-m-d') }}
+                            </p>
+                            <p>
+                                INVITÉS <span>XX</span> <br>
+                                {% if event.hasJackpot is not null %}
+                                    COLLECTE <span>XXX</span> <i class="fas fa-euro-sign"></i>
+                                {% endif %}
+                            </p>
+                            <div class="btn-bottom">
+                                <a href="{{ path('event_diary', {"id": event.id}) }}">Voir</a>
+                                <a href="#">Gérer</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="sidebar-right">
+            <div class="agenda">
+                <p>
+                    Mon agenda
+                </p>
+            </div>
+            <div class="become-presta m-4">
+                <i class="fas fa-users-cog"></i>
+                <p>
+                    Devenir Prestataire
+                </p>
+            </div>
+            <div class="how-it-works m-4">
+                <i class="fas fa-question"></i>
+                <p>
+                    Comment ça marche
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
