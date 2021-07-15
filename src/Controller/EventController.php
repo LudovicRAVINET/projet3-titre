@@ -34,6 +34,7 @@ class EventController extends AbstractController
 
             /** @var \App\Entity\User $user */
             $user = $this->getUser();
+            $userId = $user->getId();
 
 
         /** @var \App\Entity\Type $eventType */
@@ -64,12 +65,13 @@ class EventController extends AbstractController
                 $manager->persist($event);
             } else {
                 $this->addFlash('danger', "Veuillez selectionner un événement.");
-                return $this->redirectToRoute('home_index');
+                return $this->redirectToRoute('profile_index', ['id' => $userId]);
             }
 
             $manager->flush();
 
             $this->addFlash('success', 'Votre événement a bien été créé.');
+            return $this->redirectToRoute('profile_index', ['id' => $userId]);
         }
 
         return $this->redirectToRoute('home_index');
