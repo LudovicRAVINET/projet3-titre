@@ -18,49 +18,31 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route("/avis/{id}", name="avis", methods={"POST"})
+     * @Route("/{id}/{eventType}", defaults={"eventType"="all"}, name="index", methods={"POST","GET"})
      */
-    public function avis(Request $request, EntityManagerInterface $entityManager, User $user): Response
-    {
-
-        $avis = new Notice();
-        $form = $this->createForm(AvisType::class, $avis);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $avis->setName($user->getLastname());
-            $avis->setComment($_POST['avis']['comment']);
-            $avis->setNote($_POST['avis']['note']);
-            $avis->setDate(new DateTime('now'));
-
-            $entityManager->persist($avis);
-            $entityManager->flush();
-
-
-            // TODO : si la note est inférieure à 2 demander à l'utilisateur pourquoi
-
-            $this->addFlash('success', 'Merci pour votre avis');
-
-            return $this->render('profile/index.html.twig', [
-                'user' => $user,
-                'events' => $user->getEvents()
-            ]);
-        }
-
-        return $this->render('component/_avis.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="index")
-     */
-    public function index(User $user): Response
+    public function index(Request $request, User $user): Response
     {
         $events = $user->getEvents();
+        $eventToDisplay = [];
+
+
+        foreach ($events as $event) {
+            $type = $event->getType();
+
+            if ($type != null) {
+                if (($request->get('eventType') == $type->getName())) {
+                    $eventToDisplay[] = $event;
+                }
+            }
+        }
+
+        if ($request->get('eventType') == "all") {
+            $eventToDisplay = $events;
+        }
 
         return $this->render('profile/index.html.twig', [
             'user' => $user,
-            'events' => $events
+            'events' => $eventToDisplay
         ]);
     }
 }

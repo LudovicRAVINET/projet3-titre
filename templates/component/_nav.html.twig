@@ -1,24 +1,24 @@
 {# Here goes the header (nav) #}
 
 {# Menu burger#}
-	<div class="menu nav" id="nav"> <div class="container-fluid">
-		<div class="row m-4 justify-content-between">
-			<img class="logoH col-4" src="{{ asset('build/images/content/whiteLogo.png') }}" alt="logo">
-			<button type="button" id="menuBtnClose" class="btn-close col-2 btn-close-white" onclick="menuDisplay()"></button>
-		</div>
+    <div class="menu nav" id="nav"> <div class="container-fluid">
+        <div class="row m-4 justify-content-between">
+            <img class="logoH col-4" src="{{ asset('build/images/content/whiteLogo.png') }}" alt="logo">
+            <button type="button" id="menuBtnClose" class="btn-close col-2 btn-close-white" onclick="menuDisplay()"></button>
+        </div>
 
-		{% if not app.user %}
-			<div class="row text-white fs-1 mx-4">
-				<p>Bienvenue sur eventoo</p>
-			</div>
-		{% endif %}
+        {% if not app.user %}
+            <div class="row text-white fs-1 mx-4">
+                <p>Bienvenue sur eventoo</p>
+            </div>
+        {% endif %}
 
-		<div class="row navbar-text mx-4">
-			<a class="text-white mb-2 fs-4" href="#">Prestataires</a>
-			<a class="text-white mb-2 fs-4" href="#">Comment ça marche</a>
-			<a class="text-white mb-2 fs-4" href="#">Qui sommes nous?</a>
-			<a class="text-white mb-2 fs-4" href="#">Tarifs</a>
-			<a class="text-white mb-5 fs-4" href="#">Blog</a>
+        <div class="row navbar-text mx-4">
+            <a class="text-white mb-2 fs-4" href="#">Prestataires</a>
+            <a class="text-white mb-2 fs-4" href="#">Comment ça marche</a>
+            <a class="text-white mb-2 fs-4" href="#">Qui sommes nous?</a>
+            <a class="text-white mb-2 fs-4" href="#">Tarifs</a>
+            <a class="text-white mb-5 fs-4" href="#">Blog</a>
 
 			{% if not app.user %}
 				<a class="text-white mb-2 mt-4 fs-4" onclick="popup('registerBtn')">S'inscrire</a>
@@ -27,9 +27,11 @@
 				<a class="text-white mb-2 border-top border-bottom py-2 fs-4" href="{{ path('profile_index', {'id': app.user.getId}) }}">Mon profil</a>
 				<a class="text-white mb-2 py-2 fs-4" onclick="activitiesDisplay()" id="activityLink" href="#">
 					<span id="chevron" class="pe-1 visually-hidden">></span>Activités</a>
-				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="weddingLink" href="#">Mariage</a>
-				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="birthdateLink" href="#">Anniversaire</a>
-				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="mourningLink" href="#">Deuil</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="weddingLink" href="{{ path('home_wedding') }}">Mariage</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="birthdateLink" href="{{ path('home_birthday') }}">Anniversaire</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="birthLink" href="{{ path('home_birth') }}">Naissance</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="mourningLink" href="{{ path('home_mourning') }}">Deuil</a>
+				<a class="text-white mb-2 visually-hidden ps-5 fs-4" id="otherLink" href="{{ path('home_other') }}">Autre</a>
 				<a class="text-white mb-2 border-top pt-2 fs-4" href="#" onclick="logoutConfirm()">Se déconnecter</a>
 			{% endif %}
 		</div>
@@ -86,26 +88,26 @@
 					</a>
 					<div id="dropdownDiv" class="dropdown ms-2 hidden-small">
 
-						<button class="btn btn-secondary dropdown-toggle initials" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-							{{ app.user.lastName|slice(0, 1) }}
-						</button>
+                        <button class="btn btn-secondary dropdown-toggle initials" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ app.user.lastName|slice(0, 1) }}
+                        </button>
 
-						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-							<li>
-								<a class="dropdown-item pe-auto" onclick="logoutConfirm()">Se déconnecter</a>
-							</li>
-							<input type="hidden" id="profile" value="{{ path('app_logout') }}">
-						</ul>
-					</div>
-					<a id='toggle_btn' class="col-1 mt-2 ms-4 btn btn-link" onclick="menuDisplay()">
-						<img class="h-25 my-4" src="{{ asset('build/images/buttons/MenuBurger.png') }}">
-					</a>
-				</div>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item pe-auto" onclick="logoutConfirm()">Se déconnecter</a>
+                            </li>
+                            <input type="hidden" id="profile" value="{{ path('app_logout') }}">
+                        </ul>
+                    </div>
+                    <a id='toggle_btn' class="col-1 mt-2 ms-4 btn btn-link" onclick="menuDisplay()">
+                        <img class="h-25 my-4" src="{{ asset('build/images/buttons/MenuBurger.png') }}">
+                    </a>
+                </div>
 
-			{% endif %}
+            {% endif %}
 
-		</div>
+        </div>
 
 
-	</header>
+    </header>
 </div>

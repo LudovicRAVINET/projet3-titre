@@ -21,7 +21,6 @@ function avis() {
     popup('avisBtn');
 }
 
-
 const newUser = document.getElementById('newUser').value;
 if (newUser === '1') {
     popup('confirmBtn');
@@ -60,12 +59,16 @@ function menuDisplay() {
 function activitiesDisplay() {
     const weddingLink = document.getElementById('weddingLink');
     const birthdateLink = document.getElementById('birthdateLink');
+    const birthLink = document.getElementById('birthteLink');
     const mourningLink = document.getElementById('mourningLink');
+    const otherLink = document.getElementById('otherLink');
     const chevron = document.getElementById('chevron');
     const activityLink = document.getElementById('activityLink');
     weddingLink.classList.toggle('visually-hidden');
     birthdateLink.classList.toggle('visually-hidden');
+    birthLink.classList.toggle('visually-hidden');
     mourningLink.classList.toggle('visually-hidden');
+    otherLink.classList.toggle('visually-hidden');
     chevron.classList.toggle('visually-hidden');
     activityLink.classList.toggle('text-uppercase');
 }

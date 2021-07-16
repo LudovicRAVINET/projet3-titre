@@ -1,13 +1,13 @@
 <button type="button" id="registerBtn" class="btn btn-primary mx-auto d-block mt-5 visually-hidden" data-bs-toggle="modal" data-bs-target="#modalRegister">
-    Bootstrap Modal popup
+	Bootstrap Modal popup
 </button>
 <div class="modal fade" tabindex="-1" id="modalRegister" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 
-                <form class="form-login mx-auto w-100" method="post" action="{{ path('app_register') }}">
-                    <div class="modal-header border-0">
+				<form class="form-login mx-auto w-100" method="post" action="{{ path('app_register') }}">
+					<div class="modal-header border-0">
 						<h1 class="h3 mb-3 font-weight-normal">S'inscrire</h1>
 						<button type="button" id="registerBtnClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
@@ -21,55 +21,55 @@
                                     'class': 'form-control mb-3'
                                 }
                             }) }}
-                            {{ form_row(form.email, {
+							{{ form_row(form.email, {
                                 'label_attr': {'class': 'visually-hidden'},
                                 'attr': {
                                     'placeholder': 'Email',
                                     'class': 'form-control mb-3'
                                 }
                             }) }}
-                            {{ form_row(form.birthDate, {
+							{{ form_row(form.birthDate, {
                                 'attr': {'class': 'form-control mb-3'}}) }}
-                            <p id="acceptCGV" class="mt-4">
-                                En appuyant sur S’inscrire, vous acceptez nos Conditions générales, notre Politique d’utilisation des données et notre Politique d’utilisation des cookies.
-                                Vous recevrez peut-être des notifications par texto de notre part et vous pouvez à tout moment vous désabonner.
-                            </p>
+							<p id="acceptCGV" class="mt-4">
+								En appuyant sur S’inscrire, vous acceptez nos Conditions générales, notre Politique d’utilisation des données et notre Politique d’utilisation des cookies.
+								                                Vous recevrez peut-être des notifications par texto de notre part et vous pouvez à tout moment vous désabonner.
+							</p>
 						</div>
 
 						<div class="col-6">
-                            {{ form_row(form.lastname, {
+							{{ form_row(form.lastname, {
                                 'label_attr': {'class': 'visually-hidden'},
                                 'attr': {
                                     'placeholder': 'Nom de famille',
                                     'class': 'form-control mb-3'
                                 }
                             }) }}
-                            {{ form_row(form.password, {
+							{{ form_row(form.password, {
                                 'label_attr': {'class': 'visually-hidden'},
                                 'attr': {
                                     'placeholder': 'Mot de passe',
                                     'class': 'form-control mb-3'
                                 }
                             }) }}
-							<span toggle="#input-pwd" id="registerEye" class="fa fa-fw fa-eye field-icon toggle-password" onClick="passwordEye('registerEye', 'user_password')"></span>
+							<span toggle="#input-pwd" id="registerEye" class="fa fa-fw fa-eye field-icon toggle-password" onclick="passwordEye('registerEye', 'user_password')"></span>
 
-                            <div class="g-recaptcha" data-sitekey="6LfgGlMbAAAAACpQKpfQMoGsZcwXvqDRwZc9_RuX"></div>
+							<div class="g-recaptcha" data-sitekey="6LfgGlMbAAAAACpQKpfQMoGsZcwXvqDRwZc9_RuX"></div>
 
-                            <button class="btn btn-primary text-white col-12 my-4 fs-4 py-1" type="submit">
+							<button class="btn btn-primary text-white col-12 my-4 fs-4 py-1" type="submit">
 								S'inscrire
 							</button>
 						</div>
 					</div>
 
-                    <div class="row align-items-start">
+					<div class="row align-items-start">
 						<p class="col-3">Déjà membre ?</p>
-						<a class="col-3" onClick="registerLogin()">
+						<a class="col-3" onclick="registerLogin()">
 							<p class="fw-bold">Connectez-vous</p>
 						</a>
 					</div>
-                    {{ form_rest(form) }}
-                </form>
-            </div>
+					{{ form_rest(form) }}
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
