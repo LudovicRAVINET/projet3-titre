@@ -32,8 +32,7 @@
         <div id="createDiaryEvent">{% include 'component/_createDiaryEvent.html.twig' %}</div>
 		<div id="resetPasswordForm">{{ render(controller('App\\Controller\\SecurityController::reset')) }}</div>
 		{% if app.user %}
-<div id="avisForm">{{ render(controller('App\\Controller\\ProfileController::notice', {'id': app.user.getId})) }}</div>
-
+			<div id="avisForm">{{ render(controller('App\\Controller\\ProfileController::noticeShow', {'id': app.user.getId})) }}</div>
 		{% endif %}
 
 		{% block body %}{% endblock %}

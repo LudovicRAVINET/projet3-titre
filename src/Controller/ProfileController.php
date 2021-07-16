@@ -47,32 +47,39 @@ class ProfileController extends AbstractController
     }
 
     /**
-     * @Route("/notice/user/{id}", name="notice", methods={"POST","GET"})
+     * @Route("/notice/user/{id}", name="notice", methods={"POST"})
      */
     public function notice(Request $request, EntityManagerInterface $entityManager, User $user): Response
     {
         $avis = new Notice();
+
+        $avis->setName($user->getLastname());
+        $avis->setComment($_POST['notice']['comment']);
+        $avis->setNote($_POST['notice']['note']);
+        $avis->setDate(new DateTime('now'));
+
+        $entityManager->persist($avis);
+        $entityManager->flush();
+
+
+        // TODO : si la note est inférieure à 2 demander à l'utilisateur pourquoi
+
+        $this->addFlash('success', 'Merci pour votre avis');
+
+        return $this->render('profile/index.html.twig', [
+            'user' => $user,
+            'events' => $user->getEvents()
+        ]);
+    }
+
+
+    /**
+     * @Route("/notice/user/{id}", name="noticeShow", methods={"GET"})
+     */
+    public function noticeShow(Request $request, EntityManagerInterface $entityManager, User $user): Response
+    {
+        $avis = new Notice();
         $form = $this->createForm(NoticeType::class, $avis);
-
-        if (!empty($_POST)) {
-            $avis->setName($user->getLastname());
-            $avis->setComment($_POST['notice']['comment']);
-            $avis->setNote($_POST['notice']['note']);
-            $avis->setDate(new DateTime('now'));
-
-            $entityManager->persist($avis);
-            $entityManager->flush();
-
-
-            // TODO : si la note est inférieure à 2 demander à l'utilisateur pourquoi
-
-            $this->addFlash('success', 'Merci pour votre avis');
-
-            return $this->render('profile/index.html.twig', [
-                'user' => $user,
-                'events' => $user->getEvents()
-            ]);
-        }
 
         return $this->render('component/_avis.html.twig', [
             'form' => $form->createView()
