@@ -2,40 +2,40 @@
 
 namespace App\Entity;
 
-use App\Repository\AvisRepository;
+use App\Repository\NoticeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=AvisRepository::class)
+ * @ORM\Entity(repositoryClass=NoticeRepository::class)
  */
-class Avis
+class Notice
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $note;
+    private bool $note;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $date;
+    private \DateTimeInterface $date;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $comment;
+    private string $comment;
 
     public function getId(): ?int
     {

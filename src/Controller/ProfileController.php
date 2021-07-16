@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Avis;
+use App\Entity\Notice;
 use App\Entity\User;
 use App\Form\AvisType;
 use DateTime;
@@ -23,7 +23,7 @@ class ProfileController extends AbstractController
     public function avis(Request $request, EntityManagerInterface $entityManager, User $user): Response
     {
 
-        $avis = new Avis();
+        $avis = new Notice();
         $form = $this->createForm(AvisType::class, $avis);
 
         if ($form->isSubmitted() && $form->isValid()) {
