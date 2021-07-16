@@ -27,14 +27,14 @@ class DashboardController extends AbstractDashboardController
     /**
      * @Route("/admin/textes", name="admin_textes")
      */
-    public function textes(Request $request): Response
+    public function text(Request $request): Response
     {
         $form = $this->createForm(AdminType::class);
         $form->handleRequest($request);
 
-        // TODO : Traitement à faire lorsque l'on enregistre le texte 
+        // TODO : Traitement à faire lorsque l'on enregistre le texte
 
-        return $this->render('admin/textes.html.twig',[
+        return $this->render('admin/text.html.twig', [
             'form' => $form->createView()
         ]);
     }
