@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Notice;
 use App\Entity\User;
-use App\Form\AvisType;
+use App\Form\NoticeType;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,6 +43,39 @@ class ProfileController extends AbstractController
         return $this->render('profile/index.html.twig', [
             'user' => $user,
             'events' => $eventToDisplay
+        ]);
+    }
+
+    /**
+     * @Route("/notice/user/{id}", name="notice", methods={"POST","GET"})
+     */
+    public function notice(Request $request, EntityManagerInterface $entityManager, User $user): Response
+    {
+        $avis = new Notice();
+        $form = $this->createForm(NoticeType::class, $avis);
+
+        if (!empty($_POST)) {
+            $avis->setName($user->getLastname());
+            $avis->setComment($_POST['notice']['comment']);
+            $avis->setNote($_POST['notice']['note']);
+            $avis->setDate(new DateTime('now'));
+
+            $entityManager->persist($avis);
+            $entityManager->flush();
+
+
+            // TODO : si la note est inférieure à 2 demander à l'utilisateur pourquoi
+
+            $this->addFlash('success', 'Merci pour votre avis');
+
+            return $this->render('profile/index.html.twig', [
+                'user' => $user,
+                'events' => $user->getEvents()
+            ]);
+        }
+
+        return $this->render('component/_avis.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }

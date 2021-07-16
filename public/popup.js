@@ -16,7 +16,7 @@ function resetPassword() {
     popup('loginBtnClose');
     popup('passwordBtn');
 }
-function avis() {
+function notice() {
     popup('avisBtnClose');
     popup('avisBtn');
 }
