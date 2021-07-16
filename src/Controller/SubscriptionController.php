@@ -16,6 +16,8 @@ class SubscriptionController extends AbstractController
      */
     public function choice(): Response
     {
-        return $this->render('home/index.html.twig');
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        return $this->redirectToRoute('profile_index', ['id' => $user->getId()]);
     }
 }

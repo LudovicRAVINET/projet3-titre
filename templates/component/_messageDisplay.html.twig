@@ -1,15 +1,27 @@
 <div class="diary-message">
-    <div class="diary-message-container">
-        <div class="diary-message-author">
-            {{ message.messageAuthor }}
-        </div>
-        {% if message.mediaURL is not empty %}
-            <div class="diary-message-media">
-                <img src="{{ asset('uploads/files/' ~ message.mediaURL ~ ' ') }}" alt="">
-            </div>
-        {% endif %}
-    </div>
-    <div class="diary-message-text">
-        {{ message.messageText }}
-    </div>
+	<div class="diary-message-container">
+		<div class="diary-message-author">
+			<div class="avatar">
+				{% if not app.user %}
+
+					{% else %}
+						<div class="img-avatar">
+							<img class="img" src="{{ asset('build/images/content/avatar.1eb407c4.png') }}">
+						</div>
+
+				{% endif %}
+				<div class="img-avatar">
+					{{ message.author }}
+				</div>
+			</div>
+
+		</div>
+		{{ message.comment }}
+
+		{% if message.url is not empty %}
+			<div class="diary-message-media">
+				<img src="{{ asset('uploads/files/' ~ message.url ~ ' ') }}" alt="">
+			</div>
+		{% endif %}
+	</div>
 </div>

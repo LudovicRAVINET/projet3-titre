@@ -16,9 +16,9 @@ class MessageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('messageText', TextareaType::class)
-            ->add('messageAuthor', TextType::class)
-            ->add('mediaUrl', FileType::class, [
+            ->add('comment', TextareaType::class)
+            ->add('author', TextType::class)
+            ->add('url', FileType::class, [
                 'label' => 'Fichier média',
 
                 // unmapped means that this field is not associated to any entity property

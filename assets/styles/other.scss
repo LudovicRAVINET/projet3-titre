@@ -1,0 +1,318 @@
+
+
+#event-oth {
+    background-image: url(/public/build/images/background-images/others.733d6be7.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  #event-oth .container {
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  #event-oth .test {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  #event-oth .info .h1-event,
+  #event-oth .info p {
+    margin-bottom: 30px;
+  }
+  
+  #event-oth .info .h1-event {
+    font-size: 60px;
+    font-weight: 700;
+  }
+  
+  #event-oth .display-3 {
+    width: 685px;
+    height: 221px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 67px;
+    color: #ffffff;
+  }
+  .lead-p {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 30px;
+    color: #ffffff;
+  }
+  
+  .lead-s {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 30px;
+    color: #353746;
+    padding-top: 15px;
+    padding-bottom: 50px;
+  }
+  #event-oth .links-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 155%;
+  }
+  
+  #event-oth .link {
+    width: 150px;
+    height: 150px;
+    margin-right: 15px;
+    border-radius: 14px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+  }
+  
+  #event-oth .link p {
+    margin-bottom: 0;
+  }
+  
+  /* rajouter le lien de la 1ere image, effacer le ligne background-color */
+  #event-oth .link .link-img {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+  }
+  
+ #event-oth .link .link-img1 {
+    background-image: url(/public/build/images/buttons/logoCreateDiary.eaea686c.png);
+  }
+  
+  #event-oth .link .link-img2 {
+    background-image: url(/public/build/images/buttons/logoRetroPlanning.a3c01dbd.png);
+  }
+  
+  #event-oth .link .link-img3 {
+    background-image: url(/public/build/images/buttons/logoAnnouncement.d801b6fc.png);
+  }
+  
+  #event-oth .link .link-img4 {
+    background-image: url(/public/build/images/buttons/logoDirect.a9948a38.png);
+  }
+  
+  #event-oth .link .link-img5 {
+    background-image: url(/public/build/images/buttons/logoProvider.b068530c.png);
+  }
+  
+  #event-bottom .link p {
+    margin-bottom: 0;
+  }
+  
+  #event-bottom .link .link-img {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+  }
+  
+  #event-bottom .link .link-img6 {
+    background-image: url(/public/build/images/buttons/logoWedding.3fe9e841.png);
+  }
+  
+  #event-bottom .link .link-img7 {
+    background-image: url(/public/build/images/buttons/logoBirthday.900ae51c.png);
+  }
+  
+  #event-bottom .link .link-img8 {
+    background-image: url(/public/build/images/buttons/logoBirth.d52aafb7.png);
+  }
+  
+  #event-bottom .link .link-img9 {
+    background-image: url(/public/build/images/buttons/logoMourning.a7ebe02f.png);
+  }
+  
+  #event-bottom .link .link-img10 {
+    background-image: url(/public/build/images/buttons/logoOther.4b063600.png);
+  }
+  
+  #event-oth .link:hover .link-img1 {
+    background-image: url(/public/build/images/buttons/logoCreateDiaryYellow.12611472.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  #event-oth .link:hover .link-img2 {
+    background-image: url(/public/build/images/buttons/logoRetroPlanningYellow.aa1ef946.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  #event-oth .link:hover .link-img3 {
+    background-image: url(/public/build/images/buttons/logoAnnouncementYellow.cd0e13c8.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  #event-oth .link:hover .link-img4 {
+    background-image: url(/public/build/images/buttons/logoDirectYellow.267c0b33.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  #event-oth .link:hover .link-img5 {
+    background-image: url(/public/build/images/buttons/logoProviderBlue.e2d2809e.png);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  #event-oth .link:hover p {
+    color: #F2B134;
+  }
+  
+  #event-oth .link:hover .provider,
+  #event-bottom .link:hover p {
+    color: #00B2BC;
+  }
+  
+ #event-bottom .link:hover .link-img6 {
+  background-image: url(/public/build/images/buttons/logoWeddingBlue.f220f0da.png);
+}
+
+#event-bottom .link:hover .link-img7 {
+  background-image: url(/public/build/images/buttons/logoBirthdayBlue.bfd131a8.png);
+}
+
+#event-bottom .link:hover .link-img8 {
+  background-image: url(/public/build/images/buttons/logoBirthBlue2.3d7aeacf.png);
+}
+
+#event-bottom .link:hover .link-img9 {
+  background-image: url(/public/build/images/buttons/logoMourningBlue.310f7447.png);
+}
+
+#event-bottom .link:hover .link-img10 {
+  background-image: url(/public/build/images/buttons/logoOtherBlue.d7237ab9.png);
+}
+  
+  /* -------------------------- */
+  
+  section .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+    height: 640px;
+    display: flex;
+    align-items: center;
+  }
+  
+  section .container-bottom {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+  }
+  
+  section .event-title {
+    color: $primary;
+    font-family: "poppinsregular";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px !important;
+    line-height: 30px;
+    padding-bottom: 10px;
+  }
+  
+  section h2 {
+    height: 46px;
+    font-family: "poppinsregular";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 30px;
+  }
+  
+  section .btn {
+    border-radius: 25px;
+    color: white;
+    font-size: 20px;
+  }
+  
+  .section-1,
+  .section-3 {
+    background-color: #faf9f7;
+    position: relative;
+  }
+  
+  .section-2,
+  .section-4 {
+    background-color: #fff;
+  }
+  
+  .title-img {
+    position: absolute;
+    left: 0px;
+    top: 25px;
+    //background-color: thistle;
+    width: 80px;
+    height: 80px;
+  }
+  
+  section .event-bottom {
+    color: #ffffff;
+    font-family: "poppinsregular";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px !important;
+    line-height: 30px;
+    padding-bottom: 10px;
+    padding-left: 100px;
+    padding-top: 20px;
+  }
+  
+  .section-5 {
+    background:  #10B7C0;
+  }
+  
+  .event-bottom-h2 {
+    color: #ffffff;
+    height: 46px;
+    font-family: "poppinsregular";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 30px;
+  }
+  
+  #event-bottom .links-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+  }
+  
+  #event-bottom .link {
+    width: 129px;
+    height: 129px;
+    margin-right: 15px;
+    border-radius: 14px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+  }
+  
+  .btm {
+    background: #353746;
+    border-color: #353746;
+  }
+  
+  .group-left {
+    position: absolute;
+    padding-left: 0 !important;
+    padding-top: 40px;
+    margin-left: -12px;
+  }

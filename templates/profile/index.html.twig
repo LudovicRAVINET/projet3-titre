@@ -3,6 +3,13 @@
 {% block title %}Profile - {{ user.getLastname }}{% endblock %}
 
 {% block body %}
+    {% for category, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
     <div class="main-profile mt-4">
         <div class="sidebar-left">
             <div class="searchbar">
@@ -16,28 +23,24 @@
                 </p>
                 <span>Afficher par</span>
                 <ul>
-                <li class="active">
-                    <a href="#">Tous mes évènements</a>
-                </li>
+<li class="active">
+	<a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'all'}) }}">Tous mes événements</a></li>
+</li>
 
-                <li>
-                    <a href="#">Mariage</a>
-                </li>
+                    <li><a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'wedding'}) }}">Mariage</a></li>
+<li>
+	<a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'birthday'}) }}">Anniversaire</a></li>
+</li>
 
-                <li>
-                    <a href="#">Anniversaire</a>
-                </li>
+<li>
+	<a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'birth'}) }}">Naissance</a></li>
+</li>
 
-                <li>
-                    <a href="#">Naissance</a>
-                </li>
-                <li>
-                    <a href="#">Deuil</a>
-                </li>
-                <li>
-                    <a href="#">Autres</a>
-                </li>
+<li>
+	<a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'mourning'}) }}">Deuil</a></li>
+</li>
 
+                    <li>Autres</li>
                 </ul>
                 <p id="presta">
                     <a href="#">Trouver des prestataires</a>
@@ -65,7 +68,7 @@
                         <div class="top-card">
                             {% if event.image is empty %}
                                 <img src="{{ event.getType.defaultPicture }}" alt="">
-                            {% else %}<img src="{{ event.image }}" alt="">{% endif %}
+                            {% else %}<img src="{{ asset('uploads/files/' ~ event.image) }}" alt="">{% endif %}
                             <i class="fas fa-lock"></i>
                         </div>
                         <div class="bottom-card">
@@ -73,7 +76,10 @@
                                 {{ event.title }}
                             </p>
                             <p>
-                                {{ event.date|date('Y-m-d') }}
+                                {{ event.getDateFr() }}
+                                {% if event.time != null %}
+                                     | {{ event.time|date('H:i') }}
+                                {% endif %}
                             </p>
                             <p>
                                 INVITÉS <span>XX</span> <br>
@@ -82,7 +88,7 @@
                                 {% endif %}
                             </p>
                             <div class="btn-bottom">
-                                <a href="#">Voir</a>
+                                <a href="{{ path('event_diary', {"id": event.id}) }}">Voir</a>
                                 <a href="#">Gérer</a>
                             </div>
                         </div>

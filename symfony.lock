@@ -726,6 +726,9 @@
     "twbs/bootstrap": {
         "version": "v5.0.1"
     },
+    "twig/extra-bundle": {
+        "version": "v3.3.1"
+    },
     "twig/twig": {
         "version": "v3.3.0"
     },

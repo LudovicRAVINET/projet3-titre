@@ -46,4 +46,8 @@ security:
   # Note: Only the *first* access control that matches will be used
   access_control:
      - { path: ^/admin, roles: ROLE_ADMIN }
-    # - { path: ^/profile, roles: ROLE_USER }
+     - { path: ^/event, roles: ROLE_USER }
+     - { path: ^/profile/[0-9]+, roles: ROLE_USER }
+     - { path: ^/logout, roles: ROLE_USER }
+     - { path: ^/registerConfirm, roles: ROLE_USER }
+     - { path: ^/subscription/choice/[0-9], roles: ROLE_USER }

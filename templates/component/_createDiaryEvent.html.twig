@@ -29,7 +29,7 @@
 									<p>Anniversaire</p>
 								</a>
 
-								<a onclick="createEventBtn(this, 'birthdate')" class="link btnEvent">
+								<a onclick="createEventBtn(this, 'birth')" class="link btnEvent">
 									<div class="link-img link-img3"></div>
 									<p>Naissance</p>
 								</a>
@@ -53,13 +53,16 @@
 						</div>
 
 						<div class="row align-items-start mt-2 d-flex align-items-center dateCollect">
-							<div class="col-6 dateCreate">
+							<div class="col-4 dateCreate">
 								<label class="dateDiary">DATE</label>
-								<input type="date" name="event_date" id="event_date" class="form-control mb-3" placeholder="Titre de l'évènement" required autofocus>
-
+								<input type="date" name="event_date" id="event_date" class="form-control mb-3" required autofocus>
+							</div>
+							<div class="col-3 timeCreate">
+								<label class="timeDiary">HEURE</label>
+								<input type="time" name="event_time" id="event_time" class="form-control mb-3" autofocus>
 							</div>
 
-							<div class="col-6 onCollect">
+							<div class="col-5 onCollect">
 								<label for="clickOnCollect">Autoriser la collecte de fonds</label>
 								<input type="checkbox" name="jackpot" id="clickOnCollect" class="activeCollect">
 							</div>
@@ -70,7 +73,7 @@
 								Précédent
 							</button>
 
-							<button class="btn btn-primary text-white col-5 my-4 fs-4 py-1 rounded-pill valideButton" name="submit" type="submit">
+							<button class="btn btn-primary text-white col-5 my-4 fs-4 py-1 rounded-pill valideButton" type="submit">
 								Valider
 							</button>
 						</div>

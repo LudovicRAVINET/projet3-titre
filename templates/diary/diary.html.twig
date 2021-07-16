@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Journal
+{% endblock %}
+
+{% block body %}
+	<div class="body-diary">
+		<div id="event-diary" class="container-fluid width-cover">
+			<div id="banner-image">
+				<form id="uploadForm" role="form" method="post" enctype="multipart/form-data">
+					<input type="file" id="file" name="file">
+					<input type="submit" id="file-btn" onclick="pictureUpload({{ event.id }})" value="Valider la photo">
+				</form>
+				{% if event.image == '' %}
+					<img class="img" src="{{ event.type.defaultPicture ~ '?raw=true' }}" alt="Diary banner">
+				{% else %}
+					<img src="{{ asset('uploads/files/' ~ event.image ~ ' ') }}" alt="Diary banner">
+				{% endif %}
+			</div>
+		</div>
+
+
+		<div class="diary-wrapper">
+			<i class="fas fa-quote-left"></i>
+			<p contenteditable="true" id="title" value="test" onblur="update(this, {{ event.id }})">
+				{{ event.title }}
+			</p>
+			<i class="fas fa-pencil-alt"></i>
+			<i class="fas fa-quote-right"></i>
+		</div>
+		<div class="row container-fluid width-page">
+			<div class="col width-col">
+				<div class="d-flex flex-column col-left">
+					<div class="col-content">
+						<p class="diary-part">Date et heure</p>
+						<div class="p-diary">
+							<p>
+								<strong>Lundi 13 Juin 2021</strong>
+							</p>
+
+							<p>13h00 à 14h00</p>
+						</div>
+					</div>
+				</div>
+				<div class="d-flex flex-column col-left">
+					<div class="col-content">
+						<p class="diary-part">Collecte de fonds</p>
+						<div class="inline-p">
+							<p>Collectés</p>
+							<p style="color:rgb(65, 201, 225);">8239 euros</p>
+						</div>
+						<div class="inline-p">
+							<p>
+								<strong>Participations</strong>
+							</p>
+							<p style="color:rgb(65, 201, 225);">33 euros</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-5 width-center">
+				<div class="d-flex content-post">
+					<div class="avatar">
+						{% if not app.user %}
+
+							{% else %}
+								<div class="img-avatar">
+									<img class="img" src="{{ asset('build/images/content/avatar.1eb407c4.png') }}">
+								</div>
+
+						{% endif %}
+					</div>
+					<div
+						class="write-msg">
+						{# /// message form /// #}
+						{% include "component/_messageForm.html.twig" %}
+					</div>
+				</div>
+				<div class="d-flex flex-column content-diary">
+
+					{% for message in messagesList %}
+						{{ include('component/_messageDisplay.html.twig', {message: message}) }}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col width-col">
+				<div class="d-flex col-diary">
+					<img class="img" src="{{ asset('build/images/buttons/logo-interrogation.79857c63.png') }}">
+					<p class="col-right">Comment ça marche</p>
+				</div>
+				<div class="d-flex flex-column col-diary-transparence">
+
+					<button type="button" class="btn btn-primary height-btn"><img class="img" src="{{ asset('build/images/buttons/logo-book.4d12d7ae.png') }}">Compiler en livre d'or</button>
+
+				</div>
+				<div class="d-flex col-diary">
+					<img class="img" src="{{ asset('build/images/buttons/logo-dossier.d17f31f7.png') }}">
+					<p>Ajouter les photos du jour</p>
+				</div>
+				<div class="d-flex flex-column col-list">
+					<div class="inline-list">
+						<img class="img" src="{{ asset('build/images/buttons/logo-gerer.20525c5e.png') }}">
+						<p>Gérer</p>
+					</div>
+					<div class="inline-list">
+						<img class="img" src="{{ asset('build/images/buttons/logo-fluent.06cf2d2a.png') }}">
+						<p>Liste des invités</p>
+					</div>
+					<div class="inline-list">
+						<img class="img" src="{{ asset('build/images/buttons/logo-program.154598fe.png') }}">
+						<p>Le programme</p>
+					</div>
+					<div class="inline-list">
+						<img class="img" src="{{ asset('build/images/buttons/logo-faire-part.f53a7718.png') }}">
+						<p>Faire-part</p>
+					</div>
+					<div class="inline-list">
+						<img class="img" src="{{ asset('build/images/buttons/logo-direct.bd585781.png') }}">
+						<p>Faire un direct</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% block js %}
+		<script src="{{ asset('/diary.js') }}"></script>
+	{% endblock %}
+{% endblock %}

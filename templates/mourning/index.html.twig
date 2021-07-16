@@ -43,7 +43,7 @@
 
 							<a href="#" class="link">
 								<div class="link-img link-img5"></div>
-								<p>Prestataire</p>
+								<p class="provider">Prestataire</p>
 							</a>
 						</div>
 					</div>
@@ -86,10 +86,7 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div
-					class="col-md-6">
-
-				</div>
+				<div class="col-md-6"></div>
 
 				<div class="col-md-6">
 					<div class="jumbotron">
@@ -106,7 +103,13 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>/**
+				     * @Route("/birth", name="index_birth")
+				     */
+				    public function indexBirth(): Response
+				    {
+				        return $this->render('birth/index.html.twig', ["home" => true]);
+				    }
 
 	<section class="container-fluid section-3">
 		<div class="container">
@@ -140,10 +143,7 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div
-					class="col-md-6">
-
-				</div>
+				<div class="col-md-6"></div>
 
 				<div class="col-md-6">
 					<div class="jumbotron">
@@ -177,21 +177,27 @@
 						class="col-md-6">
 						<!-- rajouter lien de l'image / alt -->
 						<div class="links-buttons">
-								<a href="{{ path('wedding_index') }}" class="link">
-									<div class="link-img link-img6"></div>
-									<p>Mariage</p>
-								</a>
+							<a href="{{ path('home_wedding') }}" class="link">
+								<div class="link-img link-img6"></div>
+								<p>Mariage</p>
+							</a>
 
-								<a href="{{ path('birthday_index') }}" class="link">
-									<div class="link-img link-img7"></div>
-									<p>Anniversaire</p>
-								</a>
+							<a href="{{ path('home_birthday') }}" class="link">
+								<div class="link-img link-img7"></div>
+								<p>Anniversaire</p>
+							</a>
 
-								<a href="{{ path('mourning_index') }}" class="link">
-									<div class="link-img link-img8"></div>
-									<p>Deuil</p>
-								</a>
-							</div>
+							<a href="{{ path('home_birth') }}" class="link">
+								<div class="link-img link-img8"></div>
+								<p>Naissance</p>
+							</a>
+
+							<a href="{{ path('home_other') }}" class="link">
+								<div class="link-img link-img10"></div>
+								<p>Autre</p>
+							</a>
+
+						</div>
 					</div>
 				</div>
 			</div>

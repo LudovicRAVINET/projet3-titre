@@ -7,7 +7,7 @@ function update(element, id) {
     axios({
         method: 'post',
         dataType: 'json',
-        url: `/wedding/${id}/bannerDiary`,
+        url: `/event/${id}/bannerDiary`,
         data,
     })
         .catch((err) => {
@@ -26,16 +26,20 @@ function pictureUpload(eventId) {
         /* eslint-disable */
         axios({
             method: 'post',
-            url: `/wedding/${eventId}/bannerDiary`,
+            url: `/event/${eventId}/bannerDiary`,
             data: formData,
             headers: { 'Content-Type': 'multipart/form-data' },
         })
             .then((res) => res.data.image)
             .then((image) => {
                 const weddingImageHtml = `
-                <img src="/uploads/files/${image}"  alt="Diary wedding banner">
+                <form id="uploadForm" role="form" method="post" enctype="multipart/form-data">
+					<input type="file" id="file" name="file">
+					<input type="submit" id="file-btn" onclick="pictureUpload({{ event.id }})" value="Valider la photo">
+				</form>
+                <img src="/uploads/files/${image}"  alt="Diary banner">
             `;
-                document.querySelector('#wedding-image').innerHTML = weddingImageHtml;
+                document.querySelector('#banner-image').innerHTML = weddingImageHtml;
             })
             .catch((err) => {
                 throw err;

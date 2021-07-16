@@ -14,26 +14,31 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route("/{id}/{events}", name="index", methods={"POST","GET"})
+     * @Route("/{id}/{eventType}", defaults={"eventType"="all"}, name="index", methods={"POST","GET"})
      */
     public function index(Request $request, User $user): Response
     {
         $events = $user->getEvents();
-        $param = $request->get('events');
-        $type = $events->getType()->getName();
-        $filtredEvents = [];
+        $eventToDisplay = [];
 
-        dd($param);
-        foreach($events as $event){
-            if($param == ){
 
+        foreach ($events as $event) {
+            $type = $event->getType();
+
+            if ($type != null) {
+                if (($request->get('eventType') == $type->getName())) {
+                    $eventToDisplay[] = $event;
+                }
             }
         }
-        //dd($events[0]->getType()->getName());
+
+        if ($request->get('eventType') == "all") {
+            $eventToDisplay = $events;
+        }
 
         return $this->render('profile/index.html.twig', [
             'user' => $user,
-            'events' => $events
+            'events' => $eventToDisplay
         ]);
     }
 }
