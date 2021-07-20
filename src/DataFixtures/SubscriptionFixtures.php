@@ -13,17 +13,20 @@ class SubscriptionFixtures extends Fixture
         $freeSubscription = new Subscription();
         $freeSubscription->setName('GRATUIT');
         $freeSubscription->setPrice(0);
+        $freeSubscription->setDescription('gratuit');
         $this->addReference('gratuit', $freeSubscription);
         $manager->persist($freeSubscription);
 
         $premiumSubscription = new Subscription();
         $premiumSubscription->setName('Premium');
         $premiumSubscription->setPrice(10);
+        $premiumSubscription->setDescription('Premium');
         $manager->persist($premiumSubscription);
 
         $firmSubscription = new Subscription();
         $firmSubscription->setName('Entreprise');
         $firmSubscription->setPrice(20);
+        $firmSubscription->setDescription('Entreprise');
         $manager->persist($firmSubscription);
 
         $manager->flush();
