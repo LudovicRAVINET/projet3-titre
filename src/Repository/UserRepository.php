@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -21,9 +23,11 @@ use PhpParser\Node\Expr\Cast\String_;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    private SubscriptionRepository $subscripRepository;
+    public function __construct(ManagerRegistry $registry, SubscriptionRepository $subscripRepository)
     {
         parent::__construct($registry, User::class);
+        $this->subscripRepository = $subscripRepository;
     }
     public function findOrCreateFromGoogleOauth(GoogleUser $owner): User
     {
@@ -43,7 +47,13 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setEmail($owner->getEmail() ?? '')
             ->setFirstName($owner->getFirstName() ?? '')
             ->setLastname($owner->getName())
+            ->setBirthDate(new DateTime('1900-01-01'))
             ->setPassword('int');
+            $freeSubscription = $this->subscripRepository->findOneBy(['name' => 'GRATUIT']);
+        if ($freeSubscription !== null) {
+            $freeSubscription->addUser($user);
+        }
+        $user->setSubscription($freeSubscription);
         $entityManager = $this->getEntityManager();
         $entityManager->persist($user);
         $entityManager->flush();
