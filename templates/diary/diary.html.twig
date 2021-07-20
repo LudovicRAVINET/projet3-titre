@@ -6,20 +6,18 @@
 {% block body %}
 	<div class="body-diary">
 		<div id="event-diary" class="container-fluid width-cover">
-			<div id="banner-image">
-				<div id="upload-img-banner">
-					{% if event.image == '' %}
-						<img class="img" src="{{ event.type.defaultPicture ~ '?raw=true' }}" alt="Diary banner">
-					{% else %}
-						<img src="{{ asset('uploads/files/' ~ event.image ~ ' ') }}" alt="Diary banner">
-					{% endif %}
-				</div>
-				<div class="banner-form">
-					<form id="uploadForm" role="form" method="post" enctype="multipart/form-data">
-						<input type="file" id="file" name="file">
-						<input type="submit" id="file-btn" onclick="pictureUpload({{ event.id }})" value="Valider la photo">
-					</form>
-				</div>
+			<div id="upload-img-banner">
+				{% if event.image == '' %}
+					<img class="img" src="{{ event.type.defaultPicture ~ '?raw=true' }}" alt="Diary banner">
+				{% else %}
+					<img src="{{ asset('uploads/files/' ~ event.image ~ ' ') }}" alt="Diary banner">
+				{% endif %}
+			</div>
+			<div class="banner-form">
+				<form id="uploadForm" role="form" method="post" enctype="multipart/form-data">
+					<input type="file" id="file" name="file">
+					<input type="submit" id="file-btn" onclick="pictureUpload({{ event.id }})" value="Valider la photo">
+				</form>
 			</div>
 			<div class="diary-wrapper">
 				<i class="fas fa-quote-left"></i>
