@@ -29,6 +29,7 @@
         "autoprefixer": "^10.2.6",
         "axios": "^0.21.1",
         "bootstrap": "^5.0.2",
+        "bootstrap-dev": "^1.0.0",
         "postcss-loader": "^5.3.0"
     }
 }

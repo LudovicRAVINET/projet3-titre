@@ -1,0 +1,31 @@
+<button type="button" id="avisBtn" class="btn btn-primary mx-auto d-block mt-5 visually-hidden" data-bs-toggle="modal" data-bs-target="#modalAvis">
+    Bootstrap Modal popup
+</button>
+<div class="modal fade" tabindex="-1" id="modalAvis" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+
+                <form class="form-login mx-auto w-100" method="post" action="{{ path('profile_notice', {'id': app.user.getId}) }}">
+                    <div class="modal-header border-0">
+						<button type="button" id="avisBtnClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+
+					<div class="row align-items-start mt-2">
+
+						<div class="col-6">
+							{{ form_row(form.note) }}
+                            {{ form_row(form.comment) }}
+						</div>
+
+                            <button class="btn btn-primary text-white col-12 my-4 fs-4 py-1" type="submit">
+								Envoyer
+							</button>
+						</div>
+					</div>
+                    {{ form_rest(form) }}
+                </form>
+            </div>
+		</div>
+	</div>
+</div>
