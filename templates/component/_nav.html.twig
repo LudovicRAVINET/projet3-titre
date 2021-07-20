@@ -71,9 +71,11 @@
 						Créer un événement
 					</a>
 				</div>
-				<div id="premiumBtnDiv" class="col-lg-2 col-sm-3">
-					<a id="premiumBtnNav" class="btn btn-info text-white my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center">Passer en premium</a>
-				</div>
+				{% if app.user.subscription.name != 'Premium' %}
+					<div id="premiumBtnDiv" class="col-lg-2 col-sm-3">
+						<a id="premiumBtnNav" class="btn btn-info text-white my-4 mx-2 fs-5 py-1 h-50 d-flex align-items-center justify-content-center">Passer en premium</a>
+					</div>
+				{% endif %}
 				<div id="BtnDiv" class="col-3 me-4 d-flex align-items-center justify-content-start">
 					<a class="hidden-small" href="#">
 						<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="grey" class="bi bi-question-circle-fill" viewbox="0 0 16 16">
