@@ -33,13 +33,9 @@ function pictureUpload(eventId) {
             .then((res) => res.data.image)
             .then((image) => {
                 const weddingImageHtml = `
-                <form id="uploadForm" role="form" method="post" enctype="multipart/form-data">
-					<input type="file" id="file" name="file">
-					<input type="submit" id="file-btn" onclick="pictureUpload({{ event.id }})" value="Valider la photo">
-				</form>
                 <img src="/uploads/files/${image}"  alt="Diary banner">
             `;
-                document.querySelector('#banner-image').innerHTML = weddingImageHtml;
+                document.querySelector('#upload-img-banner').innerHTML = weddingImageHtml;
             })
             .catch((err) => {
                 throw err;
