@@ -158,6 +158,13 @@ class EventController extends AbstractController
             $pictureFile = $requestPicture;
             if (!empty($pictureFile)) {
                 $pictureFileName = $fileUploader->upload($pictureFile);
+
+                $oldPicture = $event->getImage();
+                $oldFile = $fileUploader->getTargetDirectory() . '/' . $oldPicture;
+                if (file_exists($oldFile)) {
+                    unlink($oldFile);
+                }
+
                 $event->setImage($pictureFileName);
             }
 

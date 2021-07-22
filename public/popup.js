@@ -59,7 +59,7 @@ function menuDisplay() {
 function activitiesDisplay() {
     const weddingLink = document.getElementById('weddingLink');
     const birthdateLink = document.getElementById('birthdateLink');
-    const birthLink = document.getElementById('birthteLink');
+    const birthLink = document.getElementById('birthLink');
     const mourningLink = document.getElementById('mourningLink');
     const otherLink = document.getElementById('otherLink');
     const chevron = document.getElementById('chevron');
