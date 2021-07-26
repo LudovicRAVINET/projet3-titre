@@ -47,6 +47,21 @@ class ProfileController extends AbstractController
         ]);
     }
 
+
+
+    /**
+     * @Route("/notice/user/{id}", name="noticeShow", methods={"GET"})
+     */
+    public function noticeShow(Request $request, EntityManagerInterface $entityManager, User $user): Response
+    {
+        $avis = new Notice();
+        $form = $this->createForm(NoticeType::class, $avis);
+
+        return $this->render('component/_avis.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
     /**
      * @Route("/notice/user/{id}", name="notice", methods={"POST"})
      */
@@ -70,20 +85,6 @@ class ProfileController extends AbstractController
         return $this->render('profile/index.html.twig', [
             'user' => $user,
             'events' => $user->getEvents()
-        ]);
-    }
-
-
-    /**
-     * @Route("/notice/user/{id}", name="noticeShow", methods={"GET"})
-     */
-    public function noticeShow(Request $request, EntityManagerInterface $entityManager, User $user): Response
-    {
-        $avis = new Notice();
-        $form = $this->createForm(NoticeType::class, $avis);
-
-        return $this->render('component/_avis.html.twig', [
-            'form' => $form->createView()
         ]);
     }
 }
