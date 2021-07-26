@@ -99,6 +99,9 @@
   color: $black;
 }
 .sidebarnav{
+  ul{
+    padding: initial;
+  }
   p span{
     font-weight: bold;
     margin-bottom: 1rem;
