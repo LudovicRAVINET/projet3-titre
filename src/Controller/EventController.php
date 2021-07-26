@@ -54,7 +54,7 @@ class EventController extends AbstractController
                 $this->addFlash('danger', "Veuillez selectionner une date postérieure à aujourd'hui.");
                 return $this->redirectToRoute('profile_index', ['id' => $userId]);
             }
-            
+
             if ($eventType != null) {
                 $event = new Event();
 
@@ -160,9 +160,12 @@ class EventController extends AbstractController
                 $pictureFileName = $fileUploader->upload($pictureFile);
 
                 $oldPicture = $event->getImage();
-                $oldFile = $fileUploader->getTargetDirectory() . '/' . $oldPicture;
-                if (file_exists($oldFile)) {
-                    unlink($oldFile);
+
+                if ($oldPicture != '') {
+                    $oldFile = $fileUploader->getTargetDirectory() . '/' . $oldPicture;
+                    if (file_exists($oldFile)) {
+                        unlink($oldFile);
+                    }
                 }
 
                 $event->setImage($pictureFileName);
