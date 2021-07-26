@@ -119,3 +119,17 @@ span.field-icon {
     width: 25%!important;
   }
 }
+
+header{
+  position: fixed;
+  z-index: 1;
+  top:0;
+  right: 0;
+  left: 0;
+  background-color: $white;
+}
+
+.header-top-fix{  
+  margin-top: 200px;
+  min-height: 100vh;
+}

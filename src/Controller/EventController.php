@@ -30,6 +30,7 @@ class EventController extends AbstractController
         TypeRepository $typeRepository
     ): Response {
 
+
         if ($this->getUser() !== null) {
 
             /** @var \App\Entity\User $user */
@@ -43,6 +44,16 @@ class EventController extends AbstractController
             $eventDate = htmlentities(trim($request->get('event_date')));
             $eventTime = htmlentities(trim($request->get('event_time')));
             $hasJackpot = htmlentities(trim($request->get('jackpot')));
+
+            /*création variables*/
+            $date = new DateTime($eventDate);
+            $dateJour = new DateTime();
+
+            /*impossiblité de créer le jour même ou avant*/
+            if ($date <= $dateJour) {
+                $this->addFlash('danger', "Veuillez selectionner une date postérieure à aujourd'hui.");
+                return $this->redirectToRoute('profile_index', ['id' => $userId]);
+            }
 
             if ($eventType != null) {
                 $event = new Event();
@@ -147,6 +158,13 @@ class EventController extends AbstractController
             $pictureFile = $requestPicture;
             if (!empty($pictureFile)) {
                 $pictureFileName = $fileUploader->upload($pictureFile);
+
+                $oldPicture = $event->getImage();
+                $oldFile = $fileUploader->getTargetDirectory() . '/' . $oldPicture;
+                if (file_exists($oldFile)) {
+                    unlink($oldFile);
+                }
+
                 $event->setImage($pictureFileName);
             }
 

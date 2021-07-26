@@ -37,7 +37,7 @@ class Subscription
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    private string $description;
 
     public function __construct()
     {
