@@ -63,7 +63,7 @@ class EventController extends AbstractController
                 'name' => $eventType
                 ]);
 
-                $event->setTitle($eventName)
+                $event->setTitle(html_entity_decode($eventName))
                     ->setType($type)
                     ->setDate(new DateTime($eventDate))
                     ->setTime(new DateTime($eventTime))
