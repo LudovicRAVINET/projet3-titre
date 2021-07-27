@@ -1,185 +1,186 @@
-.searchbar{
+.searchbar {
   border-radius: $btn-border-radius;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   background-color: $blue-profile;
   width: 270px;
   display: inline-flex;
-  .fas{
-    margin:auto;
+  .fas {
+    margin: auto;
   }
-  input{
-    border: none;background-color: transparent;
+  input {
+    border: none;
+    background-color: transparent;
   }
 }
-.main-profile{
+.main-profile {
   display: flex;
 }
-.middle-profile{
+.middle-profile {
   width: 700px;
-  margin:auto;
+  margin: auto;
   min-height: 600px;
 }
-.events{
+.events {
   display: flex;
   flex-wrap: wrap;
 }
-.card-event{
+.card-event {
   display: inline-block;
   height: 315px;
   min-width: 300px;
   border: 0.5px solid $border-color-profile;
   border-radius: 10px;
-  margin:1rem;
-  .bottom-card{
-    padding: .6rem;
-    .btn-bottom{
+  margin: 1rem;
+  .bottom-card {
+    padding: 0.6rem;
+    .btn-bottom {
       display: flex;
       justify-content: space-around;
-      a{
-        padding: .3rem 3rem;
+      a {
+        padding: 0.3rem 3rem;
         border-radius: $btn-border-radius;
         border: 1px solid $light-grey;
         background-color: $blue-profile;
         color: $light-grey;
       }
     }
-    p, span{
+    p,
+    span {
       font-weight: bold;
     }
   }
- .top-card{
-   position:relative;
-   .fas{
-     font-size: large;
-     position: absolute;
-     top: 5%;
-     right: 5%;
-     padding: .5rem;
-     border-radius: 50%;
-     background-color: $white;
-     color: $black;
-   }
-   img{
-     border-radius: 10px 10px 0px 0px;
-     height: 98px;
-     width: 300px;
-     object-fit: cover;
-   }
- }
+  .top-card {
+    position: relative;
+    .fas {
+      font-size: large;
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      padding: 0.5rem;
+      border-radius: 50%;
+      background-color: $white;
+      color: $black;
+    }
+    img {
+      border-radius: 10px 10px 0px 0px;
+      height: 98px;
+      width: 300px;
+      object-fit: cover;
+    }
+  }
 }
 
-.fa-euro-sign{
+.fa-euro-sign {
   font-size: x-small;
-  padding: .25rem;
+  padding: 0.25rem;
   border-radius: 50%;
   color: $white;
   background-color: $green-main;
 }
 
-.middle-profile h1{
+.middle-profile h1 {
   font-size: 16px;
   line-height: 24px;
   text-align: center;
   color: $black;
 }
-.sidebar-left{
+.sidebar-left {
   width: 270px;
   height: 450px;
   margin-left: 10rem;
   position: fixed;
-  .active{
-    a{
+  .active {
+    a {
       color: $white !important;
     }
     background-color: $primary;
-    padding: .5rem .75rem;
+    padding: 0.5rem 0.75rem;
   }
 }
 
-#presta a{
+#presta a {
   color: $black;
 }
-.sidebarnav{
-  ul{
+.sidebarnav {
+  ul {
     padding: initial;
   }
-  p span{
+  p span {
     font-weight: bold;
     margin-bottom: 1rem;
   }
-  li{
-    a{
+  li {
+    a {
       color: $black;
     }
-    margin: .7rem 0;
+    margin: 0.7rem 0;
   }
 }
 
-.common-sidebar{
+.common-sidebar {
   border: 1px solid $border-color-profile;
   border-radius: 10px;
-  padding: .7rem;
+  padding: 0.7rem;
 }
- .archive{
-   a{
-     font-weight: bold;
-     color: $black;
-   }
- }
+.archive {
+  a {
+    font-weight: bold;
+    color: $black;
+  }
+}
 
- .confidential{
-   color: $light-grey;
- }
+.confidential {
+  color: $light-grey;
+}
 
- .sidebar-right{
-   right: 0;
-   margin-right: 10rem;
-   position: fixed;
-   .become-presta{
-     width: 310px;
-     height: 62px;
-     background: #F2B134;
-     border: 0.5px solid #F2B134;
-     box-sizing: border-box;
-     border-radius: 10px;
-     color: $white;
-     display: flex;
-     .fas{
-       color: $white;
-       margin: auto;
-     }
-     p{
-       margin: auto;
-     }
-   }
-   .agenda{
-     width: 310px;
-     height: 347px;
-     border: 0.5px solid $border-color-profile;
-     border-radius: 10px;
-     padding: .5rem 1rem;
-     p{
-       font-size: bold;
-     }
-   }
- }
-.how-it-works{
+.sidebar-right {
+  right: 0;
+  margin-right: 10rem;
+  position: fixed;
+  .become-presta {
+    width: 310px;
+    height: 62px;
+    background: #f2b134;
+    border: 0.5px solid #f2b134;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: $white;
+    display: flex;
+    .fas {
+      color: $white;
+      margin: auto;
+    }
+    p {
+      margin: auto;
+    }
+  }
+  .agenda {
+    width: 310px;
+    height: 347px;
+    border: 0.5px solid $border-color-profile;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    margin: auto;
+    p {
+      font-size: bold;
+    }
+  }
+}
+.how-it-works {
   width: 310px;
   height: 62px;
   border: 0.5px solid $border-color-profile;
   border-radius: 10px;
   display: flex;
-  p{
+  p {
     margin: auto;
   }
 }
- .fa-question{
-   font-size: large;
-   border-radius: 50%;
-   color: $white;
-   background-color: #80CC28;
-   padding: .5rem;
-   margin: auto;
-
- }
-
+.fa-question {
+  font-size: large;
+  border-radius: 50%;
+  color: $white;
+  background-color: #80cc28;
+  padding: 0.5rem;
+  margin: auto;
+}
