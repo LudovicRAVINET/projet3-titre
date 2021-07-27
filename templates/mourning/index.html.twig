@@ -21,22 +21,17 @@
 
 						<!-- rajouter les liens des boutons -->
 						<div class="links-buttons">
-							<a href="#" class="link">
+							<a href="#newspaper" class="link">
 								<div class="link-img link-img1"></div>
 								<p>Créer un journal</p>
 							</a>
 
-							<a href="#" class="link">
-								<div class="link-img link-img2"></div>
-								<p>Rétro-planning</p>
-							</a>
-
-							<a href="#" class="link">
+							<a href="#announcement" class="link">
 								<div class="link-img link-img3"></div>
 								<p>Faire-part</p>
 							</a>
 
-							<a href="#" class="link">
+							<a href="#direct" class="link">
 								<div class="link-img link-img4"></div>
 								<p>Faire un direct</p>
 							</a>
@@ -53,7 +48,7 @@
 	</div>
 
 
-	<section class="container-fluid section-1">
+	<section id="newspaper" class="container-fluid section-1">
 		<img src="/build/images/content/rose.fd573497.png" alt="" class="title-img"/>
 		<div class="container">
 			<div class="row">
@@ -90,7 +85,7 @@
 
 				<div class="col-md-6">
 					<div class="jumbotron">
-						<h3 class="event-title">Rétro planning</h3>
+						<h3 class="event-title">Première tâche</h3>
 						<h2>Organiser des obsèques</h2>
 
 						<p class="lead-s">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen boot. It has survived not only five centuries, but also the leap into electronic typesetting, remaining.
@@ -103,15 +98,9 @@
 				</div>
 			</div>
 		</div>
-	</section>/**
-				     * @Route("/birth", name="index_birth")
-				     */
-				    public function indexBirth(): Response
-				    {
-				        return $this->render('birth/index.html.twig', ["home" => true]);
-				    }
+	</section>
 
-	<section class="container-fluid section-3">
+	<section id="announcement" class="container-fluid section-3">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
@@ -137,7 +126,7 @@
 		</div>
 	</section>
 
-	<section class="container-fluid section-4">
+	<section id="direct" class="container-fluid section-4">
 		<div class="group-left">
 			<img src="{{ asset('build/images/content/group-left.9c9c6b00.png') }}" alt="image description"/>
 		</div>
