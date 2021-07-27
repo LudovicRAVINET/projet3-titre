@@ -81,8 +81,7 @@ class GoogleAuthenticator extends SocialAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
-        $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
-        return new RedirectResponse($targetPath ?: '/');
+        return new RedirectResponse($this->router->generate('login_success'));
     }
 
     private function getClient(): GoogleClient
