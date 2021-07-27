@@ -37,10 +37,14 @@
 						<p class="diary-part">Date et heure</p>
 						<div class="p-diary">
 							<p>
-								<strong>Lundi 13 Juin 2021</strong>
+								<strong>{{ event.getDateFr() }}</strong>
 							</p>
 
-							<p>13h00 à 14h00</p>
+							<p>
+                                {% if event.time != null %}
+                                      {{ event.time|date('H:i') }}
+                                {% endif %}
+                            </p>
 						</div>
 					</div>
 				</div>
