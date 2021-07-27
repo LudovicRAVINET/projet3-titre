@@ -90,6 +90,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         if ($targetPath) {
             return new RedirectResponse($targetPath);
         }
+
+        if ($request->get('email') == "admin@eventoo.fr") {
+            return new RedirectResponse($this->urlGenerator->generate('admin'));
+        }
+
         return new RedirectResponse($this->urlGenerator->generate('login_success'));
     }
 

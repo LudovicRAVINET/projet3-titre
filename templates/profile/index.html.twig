@@ -23,21 +23,24 @@
                 </p>
                 <span>Afficher par</span>
                 <ul>
-                    <li class="active">
-                        <a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'all'}) }}">Tous mes événements</a></li>
+                    <li class="{% if eventType == "all" %} active {% endif %}">
+                        <a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'all'}) }}">Tous mes événements</a>
                     </li>
 
-                                        <li><a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'wedding'}) }}">Mariage</a></li>
-                    <li>
-                        <a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'birthday'}) }}">Anniversaire</a></li>
+                    <li class="{% if eventType == "wedding" %} active {% endif %}">
+                        <a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'wedding'}) }}">Mariage</a>
                     </li>
 
-                    <li>
-                        <a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'birth'}) }}">Naissance</a></li>
+                    <li class="{% if eventType == "birthday" %} active {% endif %}">
+                        <a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'birthday'}) }}">Anniversaire</a>
                     </li>
 
-                    <li>
-                        <a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'mourning'}) }}">Deuil</a></li>
+                    <li class="{% if eventType == "birth" %} active {% endif %}">
+                        <a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'birth'}) }}">Naissance</a>
+                    </li>
+
+                    <li class="{% if eventType == "mourning" %} active {% endif %}">
+                        <a href="{{ path('profile_index', {'id': app.user.getId, 'eventType': 'mourning'}) }}">Deuil</a>
                     </li>
 
                     <li>Autres</li>

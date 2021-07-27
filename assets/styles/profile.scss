@@ -88,8 +88,10 @@
   margin-left: 10rem;
   position: fixed;
   .active{
+    a{
+      color: $white !important;
+    }
     background-color: $primary;
-    color: $white;
     padding: .5rem .75rem;
   }
 }
@@ -98,11 +100,17 @@
   color: $black;
 }
 .sidebarnav{
+  ul{
+    padding: initial;
+  }
   p span{
     font-weight: bold;
     margin-bottom: 1rem;
   }
   li{
+    a{
+      color: $black;
+    }
     margin: .7rem 0;
   }
 }

@@ -35,7 +35,9 @@
 			<div id="avisForm">{{ render(controller('App\\Controller\\ProfileController::noticeShow', {'id': app.user.getId})) }}</div>
 		{% endif %}
 
-		{% block body %}{% endblock %}
+		<div class="header-top-fix">
+			{% block body %}{% endblock %}
+		</div>
 		<footer>{% include 'component/_footer.html.twig' %}</footer>
 		{% block js %}{% endblock %}
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
