@@ -23,9 +23,9 @@ class Notice
     private string $name;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer")
      */
-    private bool $note;
+    private int $note;
 
     /**
      * @ORM\Column(type="date")
@@ -54,12 +54,12 @@ class Notice
         return $this;
     }
 
-    public function getNote(): ?bool
+    public function getNote(): ?int
     {
         return $this->note;
     }
 
-    public function setNote(bool $note): self
+    public function setNote(int $note): self
     {
         $this->note = $note;
 

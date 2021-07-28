@@ -3,6 +3,7 @@
 =====================*/
 
 .main-home{
+  padding-bottom: 50px;
   width: 90%;
   margin: auto;
 }
@@ -249,4 +250,8 @@
 
 .rating{
   width: max-content;
+}
+
+.not-yellow{
+  color: $light-grey;
 }

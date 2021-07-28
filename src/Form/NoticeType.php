@@ -14,7 +14,7 @@ class NoticeType extends AbstractType
         $builder
             ->add('note', ChoiceType::class, [
                 'choices' => [
-                    '1' => 'un','2' => 'deux','3' => 'trois','4' => 'quatre','5' => 'cinq',
+                    '1' => '1','2' => '2','3' => '3','4' => '4','5' => '5',
                 ]
                 ])
             ->add('comment', TextareaType::class)
