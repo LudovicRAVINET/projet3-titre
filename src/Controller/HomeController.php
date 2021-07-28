@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\NoticeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,9 +15,16 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index(): Response
+    public function index(NoticeRepository $noticeRepository): Response
     {
-        return $this->render('home/index.html.twig', ["home" => true]);
+        $notices = $noticeRepository->findBy(array(), [
+            "note" => "DESC"
+        ], 3);
+
+        return $this->render('home/index.html.twig', [
+            "home" => true,
+            'notices' => $notices
+        ]);
     }
 
     /**

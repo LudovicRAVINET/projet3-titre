@@ -127,69 +127,30 @@
 			</p>
 
 			<div class="testimonials mt-5">
-				<div class="card-testimonial">
+				{ % if notices is defined % }
+				{ % for notice in notices  % }
+					<div class="card-testimonial">
 					<img src="{{ asset('/build/images/home/rakoto.98ec19e5.png') }}" alt="">
 
 					<div class="rating mt-4">
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
+						{ % for note in 1..5  % }
+							{% if note <= notice.note %}
+								<i class="fas fa-star"></i>
+							{% else %}
+								<i class="fas fa-star not-yellow"></i>
+							{% endif %}
+						{ % endfor % }
 					</div>
 
 					<h6 class="mt-4">
-						J’ai passé un merveilleux moment auprès de ma compagne,
-																																																																	les plats étaient d’une finesse incroyable. Un service
-																																																																	PARFAIT
-																																																																	Merci
+						{{ notice.comment }}
 					</h6>
 					<h6 class="user-rating mt-4">
-						M Rakoto
+						{{ notice.name }}
 					</h6>
 				</div>
-				<div class="card-testimonial">
-					<img src="{{ asset('/build/images/home/rakoto.98ec19e5.png') }}" alt="">
-
-					<div class="rating mt-4">
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-					</div>
-
-					<h6 class="mt-4">
-						J’ai passé un merveilleux moment auprès de ma compagne,
-																																																																	les plats étaient d’une finesse incroyable. Un service
-																																																																	PARFAIT
-																																																																	Merci
-					</h6>
-					<h6 class="user-rating mt-4">
-						M Rakoto
-					</h6>
-				</div>
-				<div class="card-testimonial">
-					<img src="{{ asset('/build/images/home/rakoto.98ec19e5.png') }}" alt="">
-
-					<div class="rating mt-4">
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-						<i class="fas fa-star"></i>
-					</div>
-
-					<h6 class="mt-4">
-						J’ai passé un merveilleux moment auprès de ma compagne,
-																																																																	les plats étaient d’une finesse incroyable. Un service
-																																																																	PARFAIT
-																																																																	Merci
-					</h6>
-					<h6 class="user-rating mt-4">
-						M Rakoto
-					</h6>
-				</div>
+				{ % endfor % }
+				{ % endif % }
 			</div>
 
 			<a href="#" class="home-btn">Voir plus</a>
