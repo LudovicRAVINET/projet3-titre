@@ -82,6 +82,7 @@ class SecurityController extends AbstractController
                     $hash = $encoder->encodePassword($user, $user->getPassword());
                     $user->setPassword($hash);
 
+
                     $freeSubscription = $subscripRepository->findOneBy(['name' => 'GRATUIT']);
                     if ($freeSubscription !== null) {
                         $freeSubscription->addUser($user);

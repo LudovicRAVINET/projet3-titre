@@ -77,7 +77,7 @@ class User implements UserInterface
     private Collection $events;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable="true")
      */
     private string $avatar;
 
@@ -284,7 +284,7 @@ class User implements UserInterface
 
     public function getAvatar(): ?string
     {
-        return $this->avatar;
+        return $this->avatar ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png';
     }
 
     public function setAvatar(string $avatar): self
