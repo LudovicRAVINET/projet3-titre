@@ -130,7 +130,7 @@
 				{% if notices is defined %}
 				{% for notice in notices %}
 					<div class="card-testimonial">
-					<img src="{{ asset('/build/images/home/rakoto.98ec19e5.png') }}" alt="">
+					<img src="{{ notice.getUser.avatar }}" alt="">
 
 					<div class="rating mt-4">
 						{% for note in 1..5 %}
@@ -146,7 +146,7 @@
 						{{ notice.comment }}
 					</h6>
 					<h6 class="user-rating mt-4">
-						{{ notice.name }}
+						{{ notice.getUser.firstname }}
 					</h6>
 				</div>
 				{% endfor %}
