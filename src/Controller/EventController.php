@@ -100,12 +100,16 @@ class EventController extends AbstractController
         FileUploader $fileUploader
     ): Response {
 
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+
         /* //// Message Form //// */
         /** @var \App\Entity\Event $event */
         $event = $eventRepository->find($id);
         $message = new Message();
         $message->setDateTime(new DateTime('now'));
         $message->setEvent($event);
+        $message->setUser($user);
 
         $messageForm = $this->createForm(MessageType::class, $message);
         $messageForm->handleRequest($request);

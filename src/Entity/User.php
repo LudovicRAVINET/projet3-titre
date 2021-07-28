@@ -76,9 +76,20 @@ class User implements UserInterface
      */
     private Collection $events;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $avatar;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="user")
+     */
+    private Collection $messages;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
+        $this->messages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -259,6 +270,48 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($event->getUser() === $this) {
                 $event->setUser($event->getUser());
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(string $avatar): self
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->removeElement($message)) {
+            // set the owning side to null (unless already changed)
+            if ($message->getUser() === $this) {
+                $message->setUser($message->getUser());
             }
         }
 

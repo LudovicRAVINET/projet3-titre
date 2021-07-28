@@ -127,19 +127,19 @@
 			</p>
 
 			<div class="testimonials mt-5">
-				{ % if notices is defined % }
-				{ % for notice in notices  % }
+				{% if notices is defined %}
+				{% for notice in notices %}
 					<div class="card-testimonial">
 					<img src="{{ asset('/build/images/home/rakoto.98ec19e5.png') }}" alt="">
 
 					<div class="rating mt-4">
-						{ % for note in 1..5  % }
+						{% for note in 1..5 %}
 							{% if note <= notice.note %}
 								<i class="fas fa-star"></i>
 							{% else %}
 								<i class="fas fa-star not-yellow"></i>
 							{% endif %}
-						{ % endfor % }
+						{% endfor %}
 					</div>
 
 					<h6 class="mt-4">
@@ -149,10 +149,9 @@
 						{{ notice.name }}
 					</h6>
 				</div>
-				{ % endfor % }
-				{ % endif % }
+				{% endfor %}
+				{% endif %}
 			</div>
-
 			<a href="#" class="home-btn">Voir plus</a>
 		</div>
 	</div>
