@@ -208,6 +208,13 @@
 .thinking-eventoo{
   .testimonials{
     .card-testimonial{
+      img{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border : 2px solid $primary;
+        object-fit: cover;
+      }
       margin: 0 3rem;
       display: inline-block;
       width: 350px;

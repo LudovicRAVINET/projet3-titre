@@ -66,14 +66,15 @@
 			</div>
 			<div class="col-5 width-center">
 				<div class="d-flex content-post">
-					<div class="avatar">
-						{% if not app.user %}
-
-							{% else %}
-								<div class="img-avatar">
+					<div class="avatar avatar-top">
+						{% if app.user %}
+							<div class="img-avatar">
+								{% if app.user.getAvatar is empty %}
 									<img class="img" src="{{ asset('build/images/content/avatar.1eb407c4.png') }}">
-								</div>
-
+								{% else %}
+									<img class="img" src="{{ app.user.getAvatar }}">
+								{% endif %}
+							</div>
 						{% endif %}
 					</div>
 					<div

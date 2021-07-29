@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Event;
+use App\Entity\Notice;
 use App\Entity\Subscription;
 use App\Entity\User;
 use App\Form\AdminType;
@@ -50,6 +51,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Tableau de bord');
         yield MenuItem::linkToCrud('Utilisateurs', '', User::class);
         yield MenuItem::linkToCrud('Formule', '', Subscription::class);
+        yield MenuItem::linkToCrud('Avis', '', Notice::class);
+        yield MenuItem::linkToCrud('Evenements', '', Event::class);
         yield MenuItem::linkToRoute('Textes', null, 'admin_textes', []);
     }
 }

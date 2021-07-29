@@ -2,26 +2,30 @@
 	<div class="diary-message-container">
 		<div class="diary-message-author">
 			<div class="avatar">
-				{% if not app.user %}
-
-					{% else %}
-						<div class="img-avatar">
-							<img class="img" src="{{ asset('build/images/content/avatar.1eb407c4.png') }}">
-						</div>
-
-				{% endif %}
 				<div class="img-avatar">
-					{{ message.author }}
+				{% if message.getUser is defined  %}
+					<div>
+						<img class="img" src="{{ message.getUser.avatar }}">
+					</div>
+					<div>
+						<span>{{ message.getUser.lastname }}</span> <br>
+						<small>
+								{% if message.datetime != null %}
+									{{ event.getDateFr() }}
+								{% endif %}
+						</small>
+					</div>
 				</div>
+				<p>
+					{{ message.comment }}
+				</p>
 			</div>
-
-		</div>
-		{{ message.comment }}
-
-		{% if message.url is not empty %}
+			{% if message.url is not empty %}
 			<div class="diary-message-media">
 				<img src="{{ asset('uploads/files/' ~ message.url ~ ' ') }}" alt="">
 			</div>
+			{% endif %}
 		{% endif %}
+		</div>
 	</div>
 </div>

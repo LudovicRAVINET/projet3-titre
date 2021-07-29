@@ -17,7 +17,6 @@ class MessageType extends AbstractType
     {
         $builder
             ->add('comment', TextareaType::class)
-            ->add('author', TextType::class)
             ->add('url', FileType::class, [
                 'label' => 'Fichier média',
 

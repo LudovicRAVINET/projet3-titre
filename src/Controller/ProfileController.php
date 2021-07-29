@@ -22,7 +22,7 @@ class ProfileController extends AbstractController
      */
     public function index(Request $request, User $user): Response
     {
-        $events = $user->getEvents();
+        $events = $user->getEvents()->getValues();
         $eventToDisplay = [];
 
 
@@ -69,7 +69,7 @@ class ProfileController extends AbstractController
     {
         $avis = new Notice();
 
-        $avis->setName($user->getLastname());
+        $avis->setUser($user);
         $avis->setComment($_POST['notice']['comment']);
         $avis->setNote($_POST['notice']['note']);
         $avis->setDate(new DateTime('now'));

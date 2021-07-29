@@ -36,14 +36,14 @@ class Message
     private ?string $url;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $author;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="messages")
      */
     private Event $event;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="messages")
+     */
+    private User $user;
 
 
 
@@ -88,18 +88,6 @@ class Message
         return $this;
     }
 
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
     public function getEvent(): ?Event
     {
         return $this->event;
@@ -108,6 +96,18 @@ class Message
     public function setEvent(Event $event): self
     {
         $this->event = $event;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
