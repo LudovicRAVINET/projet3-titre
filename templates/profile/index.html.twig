@@ -66,37 +66,42 @@
         <div class="middle-profile">
             <h1>Mes évènements</h1>
             <div class="events">
-                {% for event in events %}
-                    <div class="card-event">
-                        <div class="top-card">
-                            {% if event.image is empty %}
-                                <img src="{{ event.getType.defaultPicture }}" alt="">
-                            {% else %}<img src="{{ asset('uploads/files/' ~ event.image) }}" alt="">{% endif %}
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <div class="bottom-card">
-                            <p>
-                                {{ event.title }}
-                            </p>
-                            <p>
-                                {{ event.getDateFr() }}
-                                {% if event.time != null %}
-                                     | {{ event.time|date('H:i') }}
-                                {% endif %}
-                            </p>
-                            <p>
-                                INVITÉS <span>XX</span> <br>
-                                {% if event.hasJackpot is not null %}
-                                    COLLECTE <span>XXX</span> <i class="fas fa-euro-sign"></i>
-                                {% endif %}
-                            </p>
-                            <div class="btn-bottom">
-                                <a href="{{ path('event_diary', {"id": event.id}) }}">Voir</a>
-                                <a href="#">Gérer</a>
+                {% if events is defined %}
+                    {% if events is empty %}
+                        <h1>Aucun évènement créé encore.</h1>
+                    {% endif %}
+                    {% for event in events %}
+                        <div class="card-event">
+                            <div class="top-card">
+                                {% if event.image is empty %}
+                                    <img src="{{ event.getType.defaultPicture }}" alt="">
+                                {% else %}<img src="{{ asset('uploads/files/' ~ event.image) }}" alt="">{% endif %}
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="bottom-card">
+                                <p>
+                                    {{ event.title }}
+                                </p>
+                                <p>
+                                    {{ event.getDateFr() }}
+                                    {% if event.time != null %}
+                                        | {{ event.time|date('H:i') }}
+                                    {% endif %}
+                                </p>
+                                <p>
+                                    INVITÉS <span>XX</span> <br>
+                                    {% if event.hasJackpot is not null %}
+                                        COLLECTE <span>XXX</span> <i class="fas fa-euro-sign"></i>
+                                    {% endif %}
+                                </p>
+                                <div class="btn-bottom">
+                                    <a href="{{ path('event_diary', {"id": event.id}) }}">Voir</a>
+                                    <a href="#">Gérer</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
         <div class="sidebar-right">

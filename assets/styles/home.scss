@@ -213,6 +213,7 @@
         height: 150px;
         border-radius: 50%;
         border : 2px solid $primary;
+        object-fit: cover;
       }
       margin: 0 3rem;
       display: inline-block;

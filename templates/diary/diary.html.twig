@@ -69,7 +69,11 @@
 					<div class="avatar avatar-top">
 						{% if app.user %}
 							<div class="img-avatar">
-								<img class="img" src="{{ app.user.getAvatar }}">
+								{% if app.user.getAvatar is empty %}
+									<img class="img" src="{{ asset('build/images/content/avatar.1eb407c4.png') }}">
+								{% else %}
+									<img class="img" src="{{ app.user.getAvatar }}">
+								{% endif %}
 							</div>
 						{% endif %}
 					</div>

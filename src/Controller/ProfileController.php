@@ -22,7 +22,7 @@ class ProfileController extends AbstractController
      */
     public function index(Request $request, User $user): Response
     {
-        $events = $user->getEvents();
+        $events = $user->getEvents()->getValues();
         $eventToDisplay = [];
 
 
