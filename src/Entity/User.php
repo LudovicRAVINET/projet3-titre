@@ -24,6 +24,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
+     * @Assert\Email(message="L'email n'est pas valide.")
      */
     private string $email;
 
@@ -35,22 +37,25 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private string $password;
 
-
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private string $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private string $firstname;
 
     /**
      * @ORM\ManyToOne(targetEntity=Subscription::class, inversedBy="users")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private ?Subscription $subscription;
 
@@ -61,7 +66,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\LessThanOrEqual("today")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
+     * @Assert\LessThanOrEqual(value="-18 years", message="L'utilisateur doit avoir plus de 18 ans.")
      */
     private \DateTimeInterface $birthDate;
 

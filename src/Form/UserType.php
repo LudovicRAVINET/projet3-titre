@@ -13,11 +13,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class UserType extends AbstractType
 {
-    private string $today;
+    private string $minAge;
 
     public function __construct()
     {
-        $this->today = (new DateTime('today'))->format('Y-m-d');
+        $this->minAge = (new DateTime('-18 years'))->format('Y-m-d');
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -31,7 +31,7 @@ class UserType extends AbstractType
                 'label' => 'Date de naissance',
                 'widget' => 'single_text',
                 'attr' => [
-                    'max' => $this->today
+                    'max' => $this->minAge
                 ]
             ]);
     }
