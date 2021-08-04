@@ -6,6 +6,9 @@ use App\Entity\Type;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
+/**
+ * @codeCoverageIgnore
+ */
 class TypeFixtures extends Fixture
 {
     public const EVENT_TYPE = ['wedding',

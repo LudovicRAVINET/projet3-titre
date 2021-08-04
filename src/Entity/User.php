@@ -106,12 +106,12 @@ class User implements UserInterface
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id ?? null;
     }
 
     public function getEmail(): ?string
     {
-        return $this->email;
+        return $this->email ?? '';
     }
 
     public function setEmail(string $email): self
@@ -128,7 +128,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->email ?? '';
     }
 
     /**
@@ -155,7 +155,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return $this->password;
+        return $this->password ?? '';
     }
 
     public function setPassword(string $password): self
@@ -188,7 +188,7 @@ class User implements UserInterface
 
     public function getLastname(): string
     {
-        return $this->lastname;
+        return $this->lastname ?? '';
     }
 
     public function setLastname(string $lastname): self
@@ -200,7 +200,7 @@ class User implements UserInterface
 
     public function getFirstname(): string
     {
-        return $this->firstname;
+        return $this->firstname ?? '';
     }
 
     public function setFirstname(string $firstname): self
@@ -212,7 +212,7 @@ class User implements UserInterface
 
     public function getSubscription(): ?Subscription
     {
-        return $this->subscription;
+        return $this->subscription ?? null;
     }
 
     public function setSubscription(?Subscription $subscription): self
@@ -224,7 +224,7 @@ class User implements UserInterface
 
     public function getGoogleId(): ?string
     {
-        return $this->googleId;
+        return $this->googleId ?? '';
     }
 
     public function setGoogleId(?string $googleId): self
@@ -236,7 +236,7 @@ class User implements UserInterface
 
     public function getBirthDate(): ?\DateTimeInterface
     {
-        return $this->birthDate;
+        return $this->birthDate ?? null;
     }
 
     public function setBirthDate(\DateTimeInterface $birthDate): self
@@ -248,7 +248,7 @@ class User implements UserInterface
 
     public function getResetToken(): ?string
     {
-        return $this->resetToken;
+        return $this->resetToken ?? '';
     }
 
     public function setResetToken(?string $resetToken): self

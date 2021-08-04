@@ -44,12 +44,12 @@ class Type
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id ?? null;
     }
 
     public function getName(): ?string
     {
-        return $this->name;
+        return $this->name ?? '';
     }
 
     public function setName(string $name): self
@@ -61,7 +61,7 @@ class Type
 
     public function getDefaultPicture(): ?string
     {
-        return $this->defaultPicture;
+        return $this->defaultPicture ?? '';
     }
 
     public function setDefaultPicture(string $defaultPicture): self

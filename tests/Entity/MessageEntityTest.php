@@ -30,6 +30,59 @@ class MessageEntityTest extends KernelTestCase
         }
     }
 
+    public function testIsTrue(): void
+    {
+        $message = new Message();
+        $user = new User();
+        $date = new DateTime();
+        $event = new Event();
+
+        $message
+            ->setComment(self::VALID_COMMENT_VALUE)
+            ->setDatetime($date)
+            ->setUrl('true url')
+            ->setEvent($event)
+            ->setUser($user);
+
+        $this->assertTrue($message->getComment() === self::VALID_COMMENT_VALUE);
+        $this->assertTrue($message->getDatetime() === $date);
+        $this->assertTrue($message->getUrl() === 'true url');
+        $this->assertTrue($message->getUser() === $user);
+        $this->assertTrue($message->getEvent() === $event);
+    }
+
+    public function testIsFalse(): void
+    {
+        $message = new Message();
+        $user = new User();
+        $date = new DateTime();
+        $event = new Event();
+
+        $message
+            ->setComment(self::VALID_COMMENT_VALUE)
+            ->setDatetime($date)
+            ->setUrl('true url')
+            ->setEvent($event)
+            ->setUser($user);
+
+        $this->assertFalse($message->getComment() === 'false comment');
+        $this->assertFalse($message->getDatetime() === new DateTime());
+        $this->assertFalse($message->getUrl() === 'false url');
+        $this->assertFalse($message->getUser() === new User());
+        $this->assertFalse($message->getEvent() === new Event());
+    }
+
+    public function testIsEmpty(): void
+    {
+        $message = new Message();
+
+        $this->assertEmpty($message->getComment());
+        $this->assertEmpty($message->getDatetime());
+        $this->assertEmpty($message->getUrl());
+        $this->assertEmpty($message->getEvent());
+        $this->assertEmpty($message->getId());
+    }
+
     public function testMessageEntityIsValid(): void
     {
         $message = new Message();

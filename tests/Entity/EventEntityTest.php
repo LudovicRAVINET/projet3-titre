@@ -3,6 +3,7 @@
 namespace App\Tests\Entity;
 
 use App\Entity\Event;
+use App\Entity\Message;
 use App\Entity\Type;
 use App\Entity\User;
 use DateTime;
@@ -28,6 +29,100 @@ class EventEntityTest extends KernelTestCase
         if ($validatorService != null) {
             $this->validator = $validatorService;
         }
+    }
+
+    public function testIsTrue(): void
+    {
+        $event = new Event();
+        $date = new DateTime();
+        $time = new DateTime();
+        $type = new Type();
+        $user = new User();
+        $message = new Message();
+
+        $event
+            ->setTitle(self::VALID_TITLE_VALUE)
+            ->setDate($date)
+            ->setTime($time)
+            ->setImage('true image')
+            ->setUser($user)
+            ->setHasJackpot(true)
+            ->setType($type)
+            ->addMessage($message);
+
+        $this->assertTrue($event->getTitle() === self::VALID_TITLE_VALUE);
+        $this->assertTrue($event->getDate() === $date);
+        $this->assertTrue($event->getTime() === $time);
+        $this->assertTrue($event->getImage() === 'true image');
+        $this->assertTrue($event->getUser() === $user);
+        $this->assertTrue($event->getHasJackpot() === true);
+        $this->assertTrue($event->getType() === $type);
+        $this->assertContains($message, $event->getMessages());
+    }
+
+    public function testIsFalse(): void
+    {
+        $event = new Event();
+        $date = new DateTime();
+        $time = new DateTime();
+        $type = new Type();
+        $user = new User();
+        $message = new Message();
+
+        $event
+            ->setTitle(self::VALID_TITLE_VALUE)
+            ->setDate($date)
+            ->setTime($time)
+            ->setImage('true image')
+            ->setUser($user)
+            ->setHasJackpot(true)
+            ->setType($type)
+            ->addMessage($message);
+
+        $this->assertFalse($event->getTitle() === 'false title');
+        $this->assertFalse($event->getDate() === new DateTime());
+        $this->assertFalse($event->getTime() === new DateTime());
+        $this->assertFalse($event->getImage() === 'false image');
+        $this->assertFalse($event->getUser() === new User());
+        $this->assertFalse($event->getHasJackpot() === false);
+        $this->assertFalse($event->getType() === new Type());
+        $this->assertNotContains(new Message(), $event->getMessages());
+    }
+
+    public function testIsEmpty(): void
+    {
+        $event = new Event();
+
+        $this->assertEmpty($event->getTitle());
+        $this->assertEmpty($event->getDate());
+        $this->assertEmpty($event->getTime());
+        $this->assertEmpty($event->getImage());
+        $this->assertEmpty($event->getUser());
+        $this->assertEmpty($event->getHasJackpot());
+        $this->assertEmpty($event->getType());
+        $this->assertEmpty($event->getMessages());
+        $this->assertEmpty($event->getId());
+    }
+
+    public function testRemoveCollectionElement(): void
+    {
+        $event = new Event();
+        $message = new Message();
+
+        $event
+            ->addMessage($message)
+            ->removeMessage($message);
+
+        $this->assertNotContains($message, $event->getMessages());
+    }
+
+    public function testGetDateFr(): void
+    {
+        $event = new Event();
+        $dateEn = new DateTime('2021-07-30');
+
+        $this->assertTrue($event->setDate($dateEn)->getDateFr() === 'vendredi 30 juillet 2021');
+        $this->assertFalse($event->setDate($dateEn)->getDateFr() === 'jeudi 29 juillet 2021');
     }
 
     public function testEventEntityIsValid(): void

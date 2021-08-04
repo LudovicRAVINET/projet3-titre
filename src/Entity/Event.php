@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
-   */
+ */
 class Event
 {
     /**
@@ -77,12 +77,12 @@ class Event
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id ?? null;
     }
 
     public function getTitle(): ?string
     {
-        return $this->title;
+        return $this->title ?? '';
     }
 
     public function setTitle(string $title): self
@@ -94,7 +94,7 @@ class Event
 
     public function getDate(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->date ?? null;
     }
 
     public function setDate(\DateTimeInterface $date): self
@@ -106,7 +106,7 @@ class Event
 
     public function getTime(): ?\DateTimeInterface
     {
-        return $this->time;
+        return $this->time ?? null;
     }
 
     public function setTime(\DateTimeInterface $time): self
@@ -131,7 +131,7 @@ class Event
 
     public function getUser(): ?User
     {
-        return $this->user;
+        return $this->user ?? null;
     }
 
     public function setUser(User $user): self
@@ -143,7 +143,7 @@ class Event
 
     public function getHasJackpot(): ?bool
     {
-        return $this->hasJackpot;
+        return $this->hasJackpot ?? null;
     }
 
     public function setHasJackpot(?bool $hasJackpot): self
@@ -155,7 +155,7 @@ class Event
 
     public function getType(): ?Type
     {
-        return $this->type;
+        return $this->type ?? null;
     }
 
     public function setType(Type $type): self

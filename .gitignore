@@ -35,4 +35,5 @@ public/uploads/files
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
+/web/test-coverage
 ###< phpunit/phpunit ###

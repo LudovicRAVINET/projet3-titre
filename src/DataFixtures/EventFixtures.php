@@ -9,6 +9,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Symfony\Component\Validator\Constraints\Date;
 
+/**
+ * @codeCoverageIgnore
+ */
 class EventFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)

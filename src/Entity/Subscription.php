@@ -50,12 +50,12 @@ class Subscription
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id ?? null;
     }
 
     public function getName(): ?string
     {
-        return $this->name;
+        return $this->name ?? '';
     }
 
     public function setName(string $name): self
@@ -67,7 +67,7 @@ class Subscription
 
     public function getPrice(): ?float
     {
-        return $this->price;
+        return $this->price ?? null;
     }
 
     public function setPrice(float $price): self
@@ -115,7 +115,7 @@ class Subscription
 
     public function getDescription(): ?string
     {
-        return $this->description;
+        return $this->description ?? '';
     }
 
     public function setDescription(string $description): self

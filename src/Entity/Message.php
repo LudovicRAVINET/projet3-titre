@@ -57,12 +57,12 @@ class Message
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id ?? null;
     }
 
     public function getComment(): ?string
     {
-        return $this->comment;
+        return $this->comment ?? '';
     }
 
     public function setComment(string $comment): self
@@ -74,7 +74,7 @@ class Message
 
     public function getDatetime(): ?\DateTimeInterface
     {
-        return $this->datetime;
+        return $this->datetime ?? null;
     }
 
     public function setDatetime(\DateTimeInterface $datetime): self
@@ -86,7 +86,7 @@ class Message
 
     public function getUrl(): ?string
     {
-        return $this->url;
+        return $this->url ?? '';
     }
 
     public function setUrl(?string $url): self
@@ -98,7 +98,7 @@ class Message
 
     public function getEvent(): ?Event
     {
-        return $this->event;
+        return $this->event ?? null;
     }
 
     public function setEvent(Event $event): self

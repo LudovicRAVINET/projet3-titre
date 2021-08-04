@@ -31,6 +31,53 @@ class NoticeEntityTest extends KernelTestCase
         }
     }
 
+    public function testIsTrue(): void
+    {
+        $notice = new Notice();
+        $user = new User();
+        $date = new DateTime();
+
+        $notice
+            ->setNote(self::VALID_NOTE_VALUE)
+            ->setDate($date)
+            ->setComment(self::VALID_COMMENT_VALUE)
+            ->setUser($user);
+
+        $this->assertTrue($notice->getNote() === self::VALID_NOTE_VALUE);
+        $this->assertTrue($notice->getdate() === $date);
+        $this->assertTrue($notice->getComment() === self::VALID_COMMENT_VALUE);
+        $this->assertTrue($notice->getUser() === $user);
+    }
+
+    public function testIsFalse(): void
+    {
+        $notice = new Notice();
+        $user = new User();
+        $date = new DateTime();
+
+        $notice
+            ->setNote(self::VALID_NOTE_VALUE)
+            ->setDate($date)
+            ->setComment(self::VALID_COMMENT_VALUE)
+            ->setUser($user);
+
+        $this->assertFalse($notice->getNote() === 4);
+        $this->assertFalse($notice->getdate() === new DateTime());
+        $this->assertFalse($notice->getComment() === 'false comment');
+        $this->assertFalse($notice->getUser() === new User());
+    }
+
+    public function testIsEmpty(): void
+    {
+        $notice = new Notice();
+
+        $this->assertEmpty($notice->getNote());
+        $this->assertEmpty($notice->getdate());
+        $this->assertEmpty($notice->getComment());
+        $this->assertEmpty($notice->getUser());
+        $this->assertEmpty($notice->getId());
+    }
+
     public function testNoticeEntityIsValid(): void
     {
         $notice = new Notice();

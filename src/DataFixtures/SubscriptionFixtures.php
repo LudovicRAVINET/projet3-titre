@@ -6,6 +6,9 @@ use App\Entity\Subscription;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SubscriptionFixtures extends Fixture
 {
     public function load(ObjectManager $manager)

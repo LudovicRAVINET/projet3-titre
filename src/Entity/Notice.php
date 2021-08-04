@@ -53,12 +53,12 @@ class Notice
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id ?? null;
     }
 
     public function getNote(): ?int
     {
-        return $this->note;
+        return $this->note ?? null;
     }
 
     public function setNote(int $note): self
@@ -70,7 +70,7 @@ class Notice
 
     public function getDate(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->date ?? null;
     }
 
     public function setDate(\DateTimeInterface $date): self
@@ -82,7 +82,7 @@ class Notice
 
     public function getComment(): ?string
     {
-        return $this->comment;
+        return $this->comment ?? '';
     }
 
     public function setComment(string $comment): self
@@ -94,7 +94,7 @@ class Notice
 
     public function getUser(): ?User
     {
-        return $this->user;
+        return $this->user ?? null;
     }
 
     public function setUser(User $user): self

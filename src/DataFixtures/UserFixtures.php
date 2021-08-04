@@ -8,6 +8,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use DateTime;
 
+/**
+ * @codeCoverageIgnore
+ */
 class UserFixtures extends AppFixtures implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
