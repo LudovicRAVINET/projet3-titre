@@ -8,6 +8,7 @@ use App\Entity\Message;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
@@ -23,11 +24,17 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private string $title;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
+     * @Assert\GreaterThanOrEqual(
+     *      value="today",
+     *      message="La date de l'événement doit être supérieure ou égale à la date de sa saisie."
+     * )
      */
     private \DateTimeInterface $date;
 
@@ -43,6 +50,7 @@ class Event
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private User $user;
 
@@ -53,6 +61,7 @@ class Event
 
     /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="events")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private Type $type;
 

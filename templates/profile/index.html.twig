@@ -74,7 +74,7 @@
                         <div class="card-event">
                             <div class="top-card">
                                 {% if event.image is empty %}
-                                    <img src="{{ event.getType.defaultPicture }}" alt="">
+                                    <img src="{{ asset('build/images/banner/' ~ event.getType.defaultPicture) }}" alt="default banner">
                                 {% else %}<img src="{{ asset('uploads/files/' ~ event.image) }}" alt="">{% endif %}
                                 <i class="fas fa-lock"></i>
                             </div>

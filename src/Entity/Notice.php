@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\NoticeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=NoticeRepository::class)
@@ -19,21 +20,34 @@ class Notice
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 5,
+     *      notInRangeMessage = "La note doit être comprise entre 1 et 5.",
+     * )
      */
     private int $note;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
+     * @Assert\LessThanOrEqual(
+     *      value="now",
+     *      message="La date du commentaire doit être inférieure ou égale à la date de sa saisie."
+     * )
      */
     private \DateTimeInterface $date;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private string $comment;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="notices")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private User $user;
 

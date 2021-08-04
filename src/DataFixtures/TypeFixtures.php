@@ -22,32 +22,27 @@ class TypeFixtures extends Fixture
 
             if ($eventType === "wedding") {
                 $type->setDefaultPicture(
-                    'https://github.com/Bachir-Ndiaye/eventoo-images/
-blob/main/images/mariage/mariage-ring.png?raw=true'
+                    'defaultWedding.png'
                 );
             }
             if ($eventType === "birth") {
                 $type->setDefaultPicture(
-                    'https://github.com/Bachir-Ndiaye/eventoo-images/
-blob/main/images/naissance/naissance-default.png?raw=true'
+                    'defaultBirth.png'
                 );
             }
             if ($eventType === "birthday") {
                 $type->setDefaultPicture(
-                    'https://github.com/Bachir-Ndiaye/eventoo-images/
-blob/main/images/anniversaire/anniversaire-default.png?raw=true'
+                    'defaultBirthday.png'
                 );
             }
             if ($eventType === "mourning") {
                 $type->setDefaultPicture(
-                    'https://github.com/Bachir-Ndiaye/eventoo-images/
-blob/main/images/deuil/deuil-default.png?raw=true'
+                    'defaultMourning.png'
                 );
             }
             if ($eventType === "others") {
                 $type->setDefaultPicture(
-                    'https://github.com/Bachir-Ndiaye/eventoo-images/
-blob/main/images/anniversaire/annniversaire-rose.png?raw=true'
+                    'defaultOthers.png'
                 );
             }
             $this->addReference('type_' . $key, $type);

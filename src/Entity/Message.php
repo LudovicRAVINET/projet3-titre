@@ -22,11 +22,17 @@ class Message
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private string $comment;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
+     * @Assert\LessThanOrEqual(
+     *      value="now",
+     *      message="La date du commentaire doit être inférieure ou égale à la date de sa saisie."
+     * )
      */
     private \DateTimeInterface $datetime;
 
@@ -37,11 +43,13 @@ class Message
 
     /**
      * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="messages")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private Event $event;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="messages")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private User $user;
 

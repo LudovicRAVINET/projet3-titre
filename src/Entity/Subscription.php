@@ -6,6 +6,7 @@ use App\Repository\SubscriptionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SubscriptionRepository::class)
@@ -21,11 +22,13 @@ class Subscription
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private string $name;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private float $price;
 
@@ -36,6 +39,7 @@ class Subscription
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private string $description;
 

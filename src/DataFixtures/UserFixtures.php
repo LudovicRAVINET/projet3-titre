@@ -15,15 +15,16 @@ class UserFixtures extends AppFixtures implements DependentFixtureInterface
         $adminUser = new User();
         $regularUser = new User();
 
-        $adminPassword = $this->encoder->encodePassword($adminUser, 'admin');
+        $adminPassword = $this->encoder->encodePassword($adminUser, 'Admin1');
         $adminUser->setEmail('admin@eventoo.fr');
         $adminUser->setPassword($adminPassword);
         $adminUser->setFirstname('Administrator');
         $adminUser->setLastname('Administrator');
         $adminUser->setRoles(['ROLE_ADMIN']);
         $adminUser->setBirthDate(new DateTime('1975-03-22'));
+        $adminUser->setSubscription($this->getReference('gratuit'));
 
-        $userPassword = $this->encoder->encodePassword($regularUser, 'password');
+        $userPassword = $this->encoder->encodePassword($regularUser, 'Password1');
         $regularUser->setEmail('user@eventoo.fr');
         $regularUser->setPassword($userPassword);
         $regularUser->setFirstname('John');
