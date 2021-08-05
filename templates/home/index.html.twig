@@ -51,7 +51,7 @@
 				{% if app.user is null%}
 					<div class="register-login py-5">
 						<a class="btn-rl register" onclick="popup('registerBtn')">S'inscrire</a>
-						<a class="btn-rl login mx-4" onclick="popup('loginBtn')">S'identifier</a>
+						<a id="home-login-link" class="btn-rl login mx-4" onclick="popup('loginBtn')">S'identifier</a>
 					</div>
 				{% endif %}
 			</div>
@@ -76,7 +76,7 @@
 		</div>
 		<div class="what-is-eventoo">
 			<h1>
-				<span>eventoo,</span>
+				<span id="what-eventoo">eventoo,</span>
 				c'est quoi ?
 			</h1>
 			<p>

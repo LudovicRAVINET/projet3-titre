@@ -6,6 +6,7 @@
 parameters:
     files_directory: '%kernel.project_dir%/public/uploads/files'
     recaptcha_key : '%env(GOOGLE_RECAPTCHA_SECRET)%'
+    recaptcha_key_site : '%env(GOOGLE_RECAPTCHA_SITE)%'
     mailer_from: '%env(resolve:MAILER_FROM_ADDRESS)%'
 services:
     # default configuration for services in *this* file

@@ -9,7 +9,7 @@
 					<div class="card-body text-center">
 						<div class="row m-2">
 							<i class="fas fa-check-circle col-lg-4 col-md-3 col-sm-1 mb-2 mb-md-0 text-md-end"></i>
-							<h4 class="title col-lg-8 col-md-9 col-sm-11 text-primary text-md-start">votre compte a bien été créé</h4>
+							<h4 id="subscription-choice-title" class="title col-lg-8 col-md-9 col-sm-11 text-primary text-md-start">votre compte a bien été créé</h4>
 						</div>
 						<div class="row">
 							<p class="description col-md-7 col-sm-12 mb-2 mb-md-0 text-md-end">Votre abonnement actuel :</p>
@@ -24,7 +24,7 @@
 										<div class="card-body">
 											<h6 class="card-title fw-bold">{{ subscription.name }}</h6>
 											<p class="card-text">{{ subscription.price }}€ / mois</p>
-											<div class="col-sm-12 mb-2 mb-md-0"> <a href="{{ path('subscription_choice', {"id": subscription.id}) }}" class="btn btn-out btn-primary btn-square btn-large text-white">Continuer</a> </div>
+											<div class="col-sm-12 mb-2 mb-md-0"> <a id="{{ subscription.name }}-btn" href="{{ path('subscription_choice', {"id": subscription.id}) }}" class="btn btn-out btn-primary btn-square btn-large text-white">Continuer</a> </div>
 										</div>
 									</div>
 								{% endfor %}

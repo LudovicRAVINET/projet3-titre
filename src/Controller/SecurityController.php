@@ -69,6 +69,7 @@ class SecurityController extends AbstractController
         MailerInterface $mailer
     ): Response {
         $user = new User();
+        $recaptchaKeySite = strval($this->getParameter('recaptcha_key_site'));
 
         $form = $this->createForm(UserType::class, $user);
 
@@ -114,7 +115,8 @@ class SecurityController extends AbstractController
         }
 
         return $this->render('component/_register.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'recaptchaKeySite' => $recaptchaKeySite
         ]);
     }
 

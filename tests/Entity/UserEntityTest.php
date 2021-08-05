@@ -165,7 +165,6 @@ class UserEntityTest extends KernelTestCase
             ->setPassword(self::VALID_PASSWORD_VALUE)
             ->setFirstname(self::VALID_FIRSTNAME_VALUE)
             ->setLastname(self::VALID_LASTNAME_VALUE)
-            ->setSubscription(new Subscription())
             ->setBirthDate(new DateTime('1998-07-02'));
 
         $this->getValidationErrors($user, 0);
@@ -179,7 +178,6 @@ class UserEntityTest extends KernelTestCase
             ->setPassword(self::VALID_PASSWORD_VALUE)
             ->setFirstname(self::VALID_FIRSTNAME_VALUE)
             ->setLastname(self::VALID_LASTNAME_VALUE)
-            ->setSubscription(new Subscription())
             ->setBirthDate(new DateTime('1998-07-02'));
 
         $errors = $this->getValidationErrors($user, 1);
@@ -195,7 +193,6 @@ class UserEntityTest extends KernelTestCase
             ->setEmail(self::VALID_EMAIL_VALUE)
             ->setPassword(self::VALID_PASSWORD_VALUE)
             ->setLastname(self::VALID_LASTNAME_VALUE)
-            ->setSubscription(new Subscription())
             ->setBirthDate(new DateTime('1998-07-02'));
 
         $errors = $this->getValidationErrors($user, 1);
@@ -211,7 +208,6 @@ class UserEntityTest extends KernelTestCase
             ->setEmail(self::VALID_EMAIL_VALUE)
             ->setPassword(self::VALID_PASSWORD_VALUE)
             ->setFirstname(self::VALID_FIRSTNAME_VALUE)
-            ->setSubscription(new Subscription())
             ->setBirthDate(new DateTime('1998-07-02'));
 
             $errors = $this->getValidationErrors($user, 1);
@@ -227,8 +223,7 @@ class UserEntityTest extends KernelTestCase
         ->setEmail(self::VALID_EMAIL_VALUE)
         ->setPassword(self::VALID_PASSWORD_VALUE)
         ->setFirstname(self::VALID_FIRSTNAME_VALUE)
-        ->setLastname(self::VALID_LASTNAME_VALUE)
-        ->setSubscription(new Subscription());
+        ->setLastname(self::VALID_LASTNAME_VALUE);
 
         $errors = $this->getValidationErrors($user, 1);
 
@@ -244,7 +239,6 @@ class UserEntityTest extends KernelTestCase
         ->setPassword(self::VALID_PASSWORD_VALUE)
         ->setFirstname(self::VALID_FIRSTNAME_VALUE)
         ->setLastname(self::VALID_LASTNAME_VALUE)
-        ->setSubscription(new Subscription())
         ->setBirthDate(new DateTime('2018-07-02')); // less than 18 years old
 
         $errors = $this->getValidationErrors($user, 1);
@@ -260,7 +254,6 @@ class UserEntityTest extends KernelTestCase
         ->setEmail(self::VALID_EMAIL_VALUE)
         ->setFirstname(self::VALID_FIRSTNAME_VALUE)
         ->setLastname(self::VALID_LASTNAME_VALUE)
-        ->setSubscription(new Subscription())
         ->setBirthDate(new DateTime('1998-07-02'));
 
         $errors = $this->getValidationErrors($user, 1);
@@ -277,28 +270,11 @@ class UserEntityTest extends KernelTestCase
             ->setPassword(self::VALID_PASSWORD_VALUE)
             ->setFirstname(self::VALID_FIRSTNAME_VALUE)
             ->setLastname(self::VALID_LASTNAME_VALUE)
-            ->setSubscription(new Subscription())
             ->setBirthDate(new DateTime('1998-07-02'));
 
         $errors = $this->getValidationErrors($user, 1);
 
         $this->assertEquals(self::EMAIL_CONSTRAINT_MESSAGE, $errors[0]->getMessage());
-    }
-
-    public function testUserEntityIsInvalidBecauseNoSubscriptionEntered(): void
-    {
-        $user = new User();
-
-        $user
-            ->setEmail(self::VALID_EMAIL_VALUE)
-            ->setPassword(self::VALID_PASSWORD_VALUE)
-            ->setFirstname(self::VALID_FIRSTNAME_VALUE)
-            ->setLastname(self::VALID_LASTNAME_VALUE)
-            ->setBirthDate(new DateTime('1998-07-02'));
-
-        $errors = $this->getValidationErrors($user, 1);
-
-        $this->assertEquals(self::NOT_BLANK_CONSTRAINT_MESSAGE, $errors[0]->getMessage());
     }
 
     private function getValidationErrors(User $user, int $numberOfExpectedErrors): ConstraintViolationListInterface

@@ -55,7 +55,6 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity=Subscription::class, inversedBy="users")
-     * @Assert\NotBlank(message="Veuillez saisir une valeur.")
      */
     private ?Subscription $subscription;
 

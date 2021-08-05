@@ -8,7 +8,7 @@
 
 				<form class="form-login mx-auto w-100" method="post" action="{{ path('app_register') }}">
 					<div class="modal-header border-0">
-						<h1 class="h3 mb-3 font-weight-normal">S'inscrire</h1>
+						<h1 id="register-confirm-title" class="h3 mb-3 font-weight-normal">S'inscrire</h1>
 						<button type="button" id="registerBtnClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 
@@ -53,12 +53,10 @@
                             }) }}
 							<span toggle="#input-pwd" id="registerEye" class="fa fa-fw fa-eye field-icon toggle-password" onclick="passwordEye('registerEye', 'user_password')"></span>
 
-							<div class="g-recaptcha" data-sitekey="6LfgGlMbAAAAACpQKpfQMoGsZcwXvqDRwZc9_RuX"></div>
+							<div class="g-recaptcha" data-sitekey={{ recaptchaKeySite }}></div>
 
 
-							<button class="btn btn-primary text-white col-12 my-4 fs-4 py-1" type="submit">
-								S'inscrire
-							</button>
+							<button id="register-confirm-btn" class="btn btn-primary text-white col-12 my-4 fs-4 py-1" type="submit">S'inscrire</button>
 						</div>
 					</div>
 
