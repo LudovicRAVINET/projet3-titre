@@ -6,9 +6,11 @@ use App\DataFixtures\EventFixtures;
 use App\DataFixtures\TypeFixtures;
 use App\DataFixtures\UserFixtures;
 use App\Repository\UserRepository;
+use App\Repository\EventRepository;
 use App\Tests\NeedLogin;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class EventFunctionalTest extends WebTestCase
 {
@@ -147,5 +149,38 @@ class EventFunctionalTest extends WebTestCase
         $client->followRedirect();
         $this->assertSelectorTextContains('p.diary-part', 'Date et heure');
         $this->assertSelectorTextContains('p.diary-message-text', 'message de test fonctionnel');
+    }
+
+    public function testBannerDiaryIsUpdated(): void
+    {
+        $client = static::createClient();
+        $this->loadFixtures([UserFixtures::class, EventFixtures::class]);
+
+        /** @var \App\Repository\UserRepository $userRepository */
+        $userRepository = static::getContainer()->get(UserRepository::class);
+        $user = $userRepository->find(2);
+
+        /** @var \App\Repository\EventRepository $eventRepository */
+        $eventRepository = static::getContainer()->get(EventRepository::class);
+        $event = $eventRepository->find(1);
+
+        if ($event != null && $user != null) {
+            $this->login($client, $user);
+            $testOriginalPicture = __DIR__ . '/../fixtures/hand.jpg';
+            copy($testOriginalPicture, __DIR__ . '/../fixtures/handTest.jpg');
+            $testPicture = new UploadedFile(
+                __DIR__ . '/../fixtures/handTest.jpg',
+                'hand.jpg'
+            );
+
+            $client->request('POST', '/event/1/bannerDiary', [
+                'prop' => 'title',
+                'value' => 'titre de test'
+            ], [
+                'image' => $testPicture
+            ]);
+        }
+
+        $this->assertResponseIsSuccessful();
     }
 }
