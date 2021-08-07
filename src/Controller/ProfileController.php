@@ -70,15 +70,12 @@ class ProfileController extends AbstractController
         $avis = new Notice();
 
         $avis->setUser($user);
-        $avis->setComment($_POST['notice']['comment']);
-        $avis->setNote($_POST['notice']['note']);
+        $avis->setComment($request->request->get('notice')['comment']);
+        $avis->setNote($request->request->get('notice')['note']);
         $avis->setDate(new DateTime('now'));
 
         $entityManager->persist($avis);
         $entityManager->flush();
-
-
-        // TODO : si la note est inférieure à 2 demander à l'utilisateur pourquoi
 
         $this->addFlash('success', 'Merci pour votre avis');
 

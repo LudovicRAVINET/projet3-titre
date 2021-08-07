@@ -38,18 +38,18 @@ class EventController extends AbstractController
             $userId = $user->getId();
 
 
-        /** @var \App\Entity\Type $eventType */
-            $eventType = htmlentities(trim($request->get('event_type')));
-            $eventName = htmlentities(trim($request->get('event_name')));
-            $eventDate = htmlentities(trim($request->get('event_date')));
-            $eventTime = htmlentities(trim($request->get('event_time')));
-            $hasJackpot = htmlentities(trim($request->get('jackpot')));
+            /** @var \App\Entity\Type $eventType */
+            $eventType = htmlentities(trim($request->request->get('event_type')));
+            $eventName = htmlentities(trim($request->request->get('event_name')));
+            $eventDate = htmlentities(trim($request->request->get('event_date')));
+            $eventTime = htmlentities(trim($request->request->get('event_time')));
+            $hasJackpot = htmlentities(trim($request->request->get('jackpot')));
 
-            /*création variables*/
+            /*variables creation*/
             $date = new DateTime($eventDate);
             $dateJour = new DateTime();
 
-            /*impossiblité de créer le jour même ou avant*/
+            /*impossible to create event with past date*/
             if ($date <= $dateJour) {
                 $this->addFlash('danger', "Veuillez selectionner une date postérieure à aujourd'hui.");
                 return $this->redirectToRoute('profile_index', ['id' => $userId]);

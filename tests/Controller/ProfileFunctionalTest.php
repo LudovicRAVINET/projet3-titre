@@ -34,8 +34,34 @@ class ProfileFunctionalTest extends WebTestCase
 
         if ($user != null) {
             $this->login($client, $user);
-            $client->request('GET', '/profile/' . $user->getId());
+            $client->request('GET', '/profile/' . $user->getId() . '/wedding');
         }
+
+        $this->assertResponseIsSuccessful();
+    }
+
+    public function testNoticeIsCreated(): void
+    {
+        $client = static::createClient();
+
+
+        $this->loadFixtures([UserFixtures::class]);
+
+        /** @var \App\Repository\UserRepository $userRepository */
+        $userRepository = static::getContainer()->get(UserRepository::class);
+        $user = $userRepository->find(2);
+
+        if ($user != null) {
+            $this->login($client, $user);
+            $client->request('POST', '/profile/notice/user/' . $user->getId(), [
+                'notice' => [
+                    'note' => 3,
+                    'comment' => 'commentaire de test fonctionnel'
+                ]
+            ]);
+        }
+        $this->assertSelectorTextContains('h1#my-event-title', 'Mes évènements');
+        $this->assertSelectorTextContains('div.header-top-fix > div.alert', 'Merci pour votre avis');
 
         $this->assertResponseIsSuccessful();
     }

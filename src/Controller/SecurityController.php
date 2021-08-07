@@ -76,9 +76,9 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if (isset($_POST['g-recaptcha-response'])) {
+            if ($request->request->get('g-recaptcha-response') !== null) {
                 $recaptcha = new ReCaptcha(strval($this->getParameter('recaptcha_key')));
-                $response = $recaptcha->verify($_POST['g-recaptcha-response']);
+                $response = $recaptcha->verify($request->request->get('g-recaptcha-response'));
                 if ($response->isSuccess()) {
                     $hash = $encoder->encodePassword($user, $user->getPassword());
                     $user->setPassword($hash);
