@@ -11,7 +11,7 @@ class SecurityPantherTest extends PantherTestCase
 {
     use FixturesTrait;
 
-    public function testRegisterIsValid(): void
+    public function testNewUserAddNoteAndEventAndComment(): void
     {
         $this->loadFixtures([UserFixtures::class], false, null, 'doctrine', 1);
         $client = static::createPantherClient();
@@ -56,13 +56,35 @@ class SecurityPantherTest extends PantherTestCase
         $crawler = $client->submit($form);
         $this->assertSelectorTextContains('div.header-top-fix > div.alert', 'Merci pour votre avis');
 
-        // test add event
-        $createEventLink = $crawler->filter('a#eventCreateBtnNav')->link();
-        $crawler = $client->click($createEventLink);
-        $client->waitForVisibility('h2.whatEvent');
-        $this->assertSelectorTextContains('h2.whatEvent', 'Quel type d\'évènement');
+        // test add events
+        for ($i = 0; $i < 2; $i++) {
+            $createEventLink = $crawler->filter('a#eventCreateBtnNav')->link();
+            $crawler = $client->click($createEventLink);
+            $client->waitForVisibility('h2.whatEvent');
+            $this->assertSelectorTextContains('h2.whatEvent', 'Quel type d\'évènement');
 
-        $choiceEventLink = $crawler->filter('a#birthday-create-btn')->link();
-        $crawler = $client->click($choiceEventLink);
+            $choiceEventLink = $crawler->filter('a#birthday-create-btn')->link();
+            $crawler = $client->click($choiceEventLink);
+            $client->getWebDriver()->findElement(WebDriverBy::name("jackpot"))->click();
+            $form = $crawler->selectButton('Valider')->form([
+                'event_name' => 'Anniv test panther n°' . $i,
+                'event_date' => '20-08-2022',
+                'event_time' => '14:30',
+            ]);
+            $crawler = $client->submit($form);
+            $this->assertSelectorTextContains('div.header-top-fix > div.alert', 'Votre événement a bien été créé.');
+        }
+
+        // test add comment
+        $createdEventLink = $crawler->filter('div.events > div.card-event')->last()->filter('a.event-view-btn')->link();
+        $crawler = $client->click($createdEventLink);
+        $client->waitForVisibility('p#title');
+        $this->assertSelectorTextContains('p#title', 'Anniv test panther n°1');
+
+        $form = $crawler->selectButton('diary-send-btn')->form([
+            'message[comment]' => 'commentaire de test panther',
+        ]);
+        $crawler = $client->submit($form);
+        $this->assertSelectorTextContains('p.diary-message-text', 'commentaire de test panther');
     }
 }
